@@ -1,4 +1,7 @@
 import React from "react";
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import {
   StyleSheet,
   Text,
@@ -9,68 +12,17 @@ import {
   Image
 } from "react-native";
 import NavigationBar from "./components/NavigationBar";
+import HomeScreen from "./screens/HomeScreen";
+import WebViewTest from "./screens/WebViewTest";
+
 export default function App() {
   return (
-    <View style={{ flex: 1 }}>
-      <View style={styles.header}>
-        <NavigationBar title="e-RES@MONT"></NavigationBar>
-      </View>
-      <View style={styles.logo}>
-        <Image
-          source={require("./assets/images/logo_eresamont.png")}
-          style={{ width: "100%", height: "100%", margin: 10 }}
-        />
-      </View>
-      <View style={styles.container}>
-        <ScrollView contentContainerStyle={styles.scrollView}>
-          <ButtonView
-            value="Health Assessement"
-            onPress={() => alert("pressed")}
-          />
-          <ButtonView value="Medical Guide" />
-          <ButtonView value="Toolbox" />
-          <ButtonView value="Mountain Medicine Consultation" />
-          <ButtonView value="Questionnaires" />
-          <ButtonView value="News" />
-          <ButtonView value="About e-Res@mont" />
-        </ScrollView>
-      </View>
-    </View>
+    <React.Fragment>
+      <NavigationBar title="e-RES@MONT"></NavigationBar>
+      <HomeScreen />
+      {/* <WebViewTest /> */}
+    </React.Fragment>
   );
 }
 
-const ButtonView = props => (
-  <TouchableOpacity style={styles.button} {...props}>
-    <Text style={{ color: "white" }}>{props.value}</Text>
-  </TouchableOpacity>
-);
-
-const styles = StyleSheet.create({
-  header: {
-    flex: 1,
-    backgroundColor: "#fff",
-    marginBottom: 10
-  },
-  logo: {
-    flex: 2,
-    backgroundColor: "#fff",
-    marginBottom: 40
-  },
-  container: {
-    flex: 7
-  },
-  scrollView: {
-    flexGrow: 1,
-    justifyContent: "flex-start",
-    alignItems: "center"
-  },
-  button: {
-    height: 40,
-    width: "65%",
-    margin: 10,
-    backgroundColor: "#3f51b5",
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});
+const Stack = createStackNavigator();

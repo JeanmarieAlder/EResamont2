@@ -1,0 +1,210 @@
+<style type="text/css">
+  body {
+    font-family: "trebuchet ms", sans-serif;
+    font-size: 90%;
+  }
+  form {
+    /*background-color:#FAFAFA;*/
+    padding: 10px;
+    width: auto;
+  }
+
+  fieldset {
+    padding: 0 20px 20px 20px;
+    margin-bottom: 10px;
+    border: 1px solid black; /*#DF3F3F;*/
+  }
+  legend {
+    /*color:#DF3F3F;*/
+    font-weight: bold;
+  }
+  label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    display: block;
+  }
+  label.inline {
+    display: block;
+    margin-right: 50px;
+  }
+  input,
+  textarea,
+  select,
+  option {
+    /*background-color:#FFF3F3;*/
+    font-size: 90%;
+  }
+  input,
+  textarea,
+  select {
+    padding: 3px;
+    /*border:1px solid #F5C5C5;*/
+    border-radius: 5px;
+    width: 100%;
+    box-shadow: 1px 1px 2px #c0c0c0 inset;
+  }
+  select {
+    margin-top: 10px;
+  }
+  input[type="radio"] {
+    background-color: transparent;
+    border: none;
+    width: 10px;
+    min-width: 30px;
+    min-height: 30px;
+    box-shadow: none;
+  }
+  input[type="submit"],
+  input[type="reset"] {
+    width: 100px;
+    margin-left: 5px;
+    box-shadow: 1px 1px 1px #d83f3d;
+    cursor: pointer;
+  }
+</style>
+<h3>Check-list pour télémédecine</h3>
+
+<p>
+  Avant d'appeler un médecin veuillez remplir cette liste pour vous faciliter la
+  téléconsultation
+</p>
+
+<form>
+  <fieldset>
+    <legend>Données personnelles du patient</legend>
+    <label class="inline">Prénom : </label>
+    <input type="text" name="monPrenom" value="" placeholder="" />
+    <label class="inline">Nom : </label>
+    <input type="text" name="monNom" value="" placeholder="" />
+    <label class="inline">Date de naissance : </label>
+    <input type="date" name="maNaissance" value="" placeholder="" />
+    <label class="inline">Adresse : </label>
+    <input type="text" name="monAdresse" value="" placeholder="" />
+    <label class="inline">Numéro de téléphone du patient : </label>
+    <input type="tel" name="monTel" value="" placeholder="" />
+  </fieldset>
+
+  <fieldset>
+    <legend>Signes et symptômes</legend>
+    <label class="inline">De quel type : </label>
+    <input type="text" name="monType" value="" placeholder="" />
+    <label class="inline">Mode d'apparition : </label>
+    <input type="text" name="monMode" value="" placeholder="" />
+    <label class="inline">Provoqué par : </label>
+    <input type="text" name="maProvocation" value="" placeholder="" />
+    <label class="inline">Intensité : </label>
+    <input type="text" name="monIntensite" value="" placeholder="" />
+    <label class="inline">Irradiant vers : </label>
+    <input type="text" name="monIrradiation" value="" placeholder="" />
+    <label class="inline">Depuis quand : </label>
+    <input type="text" name="monApparition" value="" placeholder="" />
+  </fieldset>
+
+  <fieldset>
+    <legend>Informations de santé</legend>
+    <label class="inline">Allergies : </label>
+    <input type="text" name="mesAllergies" value="" placeholder="" />
+    <label class="inline">Médicaments : </label>
+    <input type="text" name="mesMedicaments" value="" placeholder="" />
+    <label class="inline">Problèmes de santé connus : </label>
+    <input type="text" name="mesProblemes" value="" placeholder="" />
+    <label class="inline">Dernier repas pris : </label>
+    <input type="text" name="monDernierRepas" value="" placeholder="" />
+    <label class="inline"
+      >Evénements (qui amènent au problème) déclenchant :
+    </label>
+    <input
+      type="text"
+      name="mesEvenementsDeclenchant"
+      value=""
+      placeholder=""
+    />
+  </fieldset>
+
+  <fieldset>
+    <legend>Signes vitaux mesurables</legend>
+    <label for="etatConscience">Etat de conscience : </label>
+    <select name="etatConscience" id="etatConscience">
+      <option value="agite"> Agité, nerveux</option>
+      <option value="eveille"> Eveillé</option>
+      <option value="somnolant"> Somnolant</option>
+      <option value="douleur"> Réveillable seulement à la douleur</option>
+      <option value="inconscient"> Inconscient</option>
+    </select>
+
+    <label for="respiration">Respiration : </label>
+    <select name="respiration" id="respiration">
+      <option value="rapide"> Rapide</option>
+      <option value="normale"> Normale</option>
+      <option value="lente"> Lente, bruyante</option>
+      <option value="sifflante"> Sifflante</option>
+    </select>
+
+    <label for="carateristiquePeau">Caractéristiques de la peau : </label>
+    <select name="carateristiquePeau" id="carateristiquePeau">
+      <option value="bleutee"> Bleutée</option>
+      <option value="pale"> Pâle</option>
+      <option value="rosee"> Rosée</option>
+      <option value="rouge"> Rouge</option> </select
+    ><br /><br />
+    <label for="chaude" class="" style="display:inline">Chaude</label>
+    <input type="radio" name="chaude" class="form-check-input" value="chaude" />
+    <label for="froide" class="" style="display:inline">Froide</label>
+    <input
+      type="radio"
+      name="chaude"
+      class="form-check-input"
+      value="froide"
+    /><br />
+    <label for="humide" class="" style="display:inline">Humide</label>
+    <input type="radio" name="humide" class="form-check-input" value="humide" />
+    <label for="humide" class="" style="display:inline">Sèche</label>
+    <input type="radio" name="humide" class="form-check-input" value="froide" />
+
+    <label for="temperature">Température : </label>
+    <select name="temperature" id="temperature">
+      <option value="tempChaud"> Chaude</option>
+      <option value="tempNormale"> Normale</option>
+      <option value="tempFroid"> Froide</option>
+    </select>
+
+    <label for="maSaturation" class="inline"
+      >Saturation (mesure avec un saturomètre) :</label
+    >
+    <input type="number" name="maSaturation" value="" placeholder="" />
+
+    <label for="maFrequence" class="inline"
+      >Fréquence cardiaque (compter les pulsations radiales si possible sur 60
+      secondes) :</label
+    >
+    <input type="number" name="maFrequence" value="" placeholder="" />
+
+    <label for="maReaction" class="inline"
+      >Réaction des pupilles à la lumière :</label
+    >
+    <label for="humide" class="" style="display:inline">Oui</label>
+    <input
+      type="radio"
+      name="maReaction"
+      class="form-check-input"
+      value="oui"
+    />
+    <label for="humide" class="" style="display:inline">Non</label>
+    <input
+      type="radio"
+      name="maReaction"
+      class="form-check-input"
+      value="non"
+    />
+  </fieldset>
+
+  <label for="comments">Vos commentaires :</label>
+  <textarea
+    name="comments"
+    id="comments"
+    cols="200"
+    rows="4"
+    placeholder="Noter les résultats qui vous semblent importants et ensuite procédez à l’appel au médecin. La consultation gagnera ainsi en efficacité !"
+  >
+  </textarea>
+</form>
