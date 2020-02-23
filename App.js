@@ -13,7 +13,7 @@ export default function App() {
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.header}>
-        <NavigationBar title="E-Resamont"></NavigationBar>
+        <NavigationBar title="e-RES@MONT"></NavigationBar>
       </View>
       <View style={styles.logo}>
         <Image
@@ -23,13 +23,16 @@ export default function App() {
       </View>
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollView}>
-          <ButtonView value="Health Assessement" />
+          <ButtonView
+            value="Health Assessement"
+            onPress={() => alert("pressed")}
+          />
           <ButtonView value="Medical Guide" />
           <ButtonView value="Toolbox" />
           <ButtonView value="Mountain Medicine Consultation" />
           <ButtonView value="Questionnaires" />
           <ButtonView value="News" />
-          <ButtonView value="About E-Resamont" />
+          <ButtonView value="About e-Res@mont" />
         </ScrollView>
       </View>
     </View>
@@ -63,9 +66,9 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 40,
-    width: "60%",
+    width: "65%",
     margin: 10,
-    backgroundColor: "#0033cc",
+    backgroundColor: "#3f51b5",
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center"
