@@ -19,8 +19,8 @@ export default function App() {
   return (
     <React.Fragment>
       <NavigationBar title="e-RES@MONT"></NavigationBar>
-      <HomeScreen />
-      {/* <WebViewTest /> */}
+      {/* <HomeScreen /> */}
+      <WebViewTest />
     </React.Fragment>
   );
 }
