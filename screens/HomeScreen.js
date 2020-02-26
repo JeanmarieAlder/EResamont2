@@ -27,7 +27,7 @@ class HomeScreen extends Component {
           <ScrollView contentContainerStyle={styles.scrollView}>
             <ButtonView
               value="Health Assessement"
-              onPress={() => alert("pressed")}
+              onPress={() => this.props.navigation.toggleDrawer()}
             />
             <ButtonView value="Medical Guiddde" />
             <ButtonView value="Toolbox" />
