@@ -26,15 +26,13 @@ export default function Header({ title, navigation }) {
 const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
-    alignItems: "stretch",
-    justifyContent: "center",
-    backgroundColor: "red"
+    alignItems: "center"
   },
   headerText: {
     fontWeight: "bold",
     fontSize: 20,
     color: "#0954FA",
-    alignItems: "center",
+    alignItems: "stretch",
     letterSpacing: 1
   },
   icon: {}

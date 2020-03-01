@@ -2,7 +2,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import React from "react";
 import Header from "../shared/header";
 import Home from "../screens/home";
-import subScreen from "../screens/subScreen";
+import SubScreen from "../screens/subScreen";
 
 const screens = {
   Home: {
@@ -14,11 +14,14 @@ const screens = {
     }
   },
   SubScreen: {
-    screen: subScreen,
+    screen: SubScreen,
     navigationOptions: ({ navigation }) => {
       return {
         headerTitle: () => (
-          <Header title="The sub screen" navigation={navigation} />
+          <Header
+            title={navigation.getParam("title")}
+            navigation={navigation}
+          />
         )
       };
     }
@@ -28,7 +31,6 @@ const screens = {
 // home stack navigator screens
 const HomeStack = createStackNavigator(screens, {
   defaultNavigationOptions: {
-    headerTintColor: "#444",
     headerStyle: { backgroundColor: "#eee", height: 60 }
   }
 });
