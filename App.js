@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import "react-native-gesture-handler";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
@@ -19,6 +19,13 @@ import WebViewTest from "./screens/WebViewTest";
 //Test on navigation with Drawer and Stacks
 import Navigator from "./routes/drawer";
 
+export const LanguageContext = createContext(null);
+
 export default function App() {
-  return <Navigator />;
+  const [language, setLanguage] = useState("English");
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage }}>
+      <Navigator />
+    </LanguageContext.Provider>
+  );
 }
