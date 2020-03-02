@@ -1,6 +1,6 @@
 import { createStackNavigator } from "react-navigation-stack";
 import React from "react";
-import Header from "../shared/header";
+import Header from "../shared/Header";
 import Settings from "../screens/Settings";
 
 const screens = {
@@ -16,7 +16,8 @@ const screens = {
 
 const SettingsStack = createStackNavigator(screens, {
   defaultNavigationOptions: {
-    headerStyle: { backgroundColor: "#3f51b5", height: 80 }
+    headerStyle: { backgroundColor: "#3f51b5", height: 80 },
+      headerTintColor: "#fff"
   }
 });
 
