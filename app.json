@@ -1,15 +1,11 @@
 {
   "expo": {
-    "name": "Tab Navigation Template",
-    "slug": "EResamont2",
+    "name": "EResamont Stacks",
+    "slug": "EResamont2stacks",
     "privacy": "public",
     "sdkVersion": "36.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "version": "1.0.0",
+    "platforms": ["ios", "android", "web"],
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -21,11 +17,15 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "ch.hevs.eresamont2stacks",
+      "buildNumber": "1.0.1"
+    },
+    "android": {
+      "package": "ch.hevs.eresamont2stacks",
+      "versionCode": 2
     }
   }
 }
