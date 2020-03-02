@@ -12,9 +12,6 @@ import {
   TouchableOpacity,
   Image
 } from "react-native";
-import NavigationBar from "./components/NavigationBar";
-import HomeScreen from "./screens/HomeScreen";
-import WebViewTest from "./screens/WebViewTest";
 
 //Test on navigation with Drawer and Stacks
 import Navigator from "./routes/Drawer";
@@ -22,7 +19,7 @@ import Navigator from "./routes/Drawer";
 export const LanguageContext = createContext(null);
 
 export default function App() {
-  const [language, setLanguage] = useState("English");
+  const [language, setLanguage] = useState(2);
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>
       <Navigator />

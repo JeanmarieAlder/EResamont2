@@ -11,7 +11,7 @@ export default function Header({ title, navigation }) {
     <View style={styles.header}>
       <MaterialIcons
         name="menu"
-        size={28}
+        size={24}
         onPress={openMenu}
         style={styles.icon}
       />
@@ -24,17 +24,15 @@ export default function Header({ title, navigation }) {
 
 const styles = StyleSheet.create({
   header: {
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    flex: 1
+    flexDirection: "row"
+    // justifyContent: "flex-end",
+    // flex: 1
   },
   headerText: {
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 17,
     color: "#fff",
-    alignItems: "flex-end",
-    letterSpacing: 1,
-    marginLeft: 10
+    marginLeft: 5
   },
   icon: { color: "#fff" }
 });

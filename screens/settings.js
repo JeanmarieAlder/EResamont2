@@ -15,9 +15,9 @@ export default function Settings() {
         style={{ height: 50, width: 200 }}
         onValueChange={(itemValue, itemIndex) => setLanguage(itemValue)}
       >
-        <Picker.Item label="English" value="English" />
-        <Picker.Item label="French" value="French" />
-        <Picker.Item label="Italian" value="Italian" />
+        <Picker.Item label="French" value={0} />
+        <Picker.Item label="Italian" value={1} />
+        <Picker.Item label="English" value={2} />
       </Picker>
     </View>
   );

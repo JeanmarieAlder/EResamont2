@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,22 +7,21 @@ import {
   Button,
   TouchableOpacity,
   Image,
-  FlatList
+  FlatList,
+  ActivityIndicator
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import requestPage from "../utils/requestPage";
-
+import { LanguageContext } from "../App";
 export default function Home({ navigation }) {
   const [data, setData] = useState([]);
+  const { language, setLanguage } = useContext(LanguageContext);
   useEffect(() => {
     getAllPages();
   }, []);
   let getAllPages = async () => {
-    console.log("fetching");
     let result = await requestPage.getAllPages();
     setData(formatData(result));
-    console.log("Done");
-    console.log(data);
   };
   let formatData = data => {
     let dataArray = [];
@@ -41,12 +40,22 @@ export default function Home({ navigation }) {
         <ScrollView contentContainerStyle={styles.scrollViewMain}>
           {data.length > 1 ? (
             data.map(item => (
-              <ButtonView key={item.id} value={item.pages_lang[2].title} />
+              <ButtonView
+                key={item.id}
+                value={item.pages_lang[language].title}
+                onPress={() => navigation.push("SubScreen", item)}
+              />
             ))
           ) : (
-            <Text style={{ alignItems: "center", justifyContent: "center" }}>
-              Loading
-            </Text>
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center"
+              }}
+            >
+              <ActivityIndicator size="large" color="#3f51b5" />
+            </View>
           )}
         </ScrollView>
       </View>
