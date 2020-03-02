@@ -17,7 +17,7 @@ import HomeScreen from "./screens/HomeScreen";
 import WebViewTest from "./screens/WebViewTest";
 
 //Test on navigation with Drawer and Stacks
-import Navigator from "./routes/drawer";
+import Navigator from "./routes/Drawer";
 
 export const LanguageContext = createContext(null);
 

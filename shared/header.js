@@ -9,16 +9,15 @@ export default function Header({ title, navigation }) {
 
   return (
     <View style={styles.header}>
-      <View>
-        <Text style={styles.headerText}>{title}</Text>
-      </View>
-
       <MaterialIcons
         name="menu"
         size={28}
         onPress={openMenu}
         style={styles.icon}
       />
+      <View>
+        <Text style={styles.headerText}>{title}</Text>
+      </View>
     </View>
   );
 }
@@ -26,14 +25,16 @@ export default function Header({ title, navigation }) {
 const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
-    alignItems: "center"
+    justifyContent: "flex-end",
+    flex: 1
   },
   headerText: {
     fontWeight: "bold",
     fontSize: 20,
-    color: "#0954FA",
-    alignItems: "stretch",
-    letterSpacing: 1
+    color: "#fff",
+    alignItems: "flex-end",
+    letterSpacing: 1,
+    marginLeft: 10
   },
-  icon: {}
+  icon: { color: "#fff" }
 });

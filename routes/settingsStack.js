@@ -1,7 +1,7 @@
 import { createStackNavigator } from "react-navigation-stack";
 import React from "react";
 import Header from "../shared/header";
-import Settings from "../screens/settings";
+import Settings from "../screens/Settings";
 
 const screens = {
   Settings: {

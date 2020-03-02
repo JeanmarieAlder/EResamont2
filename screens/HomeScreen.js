@@ -51,7 +51,6 @@ const ButtonView = props => (
 const styles = StyleSheet.create({
   logo: {
     flex: 1,
-    backgroundColor: "#fff",
     marginBottom: 40
   },
   container: {
