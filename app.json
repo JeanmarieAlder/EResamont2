@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "EResamont Stacks",
-    "slug": "EResamont2stacks",
+    "name": "EResamont 2",
+    "description": "High altitude hiking and mountaineering guide about health risks and danger in the mountains.",
+    "slug": "EResamont2",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": ["ios", "android", "web"],

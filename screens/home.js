@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import requestPage from "../utils/requestPage";
-import { LanguageContext } from "../App";
+import { LanguageContext } from "../shared/LanguageContext";
 export default function Home({ navigation }) {
   const [data, setData] = useState([]);
   const { language, setLanguage } = useContext(LanguageContext);

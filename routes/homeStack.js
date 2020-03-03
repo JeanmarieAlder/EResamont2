@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import Header from "../shared/Header";
 import Home from "../screens/Home";
 import SubScreen from "../screens/SubScreen";
-import { LanguageContext } from "../App";
 
 const screens = {
   Home: {

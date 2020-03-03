@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { StyleSheet, View, Text, Picker } from "react-native";
 import { globalStyles } from "../styles/global";
-import { LanguageContext } from "../App";
+import { LanguageContext } from "../shared/LanguageContext";
 
 export default function Settings() {
   const { language, setLanguage } = useContext(LanguageContext);

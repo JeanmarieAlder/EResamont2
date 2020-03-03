@@ -12,11 +12,10 @@ import {
   TouchableOpacity,
   Image
 } from "react-native";
+import { LanguageContext } from "./shared/LanguageContext";
 
 //Test on navigation with Drawer and Stacks
 import Navigator from "./routes/Drawer";
-
-export const LanguageContext = createContext(null);
 
 export default function App() {
   const [language, setLanguage] = useState(2);

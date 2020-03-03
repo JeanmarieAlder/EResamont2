@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import { WebView } from "react-native-webview";
-import { LanguageContext } from "../App";
+import { LanguageContext } from "../shared/LanguageContext";
 
 export default function SubScreen({ navigation }) {
   const [tab, setTab] = useState(navigation.state.params);
