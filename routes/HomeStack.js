@@ -16,8 +16,8 @@ const screens = {
   SubScreen: {
     screen: SubScreen,
     navigationOptions: ({ navigation }) => {
-      console.log("param");
-      console.log(navigation.state.params);
+      // console.log("param");
+      // console.log(navigation.state.params);
       return {
         headerTitle: () => (
           <Header
