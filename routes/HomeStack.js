@@ -3,6 +3,8 @@ import React, { useContext } from "react";
 import Header from "../shared/Header";
 import Home from "../screens/Home";
 import SubScreen from "../screens/SubScreen";
+import GMap from "../screens/GMap";
+import TestAsyncStorage from "../screens/TestAsyncStorage";
 
 const screens = {
   Home: {
@@ -25,6 +27,26 @@ const screens = {
             navigation={navigation}
           />
         )
+      };
+    }
+  },
+  TestAsyncStorage: {
+    screen: TestAsyncStorage,
+    navigationOptions: ({ navigation }) => {
+      // console.log("param");
+      // console.log(navigation.state.params);
+      return {
+        headerTitle: () => (
+          <Header title={"Test AsyncStorage"} navigation={navigation} />
+        )
+      };
+    }
+  },
+  GMap: {
+    screen: GMap,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: () => <Header title={"Map"} navigation={navigation} />
       };
     }
   }

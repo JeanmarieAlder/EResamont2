@@ -59,6 +59,12 @@ export default function Home({ navigation }) {
           )}
         </ScrollView>
       </View>
+      <Button title="Geolocation" onPress={() => navigation.push("GMap")} />
+      <Text></Text>
+      <Button
+        title="TestAsyncStorage"
+        onPress={() => navigation.push("TestAsyncStorage")}
+      />
     </View>
   );
 }

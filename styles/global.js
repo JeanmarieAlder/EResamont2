@@ -25,6 +25,9 @@ export const globalStyles = StyleSheet.create({
     padding: 25,
     paddingTop: 50
   },
+  mapContainer: {
+    flex: 1
+  },
   drawerTop: {
     flex: 1
   },
