@@ -13,6 +13,8 @@ import {
 import { globalStyles } from "../styles/global";
 import requestPage from "../utils/requestPage";
 import { LanguageContext } from "../shared/LanguageContext";
+import utilities from "../utils/utilities";
+
 export default function Home({ navigation }) {
   const [data, setData] = useState([]);
   const { language, setLanguage } = useContext(LanguageContext);
@@ -28,6 +30,7 @@ export default function Home({ navigation }) {
     dataArray = data.filter(item => item.deleted === false);
     return dataArray;
   };
+
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.logo}>
@@ -42,7 +45,11 @@ export default function Home({ navigation }) {
             data.map(item => (
               <ButtonView
                 key={item.id}
-                value={item.pages_lang[language].title}
+                value={
+                  item.pages_lang[
+                    utilities.findLanguageIndex(item.pages_lang, language)
+                  ].title
+                }
                 onPress={() => navigation.push("SubScreen", item)}
               />
             ))

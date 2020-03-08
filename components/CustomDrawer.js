@@ -27,27 +27,28 @@ export default function CustomDrawer({ navigation }) {
       <View style={globalStyles.drawerButtons}>
         <TouchableOpacity
           style={globalStyles.drawerLanguageButton}
-          onPress={languageClick(0)}
+          // onPress={languageClick(4)}
+          onPress={() => alert("Translation coming soon")}
         >
-          <Text>Deutsch</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={globalStyles.drawerLanguageButton}
-          onPress={languageClick(1)}
-        >
-          <Text>Italiano</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={globalStyles.drawerLanguageButton}
-          onPress={languageClick(0)}
-        >
-          <Text>Français</Text>
+          <Text style={{ color: "white" }}>Deutsch</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={globalStyles.drawerLanguageButton}
           onPress={languageClick(2)}
         >
-          <Text>English</Text>
+          <Text style={{ color: "white" }}>Italiano</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={globalStyles.drawerLanguageButton}
+          onPress={languageClick(1)}
+        >
+          <Text style={{ color: "white" }}>Français</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={globalStyles.drawerLanguageButton}
+          onPress={languageClick(3)}
+        >
+          <Text style={{ color: "white" }}>English</Text>
         </TouchableOpacity>
       </View>
     </View>

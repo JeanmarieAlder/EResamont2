@@ -11,18 +11,22 @@ import {
 import { globalStyles } from "../styles/global";
 import { WebView } from "react-native-webview";
 import { LanguageContext } from "../shared/LanguageContext";
-
+import utilities from "../utils/utilities";
 export default function SubScreen({ navigation }) {
   const [tab, setTab] = useState(navigation.state.params);
   const { language, setLanguage } = useContext(LanguageContext);
+
   if (tab.children.length < 2) {
     return (
       <View style={{ flex: 1 }}>
-        {tab.pages_lang[language].text != "" && (
+        {tab.pages_lang[utilities.findLanguageIndex(tab.pages_lang, language)]
+          .text != "" && (
           <WebView
             textZoom={270}
             source={{
-              html: tab.pages_lang[language].text.replace(/(\r\n|\n|\r)/gm, " ")
+              html: tab.pages_lang[
+                utilities.findLanguageIndex(tab.pages_lang, language)
+              ].text.replace(/(\r\n|\n|\r)/gm, " ")
             }}
             style={{
               flex: 1,
@@ -33,8 +37,10 @@ export default function SubScreen({ navigation }) {
       </View>
     );
   } else if (
-    tab.pages_lang[language].plaintext != "" ||
-    tab.pages_lang[language].text != ""
+    tab.pages_lang[utilities.findLanguageIndex(tab.pages_lang, language)]
+      .plaintext != "" ||
+    tab.pages_lang[utilities.findLanguageIndex(tab.pages_lang, language)]
+      .text != ""
   ) {
     return (
       <View style={{ flex: 1 }}>
@@ -42,12 +48,15 @@ export default function SubScreen({ navigation }) {
           textZoom={270}
           source={{
             html:
-              tab.pages_lang[language].text === ""
-                ? tab.pages_lang[language].plaintext.replace(
-                    /(\r\n|\n|\r)/gm,
-                    " "
-                  )
-                : tab.pages_lang[language].text.replace(/(\r\n|\n|\r)/gm, " ")
+              tab.pages_lang[
+                utilities.findLanguageIndex(tab.pages_lang, language)
+              ].text === ""
+                ? tab.pages_lang[
+                    utilities.findLanguageIndex(tab.pages_lang, language)
+                  ].plaintext.replace(/(\r\n|\n|\r)/gm, " ")
+                : tab.pages_lang[
+                    utilities.findLanguageIndex(tab.pages_lang, language)
+                  ].text.replace(/(\r\n|\n|\r)/gm, " ")
           }}
           style={{
             flex: 1,
@@ -60,7 +69,11 @@ export default function SubScreen({ navigation }) {
               child.deleted === false && (
                 <ButtonView
                   key={child.id}
-                  value={child.pages_lang[language].title}
+                  value={
+                    child.pages_lang[
+                      utilities.findLanguageIndex(child.pages_lang, language)
+                    ].title
+                  }
                   onPress={() => {
                     navigation.push("SubScreen", child);
                   }}
@@ -79,7 +92,11 @@ export default function SubScreen({ navigation }) {
               child.deleted === false && (
                 <ButtonView
                   key={child.id}
-                  value={child.pages_lang[language].title}
+                  value={
+                    child.pages_lang[
+                      utilities.findLanguageIndex(child.pages_lang, language)
+                    ].title
+                  }
                   onPress={() => {
                     navigation.push("SubScreen", child);
                   }}
