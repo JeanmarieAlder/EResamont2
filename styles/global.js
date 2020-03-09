@@ -2,10 +2,11 @@ import { StyleSheet } from "react-native";
 // const themeColorPrimary = "#3f51b5";
 const themeColorPrimary = "#1e1e1e";
 const themeColorSecondary = "#ffffff";
-const globalFont = "sans-serif-light";
+const globalFont = "sans-serif-medium";
 
 const buttonTheme = {
   marginTop: 10,
+  padding: 10,
   height: 40,
   backgroundColor: themeColorPrimary,
   borderRadius: 10,
@@ -58,13 +59,11 @@ export const globalStyles = StyleSheet.create({
   },
   drawerLanguageButton: {
     ...buttonTheme,
-    width: "100%",
-    padding: 10
+    width: "100%"
   },
   button: {
     ...buttonTheme,
-    width: "80%",
-    margin: 10
+    width: "80%"
   },
   text: {
     color: themeColorSecondary,

@@ -4,6 +4,8 @@ import Header from "../components/Header";
 import Home from "../screens/Home";
 import SubScreen from "../screens/SubScreen";
 import { globalStyles } from "../styles/global";
+import utilities from "../utils/utilities";
+import { LanguageContext } from "../shared/LanguageContext";
 const screens = {
   Home: {
     screen: Home,
@@ -16,12 +18,12 @@ const screens = {
   SubScreen: {
     screen: SubScreen,
     navigationOptions: ({ navigation }) => {
-      // console.log("param");
-      // console.log(navigation.state.params);
+      let navParams = navigation.state.params;
+      console.log(LanguageContext);
       return {
         headerTitle: () => (
           <Header
-            title={navigation.state.params.pages_lang[2].title}
+            title={navParams.pages_lang[2].title}
             navigation={navigation}
           />
         )
