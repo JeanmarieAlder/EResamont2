@@ -1,15 +1,15 @@
 import { createStackNavigator } from "react-navigation-stack";
 import React, { useContext } from "react";
-import Header from "../shared/Header";
+import Header from "../components/Header";
 import Home from "../screens/Home";
 import SubScreen from "../screens/SubScreen";
-
+import { globalStyles } from "../styles/global";
 const screens = {
   Home: {
     screen: Home,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: () => <Header title="E-Res@mont" navigation={navigation} />
+        headerTitle: () => <Header title="Home" navigation={navigation} />
       };
     }
   },
@@ -33,8 +33,8 @@ const screens = {
 // home stack navigator screens
 const HomeStack = createStackNavigator(screens, {
   defaultNavigationOptions: {
-    headerStyle: { backgroundColor: "#3f51b5", height: 80 },
-    headerTintColor: "#fff"
+    headerStyle: globalStyles.headerStyle,
+    headerTintColor: "black"
   }
 });
 

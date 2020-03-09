@@ -6,8 +6,3 @@ export class utilities {
 }
 
 export default utilities;
-// "splash": {
-//   "image": "./assets/images/splash.png",
-//   "resizeMode": "contain",
-//   "backgroundColor": "#ffffff"
-// },

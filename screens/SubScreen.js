@@ -4,21 +4,21 @@ import {
   View,
   ScrollView,
   Text,
-  FlatList,
-  TouchableOpacity,
-  Dimensions
+  Dimensions,
+  ImageBackground
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import { WebView } from "react-native-webview";
 import { LanguageContext } from "../shared/LanguageContext";
 import utilities from "../utils/utilities";
+import ButtonView from "../components/ButtonView";
 export default function SubScreen({ navigation }) {
   const [tab, setTab] = useState(navigation.state.params);
   const { language, setLanguage } = useContext(LanguageContext);
 
   if (tab.children.length < 2) {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={localStyles.leafView}>
         {tab.pages_lang[utilities.findLanguageIndex(tab.pages_lang, language)]
           .text != "" && (
           <WebView
@@ -43,123 +43,98 @@ export default function SubScreen({ navigation }) {
       .text != ""
   ) {
     return (
-      <View style={{ flex: 1 }}>
-        <WebView
-          textZoom={270}
-          source={{
-            html:
-              tab.pages_lang[
-                utilities.findLanguageIndex(tab.pages_lang, language)
-              ].text === ""
-                ? tab.pages_lang[
-                    utilities.findLanguageIndex(tab.pages_lang, language)
-                  ].plaintext.replace(/(\r\n|\n|\r)/gm, " ")
-                : tab.pages_lang[
-                    utilities.findLanguageIndex(tab.pages_lang, language)
-                  ].text.replace(/(\r\n|\n|\r)/gm, " ")
-          }}
-          style={{
-            flex: 1,
-            height: height / 4
-          }}
-        />
-        <View style={styles.buttonView}>
-          {tab.children.map(
-            child =>
-              child.deleted === false && (
-                <ButtonView
-                  key={child.id}
-                  value={
-                    child.pages_lang[
-                      utilities.findLanguageIndex(child.pages_lang, language)
-                    ].title
-                  }
-                  onPress={() => {
-                    navigation.push("SubScreen", child);
-                  }}
-                />
-              )
-          )}
+      <ImageBackground
+        source={require("../assets/images/mountain.jpg")}
+        style={globalStyles.mountainBackgroundImage}
+      >
+        <View style={localStyles.sectionViewTop}>
+          <WebView
+            textZoom={270}
+            source={{
+              html:
+                tab.pages_lang[
+                  utilities.findLanguageIndex(tab.pages_lang, language)
+                ].text === ""
+                  ? tab.pages_lang[
+                      utilities.findLanguageIndex(tab.pages_lang, language)
+                    ].plaintext.replace(/(\r\n|\n|\r)/gm, " ")
+                  : tab.pages_lang[
+                      utilities.findLanguageIndex(tab.pages_lang, language)
+                    ].text.replace(/(\r\n|\n|\r)/gm, " ")
+            }}
+            style={localStyles.sectionViewTopWebView}
+          />
+          <View style={localStyles.sectionViewBottom}>
+            {tab.children.map(
+              child =>
+                child.deleted === false && (
+                  <ButtonView
+                    style={globalStyles.button}
+                    key={child.id}
+                    value={
+                      child.pages_lang[
+                        utilities.findLanguageIndex(child.pages_lang, language)
+                      ].title
+                    }
+                    onPress={() => {
+                      navigation.push("SubScreen", child);
+                    }}
+                  />
+                )
+            )}
+          </View>
         </View>
-      </View>
+      </ImageBackground>
     );
   } else {
     return (
-      <View style={{ flex: 1 }}>
-        <View style={styles.buttonView}>
-          {tab.children.map(
-            child =>
-              child.deleted === false && (
-                <ButtonView
-                  key={child.id}
-                  value={
-                    child.pages_lang[
-                      utilities.findLanguageIndex(child.pages_lang, language)
-                    ].title
-                  }
-                  onPress={() => {
-                    navigation.push("SubScreen", child);
-                  }}
-                />
-              )
-          )}
+      <ImageBackground
+        source={require("../assets/images/mountain.jpg")}
+        style={globalStyles.mountainBackgroundImage}
+      >
+        <View style={localStyles.sectionViewButtonsOnly}>
+          <ScrollView
+            contentContainerStyle={localStyles.sectionViewButtonsOnlyScrollView}
+          >
+            {tab.children.map(
+              child =>
+                child.deleted === false && (
+                  <ButtonView
+                    style={globalStyles.button}
+                    key={child.id}
+                    value={
+                      child.pages_lang[
+                        utilities.findLanguageIndex(child.pages_lang, language)
+                      ].title
+                    }
+                    onPress={() => {
+                      navigation.push("SubScreen", child);
+                    }}
+                  />
+                )
+            )}
+          </ScrollView>
         </View>
-      </View>
+      </ImageBackground>
     );
   }
 }
-let ButtonView = props => (
-  <TouchableOpacity style={styles.button} {...props}>
-    <Text style={{ color: "white" }}>{props.value}</Text>
-  </TouchableOpacity>
-);
 
 const height = Math.round(Dimensions.get("window").height);
-const styles = StyleSheet.create({
-  buttonView: {
+const localStyles = StyleSheet.create({
+  leafView: { flex: 1, padding: 15, backgroundColor: "white" },
+  sectionViewTop: { flex: 1, paddingTop: 20 },
+  sectionViewTopWebView: { flex: 1, height: height / 4 },
+  sectionViewBottom: {
     flex: 1,
     marginTop: 20,
     justifyContent: "flex-start",
     alignItems: "center"
   },
-  button: {
-    height: 40,
-    width: "80%",
-    margin: 10,
-    backgroundColor: "#3f51b5",
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center"
+  sectionViewButtonsOnly: { flex: 1, marginTop: 20 },
+  sectionViewButtonsOnlyScrollView: {
+    flexGrow: 1,
+    justifyContent: "flex-start",
+    alignItems: "center"
   }
 });
-
-// const [tab, setTab] = useState(navigation.state.params);
-// const { language, setLanguage } = useContext(LanguageContext);
-// if (tab == null) {
-//   return (
-//     <ScrollView style={globalStyles.container}>
-//       <Text style={{ fontWeight: "bold" }}>Current Language: {language}</Text>
-//       <Text>{navigation.getParam("body") + "\n\n"}</Text>
-//       <Text>This is a leaf. -- {"\n\n"}</Text>
-//     </ScrollView>
-//   );
-// } else {
-//   return (
-//     <ScrollView style={globalStyles.container}>
-//       <Text>{navigation.getParam("body")}</Text>
-
-//       <FlatList
-//         data={tab}
-//         renderItem={({ item }) => (
-//           <TouchableOpacity
-//             onPress={() => {
-//               navigation.push("SubScreen", item);
-//             }}
-//           >
-//             <Text style={globalStyles.titleText}>{item.title}</Text>
-//           </TouchableOpacity>
-//         )}
-//       />
-//     </ScrollView>
-//   );
-// }

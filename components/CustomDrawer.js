@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, ImageBackground } from "react-native";
 import { globalStyles } from "../styles/global";
 import { LanguageContext } from "../shared/LanguageContext";
-
+import ButtonView from "./ButtonView";
 export default function CustomDrawer({ navigation }) {
   const { language, setLanguage } = useContext(LanguageContext);
 
@@ -18,39 +18,39 @@ export default function CustomDrawer({ navigation }) {
     navigation.closeDrawer();
   };
   return (
-    <View style={globalStyles.containerDrawer}>
-      <View style={globalStyles.drawerTop}>
-        <TouchableOpacity onPress={homeClick("EResamont")}>
-          <Text style={globalStyles.titleDrawer}>E-Rés@mont</Text>
-        </TouchableOpacity>
+    <ImageBackground
+      source={require("../assets/images/mountain.jpg")}
+      style={globalStyles.mountainBackgroundImage}
+    >
+      <View style={globalStyles.drawerContainer}>
+        <View style={globalStyles.drawerTop}>
+          <TouchableOpacity onPress={homeClick("EResamont")}>
+            <Text style={globalStyles.drawerTitle}>E-Res@mont</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={globalStyles.drawerButtons}>
+          <ButtonView
+            value="Français"
+            style={globalStyles.drawerLanguageButton}
+            onPress={languageClick(1)}
+          />
+          <ButtonView
+            value="Italiano"
+            style={globalStyles.drawerLanguageButton}
+            onPress={languageClick(2)}
+          />
+          <ButtonView
+            value="English"
+            style={globalStyles.drawerLanguageButton}
+            onPress={languageClick(3)}
+          />
+          <ButtonView
+            value="Deutsch"
+            style={globalStyles.drawerLanguageButton}
+            onPress={() => alert("Translation coming soon")}
+          />
+        </View>
       </View>
-      <View style={globalStyles.drawerButtons}>
-        <TouchableOpacity
-          style={globalStyles.drawerLanguageButton}
-          // onPress={languageClick(4)}
-          onPress={() => alert("Translation coming soon")}
-        >
-          <Text style={{ color: "white" }}>Deutsch</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={globalStyles.drawerLanguageButton}
-          onPress={languageClick(2)}
-        >
-          <Text style={{ color: "white" }}>Italiano</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={globalStyles.drawerLanguageButton}
-          onPress={languageClick(1)}
-        >
-          <Text style={{ color: "white" }}>Français</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={globalStyles.drawerLanguageButton}
-          onPress={languageClick(3)}
-        >
-          <Text style={{ color: "white" }}>English</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </ImageBackground>
   );
 }
