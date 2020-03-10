@@ -1,4 +1,5 @@
 import { createStackNavigator } from "react-navigation-stack";
+
 import React, { useContext } from "react";
 import Header from "../components/Header";
 import Home from "../screens/Home";
@@ -19,7 +20,6 @@ const screens = {
     screen: SubScreen,
     navigationOptions: ({ navigation }) => {
       let navParams = navigation.state.params;
-      console.log(LanguageContext);
       return {
         headerTitle: () => (
           <Header

@@ -2,6 +2,7 @@ const eresamontURL = "http://vlheresamont2.hevs.ch/api/v1";
 
 export class requestPage {
   static async getAllPages() {
+    console.log("Fetching online data");
     try {
       let response = await fetch(`${eresamontURL}/pages`, {
         method: "GET",

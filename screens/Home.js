@@ -15,17 +15,32 @@ import { globalStyles } from "../styles/global";
 import requestPage from "../utils/requestPage";
 import { LanguageContext } from "../shared/LanguageContext";
 import utilities from "../utils/utilities";
+import storage from "../utils/storage";
 import ButtonView from "../components/ButtonView";
 import _ from "lodash";
+import * as FileSystem from "expo-file-system";
 export default function Home({ navigation }) {
   const [data, setData] = useState([]);
   const { language, setLanguage } = useContext(LanguageContext);
   useEffect(() => {
     getAllPages();
   }, []);
+
   let getAllPages = async () => {
-    let result = await requestPage.getAllPages();
-    setData(formatData(result));
+    let data = null;
+    let dataExists = await storage.checkStoragePages();
+    if (dataExists === false) {
+      data = await fetchAndSaveData();
+    } else {
+      data = await storage.getAllStoragePages();
+    }
+    setData(data);
+  };
+  let fetchAndSaveData = async () => {
+    const response = await requestPage.getAllPages();
+    let dataToSave = formatData(response);
+    await storage.saveAllStoragePages(dataToSave);
+    return dataToSave;
   };
   let formatData = data => {
     let dataArray = [];

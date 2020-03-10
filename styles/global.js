@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 // const themeColorPrimary = "#3f51b5";
-const themeColorPrimary = "#1e1e1e";
+const themeColorPrimary = "#232323";
 const themeColorSecondary = "#ffffff";
 const globalFont = "sans-serif-medium";
 
@@ -14,7 +14,10 @@ const buttonTheme = {
   justifyContent: "center"
 };
 export const globalStyles = StyleSheet.create({
-  mountainBackgroundImage: { width: "100%", height: "100%" },
+  mountainBackgroundImage: {
+    width: "100%",
+    height: "100%"
+  },
   headerStyle: {
     backgroundColor: themeColorSecondary,
     height: 75
@@ -29,12 +32,7 @@ export const globalStyles = StyleSheet.create({
   headerIcon: {
     color: themeColorPrimary
   },
-  drawerTitle: {
-    fontSize: 25,
-    fontWeight: "bold",
-    color: themeColorPrimary,
-    fontFamily: globalFont
-  },
+
   paragraph: {
     marginVertical: 8,
     lineHeight: 20
@@ -48,10 +46,18 @@ export const globalStyles = StyleSheet.create({
     flexDirection: "column",
     padding: 25,
     paddingTop: 50
+    // backgroundColor: "rgba(0, 0, 0, 0.1)"
+  },
+  drawerTitle: {
+    fontSize: 25,
+    fontWeight: "bold",
+    color: themeColorPrimary,
+    fontFamily: globalFont
   },
   drawerTop: {
     flex: 1
   },
+  drawerTopMenu: { marginTop: 20 },
   drawerButtons: {
     flex: 1,
     flexDirection: "column-reverse",

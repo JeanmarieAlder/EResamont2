@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
-
 import { Text, View, TouchableOpacity, ImageBackground } from "react-native";
 import { globalStyles } from "../styles/global";
 import { LanguageContext } from "../shared/LanguageContext";
 import ButtonView from "./ButtonView";
+import storage from "../utils/storage";
+import { Icon } from "react-native-elements";
+import { Alert, ToastAndroid } from "react-native";
 export default function CustomDrawer({ navigation }) {
   const { language, setLanguage } = useContext(LanguageContext);
 
@@ -12,10 +14,30 @@ export default function CustomDrawer({ navigation }) {
     navigation.toggleDrawer();
   };
 
-  //TODO: adapt according to the languages + TouchableOpacity below
   const languageClick = languageSelected => () => {
     setLanguage(languageSelected);
     navigation.closeDrawer();
+  };
+  const clearData = async () => {
+    await storage.removeAllStoragePages();
+    let info = await storage.checkStoragePages();
+    if (info === false) {
+      ToastAndroid.show("Local data cleared", ToastAndroid.LONG);
+    }
+  };
+  const confirmClearDataClick = async () => {
+    Alert.alert(
+      "Confirm local data deletion",
+      "Are you sure?",
+      [
+        { text: "YES", onPress: () => clearData() },
+        {
+          text: "NO",
+          style: "cancel"
+        }
+      ],
+      { cancelable: true }
+    );
   };
   return (
     <ImageBackground
@@ -27,6 +49,13 @@ export default function CustomDrawer({ navigation }) {
           <TouchableOpacity onPress={homeClick("EResamont")}>
             <Text style={globalStyles.drawerTitle}>E-Res@mont</Text>
           </TouchableOpacity>
+          <View style={globalStyles.drawerTopMenu}>
+            <ButtonView
+              value=" Clear local storage"
+              style={globalStyles.drawerLanguageButton}
+              onPress={confirmClearDataClick}
+            />
+          </View>
         </View>
         <View style={globalStyles.drawerButtons}>
           <ButtonView
