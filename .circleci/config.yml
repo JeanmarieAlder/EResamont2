@@ -10,10 +10,10 @@ publish: &publish
     - run:
         name: Installing dependencies
         command: npm install
-        
+
     - run:
         name: Jest Tests
-        command: yarn test
+        command: yarn run test
 
     - run:
         name: Login into Expo
