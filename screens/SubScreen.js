@@ -19,14 +19,23 @@ export default function SubScreen({ navigation }) {
   if (tab.children.length < 2) {
     return (
       <View style={localStyles.leafView}>
-        {tab.pages_lang[utilities.findLanguageIndex(tab.pages_lang, language)]
-          .text != "" && (
+        {(tab.pages_lang[utilities.findLanguageIndex(tab.pages_lang, language)]
+          .plaintext != "" ||
+          tab.pages_lang[utilities.findLanguageIndex(tab.pages_lang, language)]
+            .text != "") && (
           <WebView
             textZoom={270}
             source={{
-              html: tab.pages_lang[
-                utilities.findLanguageIndex(tab.pages_lang, language)
-              ].text.replace(/(\r\n|\n|\r)/gm, " ")
+              html:
+                tab.pages_lang[
+                  utilities.findLanguageIndex(tab.pages_lang, language)
+                ].text === ""
+                  ? tab.pages_lang[
+                      utilities.findLanguageIndex(tab.pages_lang, language)
+                    ].plaintext
+                  : tab.pages_lang[
+                      utilities.findLanguageIndex(tab.pages_lang, language)
+                    ].text
             }}
             style={{
               flex: 1,
