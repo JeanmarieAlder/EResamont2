@@ -129,7 +129,55 @@ exports[`SubScreen - Render no child with plaintext 1`] = `
       "padding": 15,
     }
   }
-/>
+>
+  <View
+    style={
+      Array [
+        Object {
+          "flex": 1,
+          "overflow": "hidden",
+        },
+        undefined,
+      ]
+    }
+  >
+    <RNCWebView
+      cacheEnabled={true}
+      javaScriptEnabled={true}
+      messagingEnabled={false}
+      onContentProcessDidTerminate={[Function]}
+      onHttpError={[Function]}
+      onLoadingError={[Function]}
+      onLoadingFinish={[Function]}
+      onLoadingProgress={[Function]}
+      onLoadingStart={[Function]}
+      onMessage={[Function]}
+      onShouldStartLoadWithRequest={[Function]}
+      source={
+        Object {
+          "html": "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> French page</p>",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "flex": 1,
+            "overflow": "hidden",
+          },
+          Object {
+            "backgroundColor": "#ffffff",
+          },
+          Object {
+            "flex": 1,
+            "height": 1334,
+          },
+        ]
+      }
+      textZoom={270}
+      useSharedProcessPool={true}
+    />
+  </View>
+</View>
 `;
 
 exports[`SubScreen - Render no child with text 1`] = `
