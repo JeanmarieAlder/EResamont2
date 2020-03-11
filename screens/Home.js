@@ -22,11 +22,13 @@ import * as FileSystem from "expo-file-system";
 export default function Home({ navigation }) {
   const [data, setData] = useState([]);
   const { language, setLanguage } = useContext(LanguageContext);
+
   useEffect(() => {
     getAllPages();
   }, []);
-
   let getAllPages = async () => {
+    // let dataExists2 = await requestPage.fetchUpdatedContent(1522307188037);
+    // console.log(dataExists2);
     let data = null;
     let dataExists = await storage.checkStoragePages();
     if (dataExists === false) {
@@ -37,12 +39,12 @@ export default function Home({ navigation }) {
     setData(data);
   };
   let fetchAndSaveData = async () => {
-    const response = await requestPage.getAllPages();
-    let dataToSave = formatData(response);
+    const response = await requestPage.fetchAllPages();
+    let dataToSave = formatFetchedData(response);
     await storage.saveAllStoragePages(dataToSave);
     return dataToSave;
   };
-  let formatData = data => {
+  let formatFetchedData = data => {
     let dataArray = [];
     dataArray = data.filter(item => item.deleted === false);
     dataArray = _.sortBy(dataArray, "position");

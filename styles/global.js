@@ -57,7 +57,13 @@ export const globalStyles = StyleSheet.create({
   drawerTop: {
     flex: 1
   },
-  drawerTopMenu: { marginTop: 20 },
+  drawerTopMenu: { marginTop: 25 },
+  drawwerTopMenuText: {
+    fontFamily: globalFont,
+    fontSize: 16,
+    textAlign: "left",
+    color: themeColorPrimary
+  },
   drawerButtons: {
     flex: 1,
     flexDirection: "column-reverse",

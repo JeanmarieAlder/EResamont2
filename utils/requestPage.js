@@ -1,10 +1,29 @@
+import { AsyncStorage } from "react-native";
+
 const eresamontURL = "http://vlheresamont2.hevs.ch/api/v1";
 
 export class requestPage {
-  static async getAllPages() {
+  static async fetchAllPages() {
+    console.log("=====================================");
     console.log("Fetching online data");
     try {
       let response = await fetch(`${eresamontURL}/pages`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json"
+        }
+      });
+      let timestamp = new Date().getTime();
+      console.log("Online data fetched at UNIX: " + timestamp);
+      await AsyncStorage.setItem("updateTimestamp", timestamp.toString()); //Store timestamp
+      return await response.json();
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  static async fetchPage(id) {
+    try {
+      let response = await fetch(`${eresamontURL}/pages/` + id, {
         method: "GET",
         headers: {
           Accept: "application/json"
@@ -15,9 +34,16 @@ export class requestPage {
       console.error(e);
     }
   }
-  static async getPage(id) {
+  static async fetchUpdatedContent(timestamp) {
+    console.log("=====================================");
+    console.log("Fetching new online data since last timestamp");
+    if (timestamp === null) {
+      timestamp = await AsyncStorage.getItem("updateTimestamp");
+      console.log("Last timestamp: " + timestamp);
+      timestamp = parseInt(timestamp);
+    }
     try {
-      let response = await fetch(`${eresamontURL}/pages/` + id, {
+      let response = await fetch(`${eresamontURL}/pages?updated=` + timestamp, {
         method: "GET",
         headers: {
           Accept: "application/json"
@@ -39,3 +65,24 @@ export default requestPage;
 // 87 Toolbox some button in Italian
 // 89 About empty button bug
 // Medical Guide works
+
+//const convertUnixTime = unixTimestamp => {
+//   var date = new Date(unixTimestamp / 1000);
+//   console.log(unixTimestamp / 1000);
+//   console.log(date.toLocaleString());
+//   var minutes = "0" + date.getMinutes();
+//   var seconds = "0" + date.getSeconds();
+//   var convertedTime =
+//     date.getMonth() +
+//     "-" +
+//     date.getDate() +
+//     "-" +
+//     date.getFullYear() +
+//     " " +
+//     date.getHours() +
+//     ":" +
+//     minutes +
+//     ":" +
+//     seconds;
+//   return convertedTime;
+// };
