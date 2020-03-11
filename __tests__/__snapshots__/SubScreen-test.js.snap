@@ -253,7 +253,7 @@ exports[`SubScreen - Render with children and no text 1`] = `
           style={
             Object {
               "alignItems": "center",
-              "backgroundColor": "#1e1e1e",
+              "backgroundColor": "#232323",
               "borderRadius": 10,
               "height": 40,
               "justifyContent": "center",
@@ -291,7 +291,7 @@ exports[`SubScreen - Render with children and no text 1`] = `
           style={
             Object {
               "alignItems": "center",
-              "backgroundColor": "#1e1e1e",
+              "backgroundColor": "#232323",
               "borderRadius": 10,
               "height": 40,
               "justifyContent": "center",
@@ -329,7 +329,7 @@ exports[`SubScreen - Render with children and no text 1`] = `
           style={
             Object {
               "alignItems": "center",
-              "backgroundColor": "#1e1e1e",
+              "backgroundColor": "#232323",
               "borderRadius": 10,
               "height": 40,
               "justifyContent": "center",
@@ -367,7 +367,7 @@ exports[`SubScreen - Render with children and no text 1`] = `
           style={
             Object {
               "alignItems": "center",
-              "backgroundColor": "#1e1e1e",
+              "backgroundColor": "#232323",
               "borderRadius": 10,
               "height": 40,
               "justifyContent": "center",
@@ -505,7 +505,7 @@ exports[`SubScreen - Render with children and text 1`] = `
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "#1e1e1e",
+            "backgroundColor": "#232323",
             "borderRadius": 10,
             "height": 40,
             "justifyContent": "center",
@@ -543,7 +543,7 @@ exports[`SubScreen - Render with children and text 1`] = `
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "#1e1e1e",
+            "backgroundColor": "#232323",
             "borderRadius": 10,
             "height": 40,
             "justifyContent": "center",
@@ -581,7 +581,7 @@ exports[`SubScreen - Render with children and text 1`] = `
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "#1e1e1e",
+            "backgroundColor": "#232323",
             "borderRadius": 10,
             "height": 40,
             "justifyContent": "center",
@@ -619,7 +619,7 @@ exports[`SubScreen - Render with children and text 1`] = `
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "#1e1e1e",
+            "backgroundColor": "#232323",
             "borderRadius": 10,
             "height": 40,
             "justifyContent": "center",
