@@ -90,6 +90,44 @@ export default class storage {
       console.log(e);
     }
   }
+  static async getLakeLouiseQuizScore() {
+    console.log("=====================================");
+    console.log("Getting Lake Louise Quiz score from storage");
+    let result = 999;
+    try {
+      result = await FileSystem.readAsStringAsync(filePath + "lakeScore.txt");
+      return await result.toString();
+    } catch (e) {
+      ToastAndroid.show("No score saved in storage", ToastAndroid.LONG);
+      console.log(e);
+    }
+  }
+  static async saveLakeLouiseQuizScore(score) {
+    console.log("=====================================");
+    console.log("Saving Lake Louise Quiz Score");
+    console.log(score);
+    try {
+      FileSystem.writeAsStringAsync(
+        filePath + "lakeScore.txt",
+        score.toString()
+      );
+      console.log("Score saved!");
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  static async deleteScoreData() {
+    console.log("=====================================");
+    console.log("Clearing local scores");
+    try {
+      FileSystem.deleteAsync(filePath + "lakeScore.txt", {
+        idempotent: true
+      });
+      console.log("Local scores cleared");
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 
 // export default class storage {

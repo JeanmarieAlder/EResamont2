@@ -23,8 +23,9 @@ exports[`SubScreen - Render no child in English 1`] = `
   >
     <RNCWebView
       cacheEnabled={true}
-      javaScriptEnabled={true}
-      messagingEnabled={false}
+      injectedJavaScript=""
+      javaScriptEnabled={false}
+      messagingEnabled={true}
       onContentProcessDidTerminate={[Function]}
       onHttpError={[Function]}
       onLoadingError={[Function]}
@@ -83,8 +84,9 @@ exports[`SubScreen - Render no child in Italian 1`] = `
   >
     <RNCWebView
       cacheEnabled={true}
-      javaScriptEnabled={true}
-      messagingEnabled={false}
+      injectedJavaScript=""
+      javaScriptEnabled={false}
+      messagingEnabled={true}
       onContentProcessDidTerminate={[Function]}
       onHttpError={[Function]}
       onLoadingError={[Function]}
@@ -143,8 +145,9 @@ exports[`SubScreen - Render no child with plaintext 1`] = `
   >
     <RNCWebView
       cacheEnabled={true}
-      javaScriptEnabled={true}
-      messagingEnabled={false}
+      injectedJavaScript=""
+      javaScriptEnabled={false}
+      messagingEnabled={true}
       onContentProcessDidTerminate={[Function]}
       onHttpError={[Function]}
       onLoadingError={[Function]}
@@ -203,8 +206,9 @@ exports[`SubScreen - Render no child with text 1`] = `
   >
     <RNCWebView
       cacheEnabled={true}
-      javaScriptEnabled={true}
-      messagingEnabled={false}
+      injectedJavaScript=""
+      javaScriptEnabled={false}
+      messagingEnabled={true}
       onContentProcessDidTerminate={[Function]}
       onHttpError={[Function]}
       onLoadingError={[Function]}
@@ -719,8 +723,9 @@ exports[`TODO: SubScreen - Render no child in German 1`] = `
   >
     <RNCWebView
       cacheEnabled={true}
-      javaScriptEnabled={true}
-      messagingEnabled={false}
+      injectedJavaScript=""
+      javaScriptEnabled={false}
+      messagingEnabled={true}
       onContentProcessDidTerminate={[Function]}
       onHttpError={[Function]}
       onLoadingError={[Function]}

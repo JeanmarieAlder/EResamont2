@@ -11,46 +11,71 @@ import { globalStyles } from "../styles/global";
 import { WebView } from "react-native-webview";
 import { LanguageContext } from "../shared/LanguageContext";
 import utilities from "../utils/utilities";
+import storage from "../utils/storage";
 import ButtonView from "../components/ButtonView";
 export default function SubScreen({ navigation }) {
   const [tab, setTab] = useState(navigation.state.params);
   const { language, setLanguage } = useContext(LanguageContext);
 
-  if (tab.children.length < 2) {
+  let checkScreenType = tab => {
+    let result = 0;
+    if (
+      tab.children.length < 2 &&
+      (tab.pages_lang[utilities.findLanguageIndex(tab.pages_lang, language)]
+        .plaintext != "" ||
+        tab.pages_lang[utilities.findLanguageIndex(tab.pages_lang, language)]
+          .text != "")
+    ) {
+      result = 3; //LEAF
+    } else if (
+      tab.pages_lang[utilities.findLanguageIndex(tab.pages_lang, language)]
+        .plaintext != "" ||
+      tab.pages_lang[utilities.findLanguageIndex(tab.pages_lang, language)]
+        .text != ""
+    ) {
+      result = 2; // SUBSCREEN WITH WEB VIEW
+    } else {
+      result = 1; // SUBSCREEN WITH NO WEB VIEW
+    }
+    return result;
+  };
+
+  if (checkScreenType(tab) === 3) {
+    //LEAF
     return (
       <View style={localStyles.leafView}>
-        {(tab.pages_lang[utilities.findLanguageIndex(tab.pages_lang, language)]
-          .plaintext != "" ||
-          tab.pages_lang[utilities.findLanguageIndex(tab.pages_lang, language)]
-            .text != "") && (
-          <WebView
-            textZoom={270}
-            source={{
-              html:
-                tab.pages_lang[
-                  utilities.findLanguageIndex(tab.pages_lang, language)
-                ].text === ""
-                  ? tab.pages_lang[
-                      utilities.findLanguageIndex(tab.pages_lang, language)
-                    ].plaintext
-                  : tab.pages_lang[
-                      utilities.findLanguageIndex(tab.pages_lang, language)
-                    ].text
-            }}
-            style={{
-              flex: 1,
-              height: height
-            }}
-          />
-        )}
+        <WebView
+          textZoom={270}
+          source={{
+            html:
+              tab.pages_lang[
+                utilities.findLanguageIndex(tab.pages_lang, language)
+              ].text === ""
+                ? tab.pages_lang[
+                    utilities.findLanguageIndex(tab.pages_lang, language)
+                  ].plaintext
+                : tab.pages_lang[
+                    utilities.findLanguageIndex(tab.pages_lang, language)
+                  ].text
+          }}
+          onMessage={event =>
+            storage.saveLakeLouiseQuizScore(event.nativeEvent.data)
+          }
+          injectedJavaScript={
+            tab.id == 95
+              ? 'document.getElementById("send_button").addEventListener("click", function() {window.ReactNativeWebView.postMessage(document.getElementById("score_span").innerHTML);})'
+              : ""
+          }
+          javaScriptEnabled={tab.id == 95}
+          style={{
+            flex: 1,
+            height: height
+          }}
+        />
       </View>
     );
-  } else if (
-    tab.pages_lang[utilities.findLanguageIndex(tab.pages_lang, language)]
-      .plaintext != "" ||
-    tab.pages_lang[utilities.findLanguageIndex(tab.pages_lang, language)]
-      .text != ""
-  ) {
+  } else if (checkScreenType(tab) === 2) {
+    // SUBSCREEN WITH WEB VIEW
     return (
       <ImageBackground
         source={require("../assets/images/mountain.jpg")}
@@ -95,7 +120,8 @@ export default function SubScreen({ navigation }) {
         </View>
       </ImageBackground>
     );
-  } else {
+  } else if (checkScreenType(tab) === 1) {
+    // SUBSCREEN WITH NO WEB VIEW
     return (
       <ImageBackground
         source={require("../assets/images/mountain.jpg")}
@@ -126,6 +152,8 @@ export default function SubScreen({ navigation }) {
         </View>
       </ImageBackground>
     );
+  } else {
+    return <View></View>;
   }
 }
 

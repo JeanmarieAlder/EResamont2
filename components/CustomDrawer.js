@@ -55,6 +55,29 @@ export default function CustomDrawer({ navigation }) {
       { cancelable: true }
     );
   };
+  const getScore = async () => {
+    let res = storage.getLakeLouiseQuizScore();
+    console.log(res);
+    return await res;
+  };
+  const confirmClearScoreClick = async () => {
+    let result = await storage.getLakeLouiseQuizScore();
+    if (result) {
+      Alert.alert(
+        "Confirm local score deletion",
+        "Current score is: " + result,
+        [
+          { text: "YES", onPress: () => storage.deleteScoreData() },
+          {
+            text: "NO",
+            style: "cancel"
+          }
+        ],
+        { cancelable: true }
+      );
+    }
+  };
+
   return (
     <ImageBackground
       source={require("../assets/images/mountain.jpg")}
@@ -75,6 +98,12 @@ export default function CustomDrawer({ navigation }) {
             <TouchableOpacity onPress={checkUpdate}>
               <Text style={globalStyles.drawwerTopMenuText}>
                 Check for update
+              </Text>
+              <View style={localStyles.topMenuDivider} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={confirmClearScoreClick}>
+              <Text style={globalStyles.drawwerTopMenuText}>
+                Clear score data
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>
@@ -114,3 +143,5 @@ const localStyles = StyleSheet.create({
     marginBottom: 20
   }
 });
+
+//deleteScoreData
