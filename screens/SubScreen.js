@@ -40,6 +40,13 @@ export default function SubScreen({ navigation }) {
     return result;
   };
 
+  let generateJavaScript = id => {
+    let result = "";
+    switch (id) {
+      case 95:
+        return "script";
+    }
+  };
   if (checkScreenType(tab) === 3) {
     //LEAF
     return (
@@ -65,6 +72,7 @@ export default function SubScreen({ navigation }) {
             tab.id == 95
               ? 'document.getElementById("send_button").addEventListener("click", function() {window.ReactNativeWebView.postMessage(document.getElementById("score_span").innerHTML);})'
               : ""
+            // generateJavaScript(tab.id)
           }
           javaScriptEnabled={tab.id == 95}
           style={{

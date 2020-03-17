@@ -128,6 +128,8 @@ export default class storage {
       console.log(e);
     }
   }
+
+  static async getLanguageSetting() {}
 }
 
 // export default class storage {
