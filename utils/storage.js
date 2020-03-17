@@ -167,8 +167,6 @@ export default class storage {
     return fileName;
   }
 
-  static async getLanguageSetting() {}
-}
 
 // export default class storage {
 
