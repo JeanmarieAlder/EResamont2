@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { globalStyles } from "../styles/global";
+import { LanguageContext } from "../shared/LanguageContext";
+import utilities from "../utils/utilities";
+
 export default function Header({ title, navigation }) {
+  const { language, setLanguage } = useContext(LanguageContext);
+
   const openMenu = () => {
     navigation.openDrawer();
+  };
+  let findTitle = title => {
+    if (title == "Home") {
+      return title;
+    } else {
+      return title[utilities.findLanguageIndex(title, language)].title;
+    }
   };
 
   return (
@@ -16,7 +28,7 @@ export default function Header({ title, navigation }) {
         style={globalStyles.headerIcon}
       />
       <View>
-        <Text style={globalStyles.headerText}>{title}</Text>
+        <Text style={globalStyles.headerText}>{title && findTitle(title)}</Text>
       </View>
     </View>
   );

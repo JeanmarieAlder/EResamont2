@@ -22,6 +22,7 @@ export default function CustomDrawer({ navigation }) {
   };
 
   const languageClick = languageSelected => () => {
+    storage.setLanguageSetting(languageSelected);
     setLanguage(languageSelected);
     navigation.closeDrawer();
   };

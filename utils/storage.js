@@ -129,7 +129,28 @@ export default class storage {
     }
   }
 
-  static async getLanguageSetting() {}
+  static async getLanguageSetting() {
+    console.log("=====================================");
+    console.log("Fetching language setting");
+    try {
+      let language = await AsyncStorage.getItem("language");
+      return await parseInt(language);
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
+  static async setLanguageSetting(language) {
+    console.log("=====================================");
+    console.log("Saving language setting");
+    try {
+      await AsyncStorage.setItem("language", language.toString());
+      console.log("Language saved!");
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 
 // export default class storage {
