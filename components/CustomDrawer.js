@@ -56,18 +56,18 @@ export default function CustomDrawer({ navigation }) {
     );
   };
   const getScore = async () => {
-    let res = storage.getLakeLouiseQuizScore();
+    let res = storage.getQuizScore();
     console.log(res);
     return await res;
   };
-  const confirmClearScoreClick = async () => {
-    let result = await storage.getLakeLouiseQuizScore();
+  const confirmClearScoreClick = async idQuizz => {
+    let result = await storage.getQuizScore(idQuizz);
     if (result) {
       Alert.alert(
         "Confirm local score deletion",
-        "Current score is: " + result,
+        "Current scores are: " + JSON.stringify(result),
         [
-          { text: "YES", onPress: () => storage.deleteScoreData() },
+          { text: "YES", onPress: () => storage.deleteScoreData(idQuizz) },
           {
             text: "NO",
             style: "cancel"
@@ -101,9 +101,15 @@ export default function CustomDrawer({ navigation }) {
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={confirmClearScoreClick}>
+            <TouchableOpacity onPress={() => confirmClearScoreClick(95)}>
               <Text style={globalStyles.drawwerTopMenuText}>
-                Clear score data
+                Clear lake louise data
+              </Text>
+              <View style={localStyles.topMenuDivider} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => confirmClearScoreClick(100)}>
+              <Text style={globalStyles.drawwerTopMenuText}>
+                Clear oxygen data
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>

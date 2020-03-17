@@ -41,10 +41,13 @@ export default function SubScreen({ navigation }) {
   };
 
   let generateJavaScript = id => {
-    let result = "";
     switch (id) {
       case 95:
-        return "script";
+        return 'document.getElementById("send_button").addEventListener("click", function() {window.ReactNativeWebView.postMessage(document.getElementById("score_span").innerHTML);})';
+      case 100:
+        return 'document.getElementById("send_button").addEventListener("click", function() {window.ReactNativeWebView.postMessage(document.getElementById("scoreId").innerHTML);})';
+      default:
+        return "";
     }
   };
   if (checkScreenType(tab) === 3) {
@@ -66,15 +69,10 @@ export default function SubScreen({ navigation }) {
                   ].text
           }}
           onMessage={event =>
-            storage.saveLakeLouiseQuizScore(event.nativeEvent.data)
+            storage.saveQuizScore(tab.id, event.nativeEvent.data)
           }
-          injectedJavaScript={
-            tab.id == 95
-              ? 'document.getElementById("send_button").addEventListener("click", function() {window.ReactNativeWebView.postMessage(document.getElementById("score_span").innerHTML);})'
-              : ""
-            // generateJavaScript(tab.id)
-          }
-          javaScriptEnabled={tab.id == 95}
+          injectedJavaScript={generateJavaScript(tab.id)}
+          javaScriptEnabled={tab.id == 95 || tab.id == 100}
           style={{
             flex: 1,
             height: height

@@ -90,43 +90,81 @@ export default class storage {
       console.log(e);
     }
   }
-  static async getLakeLouiseQuizScore() {
+  static async getQuizScore(idQuizz) {
+    let fileName = this.getFileName(idQuizz);
     console.log("=====================================");
-    console.log("Getting Lake Louise Quiz score from storage");
+    console.log("Getting " + fileName);
     let result = 999;
     try {
-      result = await FileSystem.readAsStringAsync(filePath + "lakeScore.txt");
-      return await result.toString();
+      result = await FileSystem.readAsStringAsync(filePath + fileName);
+      return JSON.parse(result);
     } catch (e) {
       ToastAndroid.show("No score saved in storage", ToastAndroid.LONG);
-      console.log(e);
+      console.log(e + "\nNo existing score");
+      return [];
     }
   }
-  static async saveLakeLouiseQuizScore(score) {
+  static async saveQuizScore(idQuizz, score) {
+    let fileName = this.getFileName(idQuizz); //get file name to save according to quizz
     console.log("=====================================");
-    console.log("Saving Lake Louise Quiz Score");
+    console.log("Saving " + fileName);
     console.log(score);
-    try {
-      FileSystem.writeAsStringAsync(
-        filePath + "lakeScore.txt",
-        score.toString()
-      );
-      console.log("Score saved!");
-    } catch (e) {
-      console.log(e);
+
+    let scoreObject = {
+      score: score,
+      date: new Date()
+    };
+    let currentScores = [];
+    let currentScoresObject = [];
+    currentScores = await this.getQuizScore(idQuizz);
+    if (currentScores === "") {
+      currentScores = [];
+    }
+    if (currentScores) {
+      console.log("#########  " + currentScores);
+      try {
+        console.log(JSON.stringify(currentScores));
+        for (let i = 0; i < currentScores.length; i++) {
+          currentScoresObject.push(currentScores[i]);
+        }
+
+        currentScoresObject.push(scoreObject);
+        console.log("After addition: \n" + JSON.stringify(currentScoresObject));
+        FileSystem.writeAsStringAsync(
+          filePath + fileName,
+          JSON.stringify(currentScoresObject)
+        );
+        console.log("Score saved!");
+      } catch (e) {
+        console.log("in SaveQuizScore:");
+        console.log(e);
+      }
     }
   }
-  static async deleteScoreData() {
+  static async deleteScoreData(idQuizz) {
+    let fileName = this.getFileName(idQuizz);
     console.log("=====================================");
-    console.log("Clearing local scores");
+    console.log("Clearing local scores for" + fileName);
     try {
-      FileSystem.deleteAsync(filePath + "lakeScore.txt", {
+      FileSystem.deleteAsync(filePath + fileName, {
         idempotent: true
       });
       console.log("Local scores cleared");
     } catch (e) {
       console.log(e);
     }
+  }
+
+  static getFileName(idQuizz) {
+    let fileName = "default.txt";
+    switch (idQuizz) {
+      case 95:
+        fileName = "lakescore.txt";
+        break;
+      case 100:
+        fileName = "oxygenscore.txt";
+    }
+    return fileName;
   }
 
   static async getLanguageSetting() {}
