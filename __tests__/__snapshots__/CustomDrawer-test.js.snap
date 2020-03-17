@@ -1,0 +1,372 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomDrawer renders correctly 1`] = `
+<View
+  accessibilityIgnoresInvertColors={true}
+  style={
+    Object {
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <Image
+    source={1}
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        Object {
+          "height": "100%",
+          "width": "100%",
+        },
+        undefined,
+      ]
+    }
+  />
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+        "padding": 25,
+        "paddingTop": 50,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        isTVSelectable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#232323",
+              "fontFamily": "sans-serif-medium",
+              "fontSize": 25,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          E-Res@mont
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "marginTop": 25,
+          }
+        }
+      >
+        <View
+          accessible={true}
+          focusable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#232323",
+                "fontFamily": "sans-serif-medium",
+                "fontSize": 16,
+                "textAlign": "left",
+              }
+            }
+          >
+            Clear local storage
+          </Text>
+          <View
+            style={
+              Object {
+                "borderBottomColor": "black",
+                "borderBottomWidth": 1,
+                "marginBottom": 20,
+                "marginTop": 5,
+              }
+            }
+          />
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#232323",
+                "fontFamily": "sans-serif-medium",
+                "fontSize": 16,
+                "textAlign": "left",
+              }
+            }
+          >
+            Check for update
+          </Text>
+          <View
+            style={
+              Object {
+                "borderBottomColor": "black",
+                "borderBottomWidth": 1,
+                "marginBottom": 20,
+                "marginTop": 5,
+              }
+            }
+          />
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#232323",
+                "fontFamily": "sans-serif-medium",
+                "fontSize": 16,
+                "textAlign": "left",
+              }
+            }
+          >
+            Clear score data
+          </Text>
+          <View
+            style={
+              Object {
+                "borderBottomColor": "black",
+                "borderBottomWidth": 1,
+                "marginBottom": 20,
+                "marginTop": 5,
+              }
+            }
+          />
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "flex-end",
+          "flex": 1,
+          "flexDirection": "column-reverse",
+        }
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        isTVSelectable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#232323",
+            "borderRadius": 10,
+            "height": 40,
+            "justifyContent": "center",
+            "marginTop": 10,
+            "opacity": 1,
+            "padding": 10,
+            "width": "100%",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "sans-serif-medium",
+              "textAlign": "center",
+              "textAlignVertical": "center",
+            }
+          }
+        >
+          Français
+        </Text>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        isTVSelectable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#232323",
+            "borderRadius": 10,
+            "height": 40,
+            "justifyContent": "center",
+            "marginTop": 10,
+            "opacity": 1,
+            "padding": 10,
+            "width": "100%",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "sans-serif-medium",
+              "textAlign": "center",
+              "textAlignVertical": "center",
+            }
+          }
+        >
+          Italiano
+        </Text>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        isTVSelectable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#232323",
+            "borderRadius": 10,
+            "height": 40,
+            "justifyContent": "center",
+            "marginTop": 10,
+            "opacity": 1,
+            "padding": 10,
+            "width": "100%",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "sans-serif-medium",
+              "textAlign": "center",
+              "textAlignVertical": "center",
+            }
+          }
+        >
+          English
+        </Text>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        isTVSelectable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#232323",
+            "borderRadius": 10,
+            "height": 40,
+            "justifyContent": "center",
+            "marginTop": 10,
+            "opacity": 1,
+            "padding": 10,
+            "width": "100%",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "sans-serif-medium",
+              "textAlign": "center",
+              "textAlignVertical": "center",
+            }
+          }
+        >
+          Deutsch
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
