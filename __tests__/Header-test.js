@@ -6,7 +6,7 @@ import Header from "../components/Header";
 jest.mock("../routes/Drawer", () => "AppNavigator");
 
 describe("Header", () => {
-  const language = 1;
+  const language = 1; //French
   jest.useFakeTimers();
 
   it(`renders correctly`, () => {
