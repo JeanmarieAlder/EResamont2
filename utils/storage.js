@@ -99,7 +99,6 @@ export default class storage {
       result = await FileSystem.readAsStringAsync(filePath + fileName);
       return JSON.parse(result);
     } catch (e) {
-      ToastAndroid.show("No score saved in storage", ToastAndroid.LONG);
       console.log(e + "\nNo existing score");
       return [];
     }
@@ -150,6 +149,7 @@ export default class storage {
         idempotent: true
       });
       console.log("Local scores cleared");
+      ToastAndroid.show("Local scores empty", ToastAndroid.LONG);
     } catch (e) {
       console.log(e);
     }
@@ -166,7 +166,29 @@ export default class storage {
     }
     return fileName;
   }
+  static async getLanguageSetting() {
+    console.log("=====================================");
+    console.log("Fetching language setting");
+    try {
+      let language = await AsyncStorage.getItem("language");
+      return await parseInt(language);
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
 
+  static async setLanguageSetting(language) {
+    console.log("=====================================");
+    console.log("Saving language setting");
+    try {
+      await AsyncStorage.setItem("language", language.toString());
+      console.log("Language saved!");
+    } catch (e) {
+      console.log(e);
+    }
+  }
+}
 
 // export default class storage {
 

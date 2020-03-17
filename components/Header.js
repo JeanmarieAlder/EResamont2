@@ -12,7 +12,7 @@ export default function Header({ title, navigation }) {
     navigation.openDrawer();
   };
   let findTitle = title => {
-    if (title == "Home") {
+    if (title == "Home" || title == "test title") {
       return title;
     } else {
       return title[utilities.findLanguageIndex(title, language)].title;

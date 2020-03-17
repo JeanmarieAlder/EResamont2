@@ -56,11 +56,7 @@ export default function CustomDrawer({ navigation }) {
       { cancelable: true }
     );
   };
-  const getScore = async () => {
-    let res = storage.getQuizScore();
-    console.log(res);
-    return await res;
-  };
+
   const confirmClearScoreClick = async idQuizz => {
     let result = await storage.getQuizScore(idQuizz);
     if (result) {

@@ -42,7 +42,13 @@ exports[`CustomDrawer renders correctly 1`] = `
     <View
       style={
         Object {
+          "backgroundColor": "rgba(255,255,255, 0.7)",
+          "borderColor": "#232323",
+          "borderRadius": 5,
+          "borderStyle": "solid",
+          "borderWidth": 0.7,
           "flex": 1,
+          "padding": 5,
         }
       }
     >

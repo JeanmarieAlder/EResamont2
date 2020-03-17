@@ -46,7 +46,6 @@ export const globalStyles = StyleSheet.create({
     flexDirection: "column",
     padding: 25,
     paddingTop: 50
-    // backgroundColor: "rgba(0, 0, 0, 0.1)"
   },
   drawerTitle: {
     fontSize: 25,
@@ -55,7 +54,13 @@ export const globalStyles = StyleSheet.create({
     fontFamily: globalFont
   },
   drawerTop: {
-    flex: 1
+    flex: 1,
+    backgroundColor: "rgba(255,255,255, 0.7)",
+    padding: 5,
+    borderRadius: 5,
+    borderColor: themeColorPrimary,
+    borderStyle: "solid",
+    borderWidth: 0.7
   },
   drawerTopMenu: { marginTop: 25 },
   drawwerTopMenuText: {
