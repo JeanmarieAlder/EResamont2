@@ -5,7 +5,7 @@ import { LoadingContext } from "../shared/LoadingContext";
 import CustomDrawer from "../components/CustomDrawer";
 
 describe("CustomDrawer", () => {
-  const language = 1; //French
+  const language = 1;
   const loading = true;
   it(`renders correctly`, () => {
     const tree = renderer
