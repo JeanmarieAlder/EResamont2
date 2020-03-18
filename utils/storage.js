@@ -111,7 +111,7 @@ export default class storage {
 
     let scoreObject = {
       score: score,
-      date: new Date()
+      date: Date()
     };
     let currentScores = [];
     let currentScoresObject = [];

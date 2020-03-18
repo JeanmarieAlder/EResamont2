@@ -41,14 +41,23 @@ export default function SubScreen({ navigation }) {
   };
 
   let generateJavaScript = id => {
+    let generatedJS =
+      'var allRadioButtons = document.querySelectorAll(".form-check-input"); for (var i = 0; i < allRadioButtons.length; i++) {allRadioButtons[i].style.height = "80px"; allRadioButtons[i].style.width = "80px"};';
     switch (id) {
       case 95:
-        return 'document.getElementById("send_button").addEventListener("click", function() {window.ReactNativeWebView.postMessage(document.getElementById("score_span").innerHTML);})';
+        generatedJS +=
+          'document.getElementById("send_button").addEventListener("click", function() {window.ReactNativeWebView.postMessage(document.getElementById("score_span").innerHTML);})';
+        break;
       case 100:
-        return 'document.getElementById("send_button").addEventListener("click", function() {window.ReactNativeWebView.postMessage(document.getElementById("scoreId").innerHTML);})';
+        generatedJS +=
+          'document.getElementById("send_button").addEventListener("click", function() {window.ReactNativeWebView.postMessage(document.getElementById("scoreId").innerHTML);})';
+        break;
       default:
-        return "";
+        //no javascript injection for nonquizz pages
+        generatedJS = "";
+        break;
     }
+    return generatedJS;
   };
   if (checkScreenType(tab) === 3) {
     //LEAF
