@@ -7,10 +7,10 @@ describe("requestPage", () => {
     expect(response).not.toBeNull();
   });
 
-  it("should fetch one page by id", async () => {
-    let response = await requestPage.fetchPage(88);
-    expect(response).not.toBeNull();
-  });
+  // it("should fetch one page by id", async () => {
+  //   let response = await requestPage.fetchPage(88);
+  //   expect(response).not.toBeNull();
+  // });
   it("should fetch only updated content", async () => {
     let response = await requestPage.fetchUpdatedContent(10000000);
     expect(response).not.toBeNull();
