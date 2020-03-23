@@ -29,6 +29,7 @@ export default function CustomDrawer({ navigation }) {
   };
   const checkUpdate = async () => {
     let data = await requestPage.fetchUpdatedContent(null);
+    console.log(data.length);
     if (data.length === 0) {
       ToastAndroid.show("Data already up to date", ToastAndroid.LONG);
     } else {

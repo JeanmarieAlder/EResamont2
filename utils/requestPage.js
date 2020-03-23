@@ -2,7 +2,7 @@ import { AsyncStorage } from "react-native";
 
 const eresamontURL = "http://vlheresamont2.hevs.ch/api/v1";
 
-export class requestPage {
+export default class requestPage {
   static async fetchAllPages() {
     console.log("=====================================");
     console.log("Fetching online data");
@@ -55,8 +55,6 @@ export class requestPage {
     }
   }
 }
-
-export default requestPage;
 
 // Page id cheatsheet
 // 86 Health Assessment works

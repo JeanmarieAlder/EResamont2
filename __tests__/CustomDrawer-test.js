@@ -3,9 +3,11 @@ import renderer from "react-test-renderer";
 import { render, fireEvent } from "react-native-testing-library";
 
 import { LanguageContext } from "../shared/LanguageContext";
-import { requestPage } from "../utils/requestPage";
+import requestPage from "../utils/requestPage";
 
 import CustomDrawer from "../components/CustomDrawer";
+import { ToastAndroid } from "react-native";
+import storage from "../utils/storage";
 
 let language = 1;
 let navigateCalled = false;
@@ -24,10 +26,15 @@ let navigation = {
     navigateCalled = true;
   }
 };
+
+ToastAndroid.show = jest.fn();
+
 jest.mock("../utils/requestPage");
 describe("CustomDrawer", () => {
   beforeEach(() => {
     setLanguage(1);
+    //reset mocks and counters
+    jest.clearAllMocks();
   });
   it(`renders correctly`, () => {
     const tree = renderer
@@ -38,6 +45,40 @@ describe("CustomDrawer", () => {
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  describe("checkUpdate", () => {
+    it("should say up to date if no updates", async () => {
+      requestPage.fetchUpdatedContent = jest.fn(() => {
+        return [];
+      });
+      const { getByTestId } = render(
+        <LanguageContext.Provider value={{ language, setLanguage }}>
+          <CustomDrawer navigation={navigation} />
+        </LanguageContext.Provider>
+      );
+      const element = getByTestId("cd-button-update");
+      await fireEvent.press(element);
+      expect(ToastAndroid.show).toHaveBeenCalledWith(
+        "Data already up to date",
+        ToastAndroid.LONG
+      );
+    });
+    it("should update and say updated", async () => {
+      requestPage.fetchUpdatedContent = jest.fn(() => {
+        return [{ some: "object" }];
+      });
+      storage.updateStoragePages = jest.fn(() => true);
+      const { getByTestId } = render(
+        <LanguageContext.Provider value={{ language, setLanguage }}>
+          <CustomDrawer navigation={navigation} />
+        </LanguageContext.Provider>
+      );
+      const element = getByTestId("cd-button-update");
+      await fireEvent.press(element);
+      expect(ToastAndroid.show).toHaveBeenCalledTimes(1);
+      expect(storage.updateStoragePages).toHaveBeenCalledTimes(1);
+    });
   });
 
   it("changes language to english", () => {
@@ -71,16 +112,7 @@ describe("CustomDrawer", () => {
     fireEvent.press(element);
     expect(language).toEqual(1);
   });
-  it("checks for update when pressing button", () => {
-    const { getByTestId } = render(
-      <LanguageContext.Provider value={{ language, setLanguage }}>
-        <CustomDrawer navigation={navigation} />
-      </LanguageContext.Provider>
-    );
-    const element = getByTestId("cd-button-update");
-    fireEvent.press(element);
-    expect(requestPage.fetchUpdatedContent).toHaveBeenCalledTimes(1);
-  });
+
   it("goes to home page after", () => {
     navigateCalled = false;
     const { getByTestId } = render(

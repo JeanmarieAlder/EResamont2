@@ -26,6 +26,7 @@ export default function Header({ title, navigation }) {
         size={24}
         onPress={openMenu}
         style={globalStyles.headerIcon}
+        testID={"header-button-menu"}
       />
       <View>
         <Text style={globalStyles.headerText}>{title && findTitle(title)}</Text>
