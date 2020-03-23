@@ -9,10 +9,15 @@ import CustomDrawer from "../components/CustomDrawer";
 import { ToastAndroid } from "react-native";
 import storage from "../utils/storage";
 
-let language = 1;
 let navigateCalled = false;
+let language = 1;
+let loading = true;
+
 let setLanguage = newLanguage => {
   language = newLanguage;
+};
+let setLoading = newLoading => {
+  loading = newLoading;
 };
 let navigation = {
   closeDrawer: () => {
@@ -31,13 +36,11 @@ ToastAndroid.show = jest.fn();
 
 jest.mock("../utils/requestPage");
 describe("CustomDrawer", () => {
-
   beforeEach(() => {
     setLanguage(1);
     //reset mocks and counters
     jest.clearAllMocks();
   });
-  const loading = true;
 
   it(`renders correctly`, () => {
     const tree = renderer
@@ -58,9 +61,11 @@ describe("CustomDrawer", () => {
         return [];
       });
       const { getByTestId } = render(
-        <LanguageContext.Provider value={{ language, setLanguage }}>
-          <CustomDrawer navigation={navigation} />
-        </LanguageContext.Provider>
+        <LoadingContext.Provider value={{ loading }}>
+          <LanguageContext.Provider value={{ language, setLanguage }}>
+            <CustomDrawer navigation={navigation} />
+          </LanguageContext.Provider>
+        </LoadingContext.Provider>
       );
       const element = getByTestId("cd-button-update");
       await fireEvent.press(element);
@@ -75,9 +80,11 @@ describe("CustomDrawer", () => {
       });
       storage.updateStoragePages = jest.fn(() => true);
       const { getByTestId } = render(
-        <LanguageContext.Provider value={{ language, setLanguage }}>
-          <CustomDrawer navigation={navigation} />
-        </LanguageContext.Provider>
+        <LoadingContext.Provider value={{ loading, setLoading }}>
+          <LanguageContext.Provider value={{ language, setLanguage }}>
+            <CustomDrawer navigation={navigation} />
+          </LanguageContext.Provider>
+        </LoadingContext.Provider>
       );
       const element = getByTestId("cd-button-update");
       await fireEvent.press(element);
@@ -88,9 +95,11 @@ describe("CustomDrawer", () => {
 
   it("changes language to english", () => {
     const { getByTestId } = render(
-      <LanguageContext.Provider value={{ language, setLanguage }}>
-        <CustomDrawer navigation={navigation} />
-      </LanguageContext.Provider>
+      <LoadingContext.Provider value={{ loading }}>
+        <LanguageContext.Provider value={{ language, setLanguage }}>
+          <CustomDrawer navigation={navigation} />
+        </LanguageContext.Provider>
+      </LoadingContext.Provider>
     );
     const element = getByTestId("button-view-English");
     fireEvent.press(element);
@@ -98,9 +107,11 @@ describe("CustomDrawer", () => {
   });
   it("changes language to italian", () => {
     const { getByTestId } = render(
-      <LanguageContext.Provider value={{ language, setLanguage }}>
-        <CustomDrawer navigation={navigation} />
-      </LanguageContext.Provider>
+      <LoadingContext.Provider value={{ loading }}>
+        <LanguageContext.Provider value={{ language, setLanguage }}>
+          <CustomDrawer navigation={navigation} />
+        </LanguageContext.Provider>
+      </LoadingContext.Provider>
     );
     const element = getByTestId("button-view-Italiano");
     fireEvent.press(element);
@@ -109,9 +120,11 @@ describe("CustomDrawer", () => {
   it("changes language to french", () => {
     setLanguage(2); //set initial value to non-french
     const { getByTestId } = render(
-      <LanguageContext.Provider value={{ language, setLanguage }}>
-        <CustomDrawer navigation={navigation} />
-      </LanguageContext.Provider>
+      <LoadingContext.Provider value={{ loading }}>
+        <LanguageContext.Provider value={{ language, setLanguage }}>
+          <CustomDrawer navigation={navigation} />
+        </LanguageContext.Provider>
+      </LoadingContext.Provider>
     );
     const element = getByTestId("button-view-Français");
     fireEvent.press(element);
@@ -121,9 +134,11 @@ describe("CustomDrawer", () => {
   it("goes to home page after", () => {
     navigateCalled = false;
     const { getByTestId } = render(
-      <LanguageContext.Provider value={{ language, setLanguage }}>
-        <CustomDrawer navigation={navigation} />
-      </LanguageContext.Provider>
+      <LoadingContext.Provider value={{ loading }}>
+        <LanguageContext.Provider value={{ language, setLanguage }}>
+          <CustomDrawer navigation={navigation} />
+        </LanguageContext.Provider>
+      </LoadingContext.Provider>
     );
     const element = getByTestId("cd-button-home");
     fireEvent.press(element);

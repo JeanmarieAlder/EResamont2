@@ -1,6 +1,7 @@
 import * as React from "react";
 import requestPage from "../utils/requestPage";
 import { AsyncStorage } from "react-native";
+import NetInfo from "@react-native-community/netinfo";
 
 AsyncStorage.setItem = jest.fn();
 console.error = jest.fn();
@@ -20,7 +21,6 @@ describe("requestPage", () => {
       fetch = fetchValidMock;
       let response = await requestPage.fetchAllPages();
 
-
       expect(response).toEqual("response test");
       expect(AsyncStorage.setItem).toHaveBeenCalledTimes(1);
     });
@@ -33,17 +33,20 @@ describe("requestPage", () => {
     });
   });
 
-  describe("fetchPage", () => {
-    it("should fetch needed page (id 88)", async () => {
-      fetch = fetchValidMock;
-      let response = await requestPage.fetchPage(88);
-      expect(response).toEqual("response test");
+  describe("checkConnection", () => {
+    it("should return info if connection exists", async () => {
+      NetInfo.fetch = jest.fn(() => {
+        return { connected: true };
+      });
+      let response = await requestPage.checkConnection();
+      expect(response).toEqual({ connected: true });
     });
-    it("should throw exception when data is invalid", async () => {
-      fetch = fetchInvalidMock;
-      let response = await requestPage.fetchPage();
-
-      expect(console.error).toHaveBeenCalledTimes(1);
+    it("should return nothing if connection does not exist", async () => {
+      NetInfo.fetch = jest.fn(() => {
+        return null;
+      });
+      let response = await requestPage.checkConnection();
+      expect(response).toBeUndefined();
     });
   });
 
@@ -65,7 +68,6 @@ describe("requestPage", () => {
       await requestPage.fetchUpdatedContent(100000);
       expect(console.error).toHaveBeenCalledTimes(1);
     });
-
   });
 
   // it("should fetch all pages", async () => {
