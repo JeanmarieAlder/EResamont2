@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import { LanguageContext } from "../shared/LanguageContext";
+import { LoadingContext } from "../shared/LoadingContext";
 import ButtonView from "./ButtonView";
 import storage from "../utils/storage";
 import requestPage from "../utils/requestPage";
@@ -15,7 +16,9 @@ import { Icon } from "react-native-elements";
 import { Alert, ToastAndroid } from "react-native";
 
 export default function CustomDrawer({ navigation }) {
-  const { setLanguage } = useContext(LanguageContext);
+
+  const { language, setLanguage } = useContext(LanguageContext);
+  const { loading, setLoading } = useContext(LoadingContext);
 
   const homeClick = page => () => {
     navigation.navigate(page);
@@ -31,17 +34,19 @@ export default function CustomDrawer({ navigation }) {
     let data = await requestPage.fetchUpdatedContent(null);
     console.log(data.length);
     if (data.length === 0) {
-      ToastAndroid.show("Data already up to date", ToastAndroid.LONG);
+      ToastAndroid.show("Data already up to date", ToastAndroid.SHORT);
     } else {
       let res = await storage.updateStoragePages(data);
-      res === true && ToastAndroid.show("Data updated", ToastAndroid.LONG);
+      res === true && ToastAndroid.show("Data updated", ToastAndroid.SHORT);
+      setLoading(true);
     }
   };
   const clearData = async () => {
     await storage.removeAllStoragePages();
     let info = await storage.checkStoragePages();
     if (info === false) {
-      ToastAndroid.show("Local data cleared", ToastAndroid.LONG);
+      ToastAndroid.show("Local data cleared", ToastAndroid.SHORT);
+      setLoading(true);
     }
   };
   const confirmClearDataClick = async () => {
@@ -76,7 +81,14 @@ export default function CustomDrawer({ navigation }) {
       );
     }
   };
-
+  const checkInternet = async () => {
+    let connectionInfo = await requestPage.checkConnection();
+    if (connectionInfo && connectionInfo.isInternetReachable) {
+      ToastAndroid.show("Test: Online mode", ToastAndroid.SHORT);
+    } else {
+      ToastAndroid.show("Test: Offline mode", ToastAndroid.SHORT);
+    }
+  };
   return (
     <ImageBackground
       source={require("../assets/images/mountain.jpg")}
@@ -112,6 +124,12 @@ export default function CustomDrawer({ navigation }) {
             <TouchableOpacity onPress={() => confirmClearScoreClick(100)}>
               <Text style={globalStyles.drawwerTopMenuText}>
                 Clear oxygen data
+              </Text>
+              <View style={localStyles.topMenuDivider} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => checkInternet()}>
+              <Text style={globalStyles.drawwerTopMenuText}>
+                Check internet
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>

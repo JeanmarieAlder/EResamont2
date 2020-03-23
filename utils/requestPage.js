@@ -1,11 +1,20 @@
 import { AsyncStorage } from "react-native";
-
+import NetInfo from "@react-native-community/netinfo";
 const eresamontURL = "http://vlheresamont2.hevs.ch/api/v1";
 
+
 export default class requestPage {
+  static async checkConnection() {
+    console.log("Checking online connection");
+    let info = await NetInfo.fetch();
+    if (info) {
+      return info;
+    }
+  }
   static async fetchAllPages() {
     console.log("=====================================");
     console.log("Fetching online data");
+    this.checkConnection();
     try {
       let response = await fetch(`${eresamontURL}/pages`, {
         method: "GET",
@@ -21,22 +30,10 @@ export default class requestPage {
       console.error(e);
     }
   }
-  static async fetchPage(id) {
-    try {
-      let response = await fetch(`${eresamontURL}/pages/` + id, {
-        method: "GET",
-        headers: {
-          Accept: "application/json"
-        }
-      });
-      return await response.json();
-    } catch (e) {
-      console.error(e);
-    }
-  }
+
   static async fetchUpdatedContent(timestamp) {
     console.log("=====================================");
-    console.log("Fetching new online data since last timestamp");
+    console.log("Trying to fetch new online data since last timestamp");
     if (timestamp === null) {
       timestamp = await AsyncStorage.getItem("updateTimestamp");
       console.log("Last timestamp: " + timestamp);
@@ -84,3 +81,17 @@ export default class requestPage {
 //     seconds;
 //   return convertedTime;
 // };
+
+// static async fetchPage(id) {
+//   try {
+//     let response = await fetch(`${eresamontURL}/pages/` + id, {
+//       method: "GET",
+//       headers: {
+//         Accept: "application/json"
+//       }
+//     });
+//     return await response.json();
+//   } catch (e) {
+//     console.error(e);
+//   }
+// }

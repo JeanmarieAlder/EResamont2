@@ -4,7 +4,7 @@ import { render, fireEvent } from "react-native-testing-library";
 
 import { LanguageContext } from "../shared/LanguageContext";
 import requestPage from "../utils/requestPage";
-
+import { LoadingContext } from "../shared/LoadingContext";
 import CustomDrawer from "../components/CustomDrawer";
 import { ToastAndroid } from "react-native";
 import storage from "../utils/storage";
@@ -31,17 +31,22 @@ ToastAndroid.show = jest.fn();
 
 jest.mock("../utils/requestPage");
 describe("CustomDrawer", () => {
+
   beforeEach(() => {
     setLanguage(1);
     //reset mocks and counters
     jest.clearAllMocks();
   });
+  const loading = true;
+
   it(`renders correctly`, () => {
     const tree = renderer
       .create(
-        <LanguageContext.Provider value={{ language }}>
-          <CustomDrawer />
-        </LanguageContext.Provider>
+        <LoadingContext.Provider value={{ loading }}>
+          <LanguageContext.Provider value={{ language }}>
+            <CustomDrawer />
+          </LanguageContext.Provider>
+        </LoadingContext.Provider>
       )
       .toJSON();
     expect(tree).toMatchSnapshot();

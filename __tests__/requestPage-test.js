@@ -20,6 +20,7 @@ describe("requestPage", () => {
       fetch = fetchValidMock;
       let response = await requestPage.fetchAllPages();
 
+
       expect(response).toEqual("response test");
       expect(AsyncStorage.setItem).toHaveBeenCalledTimes(1);
     });
@@ -64,6 +65,7 @@ describe("requestPage", () => {
       await requestPage.fetchUpdatedContent(100000);
       expect(console.error).toHaveBeenCalledTimes(1);
     });
+
   });
 
   // it("should fetch all pages", async () => {
