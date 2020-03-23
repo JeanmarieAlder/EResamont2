@@ -7,7 +7,7 @@ export class requestPage {
     console.log("Checking online connection");
     let info = await NetInfo.fetch();
     if (info) {
-      console.log(info);
+      return info;
     }
   }
   static async fetchAllPages() {

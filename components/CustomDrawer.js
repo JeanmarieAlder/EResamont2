@@ -77,7 +77,14 @@ export default function CustomDrawer({ navigation }) {
       );
     }
   };
-
+  const checkInternet = async () => {
+    let connectionInfo = await requestPage.checkConnection();
+    if (connectionInfo && connectionInfo.isInternetReachable) {
+      ToastAndroid.show("Test: Online mode", ToastAndroid.SHORT);
+    } else {
+      ToastAndroid.show("Test: Offline mode", ToastAndroid.SHORT);
+    }
+  };
   return (
     <ImageBackground
       source={require("../assets/images/mountain.jpg")}
@@ -110,6 +117,12 @@ export default function CustomDrawer({ navigation }) {
             <TouchableOpacity onPress={() => confirmClearScoreClick(100)}>
               <Text style={globalStyles.drawwerTopMenuText}>
                 Clear oxygen data
+              </Text>
+              <View style={localStyles.topMenuDivider} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => checkInternet()}>
+              <Text style={globalStyles.drawwerTopMenuText}>
+                Check internet
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>

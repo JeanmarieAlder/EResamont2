@@ -49,6 +49,7 @@ exports[`Home renders correctly without content 1`] = `
         style={
           Object {
             "height": "100%",
+            "resizeMode": "contain",
             "width": "100%",
           }
         }
@@ -71,6 +72,44 @@ exports[`Home renders correctly without content 1`] = `
         }
       >
         <View>
+          <View
+            accessible={true}
+            focusable={true}
+            isTVSelectable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "darkblue",
+                "borderRadius": 10,
+                "height": 40,
+                "justifyContent": "center",
+                "marginTop": 10,
+                "opacity": 1,
+                "padding": 10,
+                "width": "80%",
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "sans-serif-medium",
+                  "textAlign": "center",
+                  "textAlignVertical": "center",
+                }
+              }
+            >
+              Refresh (debug)
+            </Text>
+          </View>
           <View
             style={
               Object {
