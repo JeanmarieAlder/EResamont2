@@ -68,6 +68,7 @@ exports[`CustomDrawer renders correctly 1`] = `
             "opacity": 1,
           }
         }
+        testID="cd-button-home"
       >
         <Text
           style={
@@ -145,6 +146,7 @@ exports[`CustomDrawer renders correctly 1`] = `
               "opacity": 1,
             }
           }
+          testID="cd-button-update"
         >
           <Text
             style={
@@ -324,6 +326,7 @@ exports[`CustomDrawer renders correctly 1`] = `
             "width": "100%",
           }
         }
+        testID="button-view-Français"
       >
         <Text
           style={
@@ -362,6 +365,7 @@ exports[`CustomDrawer renders correctly 1`] = `
             "width": "100%",
           }
         }
+        testID="button-view-Italiano"
       >
         <Text
           style={
@@ -400,6 +404,7 @@ exports[`CustomDrawer renders correctly 1`] = `
             "width": "100%",
           }
         }
+        testID="button-view-English"
       >
         <Text
           style={
@@ -438,6 +443,7 @@ exports[`CustomDrawer renders correctly 1`] = `
             "width": "100%",
           }
         }
+        testID="button-view-Deutsch"
       >
         <Text
           style={

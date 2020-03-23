@@ -14,9 +14,12 @@ import storage from "../utils/storage";
 import requestPage from "../utils/requestPage";
 import { Icon } from "react-native-elements";
 import { Alert, ToastAndroid } from "react-native";
+
 export default function CustomDrawer({ navigation }) {
+
   const { language, setLanguage } = useContext(LanguageContext);
   const { loading, setLoading } = useContext(LoadingContext);
+
   const homeClick = page => () => {
     navigation.navigate(page);
     navigation.toggleDrawer();
@@ -29,6 +32,7 @@ export default function CustomDrawer({ navigation }) {
   };
   const checkUpdate = async () => {
     let data = await requestPage.fetchUpdatedContent(null);
+    console.log(data.length);
     if (data.length === 0) {
       ToastAndroid.show("Data already up to date", ToastAndroid.SHORT);
     } else {
@@ -92,7 +96,10 @@ export default function CustomDrawer({ navigation }) {
     >
       <View style={globalStyles.drawerContainer}>
         <View style={globalStyles.drawerTop}>
-          <TouchableOpacity onPress={homeClick("EResamont")}>
+          <TouchableOpacity
+            onPress={homeClick("EResamont")}
+            testID={"cd-button-home"}
+          >
             <Text style={globalStyles.drawerTitle}>E-Res@mont</Text>
           </TouchableOpacity>
           <View style={globalStyles.drawerTopMenu}>
@@ -102,7 +109,7 @@ export default function CustomDrawer({ navigation }) {
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={checkUpdate}>
+            <TouchableOpacity onPress={checkUpdate} testID={"cd-button-update"}>
               <Text style={globalStyles.drawwerTopMenuText}>
                 Check for update
               </Text>

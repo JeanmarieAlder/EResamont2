@@ -2,7 +2,8 @@ import { AsyncStorage } from "react-native";
 import NetInfo from "@react-native-community/netinfo";
 const eresamontURL = "http://vlheresamont2.hevs.ch/api/v1";
 
-export class requestPage {
+
+export default class requestPage {
   static async checkConnection() {
     console.log("Checking online connection");
     let info = await NetInfo.fetch();
@@ -51,8 +52,6 @@ export class requestPage {
     }
   }
 }
-
-export default requestPage;
 
 // Page id cheatsheet
 // 86 Health Assessment works

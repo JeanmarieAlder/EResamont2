@@ -315,6 +315,7 @@ exports[`SubScreen - Render with children and no text 1`] = `
               "width": "80%",
             }
           }
+          testID="button-view-France"
         >
           <Text
             style={
@@ -353,6 +354,7 @@ exports[`SubScreen - Render with children and no text 1`] = `
               "width": "80%",
             }
           }
+          testID="button-view-Italie"
         >
           <Text
             style={
@@ -391,6 +393,7 @@ exports[`SubScreen - Render with children and no text 1`] = `
               "width": "80%",
             }
           }
+          testID="button-view-Suisse"
         >
           <Text
             style={
@@ -429,6 +432,7 @@ exports[`SubScreen - Render with children and no text 1`] = `
               "width": "80%",
             }
           }
+          testID="button-view-En Europe"
         >
           <Text
             style={
@@ -567,6 +571,7 @@ exports[`SubScreen - Render with children and text 1`] = `
             "width": "80%",
           }
         }
+        testID="button-view-Questionnaire de satisfaction"
       >
         <Text
           style={
@@ -605,6 +610,7 @@ exports[`SubScreen - Render with children and text 1`] = `
             "width": "80%",
           }
         }
+        testID="button-view-Enquête générale sur la santé des alpinistes"
       >
         <Text
           style={
@@ -643,6 +649,7 @@ exports[`SubScreen - Render with children and text 1`] = `
             "width": "80%",
           }
         }
+        testID="button-view-Sondage sur les maladies aiguës d’altitude"
       >
         <Text
           style={
@@ -681,6 +688,7 @@ exports[`SubScreen - Render with children and text 1`] = `
             "width": "80%",
           }
         }
+        testID="button-view-Identificateur anonyme"
       >
         <Text
           style={

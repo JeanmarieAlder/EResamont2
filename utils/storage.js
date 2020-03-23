@@ -15,6 +15,7 @@ export default class storage {
       if (info.exists === false && info.isDirectory === false) {
         result = false; // file doesnt exist
         console.log("Item at postion " + i + " does not exist");
+        break;
       }
     }
 
@@ -34,7 +35,7 @@ export default class storage {
         console.log("Local data item " + item.position + " saved");
       });
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
   static async getAllStoragePages() {
@@ -87,7 +88,7 @@ export default class storage {
       }
       console.log("Local data cleared");
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
   static async getQuizScore(idQuizz) {
@@ -99,7 +100,7 @@ export default class storage {
       result = await FileSystem.readAsStringAsync(filePath + fileName);
       return JSON.parse(result);
     } catch (e) {
-      console.log(e + "\nNo existing score");
+      console.error(e);
       return [];
     }
   }
@@ -136,7 +137,7 @@ export default class storage {
         console.log("Score saved!");
       } catch (e) {
         console.log("in SaveQuizScore:");
-        console.log(e);
+        console.error(e);
       }
     }
   }
@@ -151,7 +152,7 @@ export default class storage {
       console.log("Local scores cleared");
       ToastAndroid.show("Local scores empty", ToastAndroid.LONG);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
 
@@ -173,8 +174,8 @@ export default class storage {
       let language = await AsyncStorage.getItem("language");
       return await parseInt(language);
     } catch (e) {
-      console.log(e);
-      return 0;
+      console.error(e);
+      return 1; //french by default, can be changed if needed
     }
   }
 
@@ -185,7 +186,7 @@ export default class storage {
       await AsyncStorage.setItem("language", language.toString());
       console.log("Language saved!");
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
 }
