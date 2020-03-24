@@ -54,6 +54,7 @@ exports[`SubScreen - Render no child in English 1`] = `
           },
         ]
       }
+      testID="sub-webview"
       textZoom={270}
       useSharedProcessPool={true}
     />
@@ -115,6 +116,7 @@ exports[`SubScreen - Render no child in Italian 1`] = `
           },
         ]
       }
+      testID="sub-webview"
       textZoom={270}
       useSharedProcessPool={true}
     />
@@ -176,6 +178,7 @@ exports[`SubScreen - Render no child with plaintext 1`] = `
           },
         ]
       }
+      testID="sub-webview"
       textZoom={270}
       useSharedProcessPool={true}
     />
@@ -237,6 +240,7 @@ exports[`SubScreen - Render no child with text 1`] = `
           },
         ]
       }
+      testID="sub-webview"
       textZoom={270}
       useSharedProcessPool={true}
     />
@@ -708,6 +712,130 @@ exports[`SubScreen - Render with children and text 1`] = `
 </View>
 `;
 
+exports[`SubScreen generates correct quiz javascript with id 95 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+      "padding": 15,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "flex": 1,
+          "overflow": "hidden",
+        },
+        undefined,
+      ]
+    }
+  >
+    <RNCWebView
+      cacheEnabled={true}
+      injectedJavaScript="var allRadioButtons = document.querySelectorAll(\\".form-check-input\\"); for (var i = 0; i < allRadioButtons.length; i++) {allRadioButtons[i].style.height = \\"65px\\"; allRadioButtons[i].style.width = \\"65px\\"};document.getElementById(\\"send_button\\").addEventListener(\\"click\\", function() {window.ReactNativeWebView.postMessage(document.getElementById(\\"score_span\\").innerHTML);})"
+      javaScriptEnabled={true}
+      messagingEnabled={true}
+      onContentProcessDidTerminate={[Function]}
+      onHttpError={[Function]}
+      onLoadingError={[Function]}
+      onLoadingFinish={[Function]}
+      onLoadingProgress={[Function]}
+      onLoadingStart={[Function]}
+      onMessage={[Function]}
+      onShouldStartLoadWithRequest={[Function]}
+      source={
+        Object {
+          "html": "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> Itailan page</p>",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "flex": 1,
+            "overflow": "hidden",
+          },
+          Object {
+            "backgroundColor": "#ffffff",
+          },
+          Object {
+            "flex": 1,
+            "height": 1334,
+          },
+        ]
+      }
+      testID="sub-webview"
+      textZoom={270}
+      useSharedProcessPool={true}
+    />
+  </View>
+</View>
+`;
+
+exports[`SubScreen generates correct quiz javascript with id 100 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+      "padding": 15,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "flex": 1,
+          "overflow": "hidden",
+        },
+        undefined,
+      ]
+    }
+  >
+    <RNCWebView
+      cacheEnabled={true}
+      injectedJavaScript="var allRadioButtons = document.querySelectorAll(\\".form-check-input\\"); for (var i = 0; i < allRadioButtons.length; i++) {allRadioButtons[i].style.height = \\"65px\\"; allRadioButtons[i].style.width = \\"65px\\"};document.getElementById(\\"send_button\\").addEventListener(\\"click\\", function() {window.ReactNativeWebView.postMessage(document.getElementById(\\"scoreId\\").innerHTML);})"
+      javaScriptEnabled={true}
+      messagingEnabled={true}
+      onContentProcessDidTerminate={[Function]}
+      onHttpError={[Function]}
+      onLoadingError={[Function]}
+      onLoadingFinish={[Function]}
+      onLoadingProgress={[Function]}
+      onLoadingStart={[Function]}
+      onMessage={[Function]}
+      onShouldStartLoadWithRequest={[Function]}
+      source={
+        Object {
+          "html": "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> Itailan page</p>",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "flex": 1,
+            "overflow": "hidden",
+          },
+          Object {
+            "backgroundColor": "#ffffff",
+          },
+          Object {
+            "flex": 1,
+            "height": 1334,
+          },
+        ]
+      }
+      testID="sub-webview"
+      textZoom={270}
+      useSharedProcessPool={true}
+    />
+  </View>
+</View>
+`;
+
 exports[`TODO: SubScreen - Render no child in German 1`] = `
 <View
   style={
@@ -762,6 +890,7 @@ exports[`TODO: SubScreen - Render no child in German 1`] = `
           },
         ]
       }
+      testID="sub-webview"
       textZoom={270}
       useSharedProcessPool={true}
     />

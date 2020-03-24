@@ -1,7 +1,108 @@
+/* istanbul ignore file */
+
 export const navigationNoChildPlainText = {
   state: {
     params: {
       id: 103,
+      updated: 1511353009453,
+      unactivated: false,
+      icon: "Information",
+      position: 1,
+      parentId: 88,
+      pages_lang: [
+        {
+          id: 40,
+          language: {
+            id: 2,
+            language: "Italian"
+          },
+          title: "Francia",
+          text: "",
+          plaintext:
+            "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> Itailan page</p>"
+        },
+        {
+          id: 39,
+          language: {
+            id: 1,
+            language: "French"
+          },
+          title: "France",
+          text: "",
+          plaintext:
+            "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> French page</p>"
+        },
+        {
+          id: 98,
+          language: {
+            id: 3,
+            language: "English"
+          },
+          title: "France",
+          text: "",
+          plaintext:
+            "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> English page</p>"
+        }
+      ],
+      children: [],
+      deleted: false
+    }
+  }
+};
+
+export const navigationId95 = {
+  state: {
+    params: {
+      id: 95,
+      updated: 1511353009453,
+      unactivated: false,
+      icon: "Information",
+      position: 1,
+      parentId: 88,
+      pages_lang: [
+        {
+          id: 40,
+          language: {
+            id: 2,
+            language: "Italian"
+          },
+          title: "Francia",
+          text: "",
+          plaintext:
+            "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> Itailan page</p>"
+        },
+        {
+          id: 39,
+          language: {
+            id: 1,
+            language: "French"
+          },
+          title: "France",
+          text: "",
+          plaintext:
+            "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> French page</p>"
+        },
+        {
+          id: 98,
+          language: {
+            id: 3,
+            language: "English"
+          },
+          title: "France",
+          text: "",
+          plaintext:
+            "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> English page</p>"
+        }
+      ],
+      children: [],
+      deleted: false
+    }
+  }
+};
+export const navigationId100 = {
+  state: {
+    params: {
+      id: 100,
       updated: 1511353009453,
       unactivated: false,
       icon: "Information",
@@ -99,6 +200,7 @@ export const navigationNoChildText = {
 };
 
 export const navigationWithChildrenNoText = {
+  push: () => {},
   state: {
     params: {
       id: 88,
@@ -270,6 +372,7 @@ export const navigationWithChildrenNoText = {
 };
 
 export const navigationWithChildrenAndText = {
+  push: () => {},
   state: {
     params: {
       id: 126,

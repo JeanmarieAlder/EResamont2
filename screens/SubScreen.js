@@ -86,6 +86,7 @@ export default function SubScreen({ navigation }) {
             flex: 1,
             height: height
           }}
+          testID={"sub-webview"}
         />
       </View>
     );

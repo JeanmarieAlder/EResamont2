@@ -1,11 +1,6 @@
 import { createContext } from "react";
 
-export const LanguageContext = createContext({
-  language: 1,
-  setLanguage: newLanguage => {
-    this.language = newLanguage;
-  }
-});
+export const LanguageContext = createContext();
 // 1 is French
 // 2 is Italian
 // 3 is English
