@@ -18,6 +18,7 @@ import storage from "../utils/storage";
 import ButtonView from "../components/ButtonView";
 import _ from "lodash";
 import authMidata from "../utils/authMidata";
+import { useAuth2 } from "../shared/LoginMidataContext";
 export default function Home({ navigation }) {
   const [data, setData] = useState([]);
   const { language, setLanguage } = useContext(LanguageContext);
@@ -89,6 +90,13 @@ export default function Home({ navigation }) {
     return dataArray;
   };
 
+  let {
+    authState,
+    signInAsync,
+    signOutAsync,
+    checkIfTokenExpired
+  } = useAuth2();
+
   return (
     <ImageBackground
       source={require("../assets/images/mountain.jpg")}
@@ -111,9 +119,34 @@ export default function Home({ navigation }) {
             <ButtonView
               value="Login (debug)"
               style={{ ...globalStyles.button, backgroundColor: "darkblue" }}
-              onPress={async () =>
-                console.log(await authMidata.getFHIRMetadata())
-              }
+              onPress={async () => signInAsync()}
+            />
+            <ButtonView
+              value="Login is expired? (debug)"
+              style={{ ...globalStyles.button, backgroundColor: "darkblue" }}
+              onPress={() => {
+                if (authState) {
+                  console.log(checkIfTokenExpired(authState));
+                } else {
+                  console.log("currently offline");
+                }
+              }}
+            />
+            <ButtonView
+              value="Login status (debug)"
+              style={{ ...globalStyles.button, backgroundColor: "darkblue" }}
+              onPress={() => console.log(authState)}
+            />
+            <ButtonView
+              value="Sign out (debug)"
+              style={{ ...globalStyles.button, backgroundColor: "darkblue" }}
+              onPress={async () => {
+                if (authState) {
+                  signOutAsync(authState);
+                } else {
+                  ToastAndroid.show("Allready logged off", ToastAndroid.SHORT);
+                }
+              }}
             />
             {data.length > 1 ? (
               data.map(item => (

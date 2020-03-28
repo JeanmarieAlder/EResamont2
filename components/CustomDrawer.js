@@ -1,14 +1,11 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import {
   Text,
   View,
   TouchableOpacity,
   ImageBackground,
-  StyleSheet,
-  AsyncStorage
+  StyleSheet
 } from "react-native";
-import * as AppAuth from "expo-app-auth";
-import { AuthSession } from "expo";
 import { globalStyles } from "../styles/global";
 import { LanguageContext } from "../shared/LanguageContext";
 import { LoadingContext } from "../shared/LoadingContext";
@@ -17,84 +14,10 @@ import storage from "../utils/storage";
 import requestPage from "../utils/requestPage";
 import { Icon } from "react-native-elements";
 import { Alert, ToastAndroid } from "react-native";
-import authMidata from "../utils/authMidata";
 
 export default function CustomDrawer({ navigation }) {
   const { language, setLanguage } = useContext(LanguageContext);
   const { loading, setLoading } = useContext(LoadingContext);
-
-  //login state
-  let [authState, setAuthState] = useState(null);
-  let StorageKey = "@EResamont2:MidataOAuthKey";
-
-  useEffect(() => {
-    console.log("CustomDrawer: useEffect()");
-    (async () => {
-      let cachedAuth = await getCachedAuthAsync();
-      if (cachedAuth && !authState) {
-        setAuthState(cachedAuth);
-      }
-    })();
-  }, []);
-
-  async function getCachedAuthAsync() {
-    let value = await AsyncStorage.getItem(StorageKey);
-    let authState = JSON.parse(value);
-    console.log("getCachedAuthAsync", authState);
-    if (authState) {
-      if (checkIfTokenExpired(authState)) {
-        return refreshAuthAsync(authState);
-      } else {
-        return authState;
-      }
-    }
-    return null;
-  }
-
-  function checkIfTokenExpired({ accessTokenExpirationDate }) {
-    return new Date(accessTokenExpirationDate) < new Date();
-  }
-
-  async function refreshAuthAsync({ refreshToken }) {
-    let authState = await AppAuth.refreshAsync(config, refreshToken);
-    console.log("refreshAuth", authState);
-    await cacheAuthAsync(authState);
-    return authState;
-  }
-  let config = {
-    issuer: "https://test.midata.coop/fhir/metadata",
-    clientId: "eresamont2-test",
-    serviceConfiguration: {
-      authorizationEndpoint: "https://test.midata.coop/authservice",
-      tokenEndpoint: "https://test.midata.coop/v1/token"
-    }
-  };
-
-  async function signInAsync() {
-    console.log("signInAsync()");
-    console.log(AppAuth.OAuthRedirect);
-    let authState = await AppAuth.authAsync(config);
-    await cacheAuthAsync(authState);
-    console.log("signInAsync", authState);
-    return authState;
-  }
-
-  async function signOutAsync({ accessToken }) {
-    try {
-      await AppAuth.revokeAsync(config, {
-        token: accessToken,
-        isClientIdProvided: true
-      });
-      await AsyncStorage.removeItem(StorageKey);
-      return null;
-    } catch (e) {
-      alert(`Failed to revoke token: ${e.message}`);
-    }
-  }
-
-  async function cacheAuthAsync(authState) {
-    return await AsyncStorage.setItem(StorageKey, JSON.stringify(authState));
-  }
 
   const homeClick = page => () => {
     navigation.navigate(page);
@@ -209,21 +132,6 @@ export default function CustomDrawer({ navigation }) {
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>
-            <TouchableOpacity
-              onPress={async () => {
-                const authState = await signInAsync();
-                setAuthState(authState);
-              }}
-            >
-              <Text style={globalStyles.drawwerTopMenuText}>Midata Login</Text>
-              <View style={localStyles.topMenuDivider} />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => console.log(authState)}>
-              <Text style={globalStyles.drawwerTopMenuText}>
-                Auth State (debug)
-              </Text>
-              <View style={localStyles.topMenuDivider} />
-            </TouchableOpacity>
           </View>
         </View>
         <View style={globalStyles.drawerButtons}>
@@ -260,5 +168,3 @@ const localStyles = StyleSheet.create({
     marginBottom: 20
   }
 });
-
-//deleteScoreData

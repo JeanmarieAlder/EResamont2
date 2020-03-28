@@ -13,9 +13,13 @@ import { LanguageContext } from "../shared/LanguageContext";
 import utilities from "../utils/utilities";
 import storage from "../utils/storage";
 import ButtonView from "../components/ButtonView";
+import { useAuth2 } from "../shared/LoginMidataContext";
+import requestPostMidata from "../utils/requestPostMidata";
+import requestGetMidata from "../utils/requestGetMidata";
 export default function SubScreen({ navigation }) {
   const [tab, setTab] = useState(navigation.state.params);
   const { language, setLanguage } = useContext(LanguageContext);
+  let { authState, signInAsync } = useAuth2();
 
   let checkScreenType = tab => {
     let result = 0;
@@ -87,6 +91,39 @@ export default function SubScreen({ navigation }) {
             height: height
           }}
           testID={"sub-webview"}
+        />
+        <ButtonView
+          value="post data(debug)"
+          style={{ ...globalStyles.button, backgroundColor: "darkblue" }}
+          onPress={async () => {
+            if (authState) {
+              let response = await requestPostMidata(
+                "https://test.midata.coop/fhir/QuestionnaireResponse/",
+                authState,
+                signInAsync,
+                qrBody
+              );
+              console.log(response);
+            } else {
+              signInAsync();
+            }
+          }}
+        />
+        <ButtonView
+          value="GET data(debug)"
+          style={{ ...globalStyles.button, backgroundColor: "darkblue" }}
+          onPress={async () => {
+            if (authState) {
+              let response = await requestGetMidata(
+                "https://test.midata.coop/fhir/QuestionnaireResponse/",
+                authState,
+                signInAsync
+              );
+              console.log(response);
+            } else {
+              signInAsync();
+            }
+          }}
         />
       </View>
     );
@@ -172,6 +209,19 @@ export default function SubScreen({ navigation }) {
     return <View></View>;
   }
 }
+const qrBody = {
+  resourceType: "QuestionnaireResponse",
+  item: [
+    {
+      text: "Lake louise quiz score tests " + new Date(),
+      answer: [
+        {
+          valueInteger: "5"
+        }
+      ]
+    }
+  ]
+};
 
 const height = Math.round(Dimensions.get("window").height);
 const localStyles = StyleSheet.create({
