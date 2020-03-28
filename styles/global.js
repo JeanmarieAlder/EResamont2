@@ -54,7 +54,7 @@ export const globalStyles = StyleSheet.create({
     fontFamily: globalFont
   },
   drawerTop: {
-    flex: 1,
+    flex: 1.5,
     backgroundColor: "rgba(255,255,255, 0.7)",
     padding: 5,
     borderRadius: 5,

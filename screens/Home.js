@@ -17,6 +17,7 @@ import utilities from "../utils/utilities";
 import storage from "../utils/storage";
 import ButtonView from "../components/ButtonView";
 import _ from "lodash";
+import authMidata from "../utils/authMidata";
 export default function Home({ navigation }) {
   const [data, setData] = useState([]);
   const { language, setLanguage } = useContext(LanguageContext);
@@ -106,6 +107,13 @@ export default function Home({ navigation }) {
               value="Refresh (debug)"
               style={{ ...globalStyles.button, backgroundColor: "darkblue" }}
               onPress={() => setLoading(true)}
+            />
+            <ButtonView
+              value="Login (debug)"
+              style={{ ...globalStyles.button, backgroundColor: "darkblue" }}
+              onPress={async () =>
+                console.log(await authMidata.getFHIRMetadata())
+              }
             />
             {data.length > 1 ? (
               data.map(item => (
