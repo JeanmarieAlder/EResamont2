@@ -14,6 +14,9 @@ const RootDrawerNavigator = createDrawerNavigator(
   {
     EResamont: {
       screen: HomeStack
+    },
+    MidataSettings: {
+      screen: SettingsStack
     }
   },
   {

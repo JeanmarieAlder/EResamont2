@@ -12,7 +12,12 @@ export default function Header({ title, navigation }) {
     navigation.openDrawer();
   };
   let findTitle = title => {
-    if (title == "Home" || title == "test title") {
+    if (
+      title == "Home" ||
+      title == "test title" ||
+      title == "Midata Settings" ||
+      title == "My Data"
+    ) {
       return title;
     } else {
       return title[utilities.findLanguageIndex(title, language)].title;
@@ -23,7 +28,7 @@ export default function Header({ title, navigation }) {
     <View style={localStyles.header}>
       <MaterialIcons
         name="menu"
-        size={24}
+        size={29}
         onPress={openMenu}
         style={globalStyles.headerIcon}
         testID={"header-button-menu"}

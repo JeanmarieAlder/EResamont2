@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import { AsyncStorage } from "react-native";
+import { AsyncStorage, ToastAndroid } from "react-native";
 import * as AppAuth from "expo-app-auth";
+import requestGetMidata from "../utils/requestGetMidata";
 
 export const Auth2Context = React.createContext();
 export const useAuth2 = () => useContext(Auth2Context);
@@ -17,6 +18,7 @@ export const Auth2Provider = ({ children }) => {
   };
 
   const [authState, setAuthState] = useState(null);
+  const [userName, setUserName] = useState(null);
 
   useEffect(() => {
     console.log("LoginmidataContext: useEffect()");
@@ -45,6 +47,7 @@ export const Auth2Provider = ({ children }) => {
       });
       await AsyncStorage.removeItem(StorageKey);
       console.log("sign out completed");
+      ToastAndroid.show("Sign out completed", ToastAndroid.SHORT);
       setAuthState(null);
       return null;
     } catch (e) {
@@ -81,16 +84,34 @@ export const Auth2Provider = ({ children }) => {
     return authState;
   };
 
+  const getLoggedUserName = async () => {
+    if (authState) {
+      let response = await requestGetMidata(
+        "https://test.midata.coop/fhir/Patient/" +
+          authState.additionalParameters.patient,
+        authState,
+        signInAsync
+      );
+      if (response) {
+        setUserName(response.name[0].given[0]);
+        return true;
+      }
+    }
+    return false;
+  };
+
   return (
     <Auth2Context.Provider
       value={{
         authState,
+        userName,
         signInAsync,
         signOutAsync,
         cacheAuthAsync,
         getCachedAuthAsync,
         checkIfTokenExpired,
-        refreshAuthAsync
+        refreshAuthAsync,
+        getLoggedUserName
       }}
     >
       {children}

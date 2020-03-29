@@ -19,9 +19,9 @@ export default function CustomDrawer({ navigation }) {
   const { language, setLanguage } = useContext(LanguageContext);
   const { loading, setLoading } = useContext(LoadingContext);
 
-  const homeClick = page => () => {
-    navigation.navigate(page);
+  const navigationClick = page => () => {
     navigation.toggleDrawer();
+    navigation.navigate(page);
   };
 
   const languageClick = languageSelected => () => {
@@ -96,10 +96,18 @@ export default function CustomDrawer({ navigation }) {
       <View style={globalStyles.drawerContainer}>
         <View style={globalStyles.drawerTop}>
           <TouchableOpacity
-            onPress={homeClick("EResamont")}
+            onPress={navigationClick("EResamont")}
             testID={"cd-button-home"}
           >
             <Text style={globalStyles.drawerTitle}>E-Res@mont</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={navigationClick("EResamont")}>
+            <Text style={globalStyles.drawwerTopMenuText}>Home</Text>
+            <View style={localStyles.topMenuDivider} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={navigationClick("MidataSettings")}>
+            <Text style={globalStyles.drawwerTopMenuText}>Midata Settings</Text>
+            <View style={localStyles.topMenuDivider} />
           </TouchableOpacity>
           <View style={globalStyles.drawerTopMenu}>
             <TouchableOpacity onPress={confirmClearDataClick}>
@@ -165,6 +173,6 @@ const localStyles = StyleSheet.create({
     borderBottomColor: "black",
     borderBottomWidth: 1,
     marginTop: 5,
-    marginBottom: 20
+    marginBottom: 10
   }
 });

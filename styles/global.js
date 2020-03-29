@@ -82,6 +82,10 @@ export const globalStyles = StyleSheet.create({
     ...buttonTheme,
     width: "80%"
   },
+  midataButton: {
+    ...buttonTheme,
+    width: "100%"
+  },
   text: {
     color: themeColorSecondary,
     textAlignVertical: "center",

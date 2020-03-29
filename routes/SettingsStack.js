@@ -1,14 +1,25 @@
 import { createStackNavigator } from "react-navigation-stack";
 import React from "react";
 import Header from "../components/Header";
-import Settings from "../screens/Settings";
+import MidataSettings from "../screens/MidataSettings";
+import MyData from "../screens/MyData";
 import { globalStyles } from "../styles/global";
 const screens = {
-  Settings: {
-    screen: Settings,
+  MidataSettings: {
+    screen: MidataSettings,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: () => <Header title="Settings" navigation={navigation} />
+        headerTitle: () => (
+          <Header title={"Midata Settings"} navigation={navigation} />
+        )
+      };
+    }
+  },
+  MyData: {
+    screen: MyData,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: () => <Header title={"My Data"} navigation={navigation} />
       };
     }
   }
