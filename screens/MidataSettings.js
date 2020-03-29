@@ -4,6 +4,7 @@ import { globalStyles } from "../styles/global";
 import { LanguageContext } from "../shared/LanguageContext";
 import ButtonView from "../components/ButtonView";
 import { useAuth2 } from "../shared/LoginMidataContext";
+import requestGetMidata from "../utils/requestGetMidata";
 
 export default function MidataSettings({ navigation }) {
   const { language, setLanguage } = useContext(LanguageContext);
@@ -67,6 +68,22 @@ export default function MidataSettings({ navigation }) {
           value="Login status (debug console)"
           style={{ ...globalStyles.midataButton, backgroundColor: "darkblue" }}
           onPress={() => console.log(authState)}
+        />
+        <ButtonView
+          value="Get my posted data (debug)"
+          style={{ ...globalStyles.midataButton, backgroundColor: "darkblue" }}
+          onPress={async () => {
+            if (authState) {
+              let response = await requestGetMidata(
+                "https://test.midata.coop/fhir/QuestionnaireResponse/",
+                authState,
+                signInAsync
+              );
+              console.log(response);
+            } else {
+              signInAsync();
+            }
+          }}
         />
         <ButtonView
           value="Sign out"
