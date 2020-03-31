@@ -16,13 +16,12 @@ import { Icon } from "react-native-elements";
 import { Alert, ToastAndroid } from "react-native";
 
 export default function CustomDrawer({ navigation }) {
-
   const { language, setLanguage } = useContext(LanguageContext);
   const { loading, setLoading } = useContext(LoadingContext);
 
-  const homeClick = page => () => {
-    navigation.navigate(page);
+  const navigationClick = page => () => {
     navigation.toggleDrawer();
+    navigation.navigate(page);
   };
 
   const languageClick = languageSelected => () => {
@@ -97,10 +96,20 @@ export default function CustomDrawer({ navigation }) {
       <View style={globalStyles.drawerContainer}>
         <View style={globalStyles.drawerTop}>
           <TouchableOpacity
-            onPress={homeClick("EResamont")}
+            onPress={navigationClick("EResamont")}
             testID={"cd-button-home"}
           >
             <Text style={globalStyles.drawerTitle}>E-Res@mont</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={navigationClick("EResamont")}>
+            <Text style={globalStyles.drawwerTopMenuTextBold}>Home</Text>
+            <View style={localStyles.topMenuDivider} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={navigationClick("MidataSettings")}>
+            <Text style={globalStyles.drawwerTopMenuTextBold}>
+              Midata Settings
+            </Text>
+            <View style={localStyles.topMenuDivider} />
           </TouchableOpacity>
           <View style={globalStyles.drawerTopMenu}>
             <TouchableOpacity onPress={confirmClearDataClick}>
@@ -112,12 +121,6 @@ export default function CustomDrawer({ navigation }) {
             <TouchableOpacity onPress={checkUpdate} testID={"cd-button-update"}>
               <Text style={globalStyles.drawwerTopMenuText}>
                 Check for update
-              </Text>
-              <View style={localStyles.topMenuDivider} />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => confirmClearScoreClick(95)}>
-              <Text style={globalStyles.drawwerTopMenuText}>
-                Clear lake louise data
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>
@@ -166,8 +169,6 @@ const localStyles = StyleSheet.create({
     borderBottomColor: "black",
     borderBottomWidth: 1,
     marginTop: 5,
-    marginBottom: 20
+    marginBottom: 10
   }
 });
-
-//deleteScoreData

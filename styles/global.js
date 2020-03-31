@@ -69,6 +69,13 @@ export const globalStyles = StyleSheet.create({
     textAlign: "left",
     color: themeColorPrimary
   },
+  drawwerTopMenuTextBold: {
+    fontFamily: globalFont,
+    fontSize: 16,
+    textAlign: "left",
+    color: themeColorPrimary,
+    fontWeight: "bold"
+  },
   drawerButtons: {
     flex: 1,
     flexDirection: "column-reverse",
@@ -81,6 +88,10 @@ export const globalStyles = StyleSheet.create({
   button: {
     ...buttonTheme,
     width: "80%"
+  },
+  midataButton: {
+    ...buttonTheme,
+    width: "100%"
   },
   text: {
     color: themeColorSecondary,

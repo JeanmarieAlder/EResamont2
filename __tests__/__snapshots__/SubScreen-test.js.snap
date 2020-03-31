@@ -735,7 +735,7 @@ exports[`SubScreen generates correct quiz javascript with id 95 1`] = `
   >
     <RNCWebView
       cacheEnabled={true}
-      injectedJavaScript="var allRadioButtons = document.querySelectorAll(\\".form-check-input\\"); for (var i = 0; i < allRadioButtons.length; i++) {allRadioButtons[i].style.height = \\"65px\\"; allRadioButtons[i].style.width = \\"65px\\"};document.getElementById(\\"send_button\\").addEventListener(\\"click\\", function() {window.ReactNativeWebView.postMessage(document.getElementById(\\"score_span\\").innerHTML);})"
+      injectedJavaScript="var allRadioButtons = document.querySelectorAll(\\".form-check-input\\"); for (var i = 0; i < allRadioButtons.length; i++) {allRadioButtons[i].style.height = \\"65px\\"; allRadioButtons[i].style.width = \\"65px\\"};document.getElementById(\\"send_button\\").addEventListener(\\"click\\", function() {let resultTab = [];resultTab.push(getRadioValue(\\"maux_de_tete\\"));resultTab.push(getRadioValue(\\"troubles_digestifs\\"));resultTab.push(getRadioValue(\\"fatigue\\"));resultTab.push(getRadioValue(\\"vertige\\"));resultTab.push(getRadioValue(\\"trouble\\"));resultTab.push(parseInt(document.getElementById(\\"score_span\\").innerHTML));window.ReactNativeWebView.postMessage(JSON.stringify(resultTab));})"
       javaScriptEnabled={true}
       messagingEnabled={true}
       onContentProcessDidTerminate={[Function]}

@@ -46,7 +46,14 @@ export default function SubScreen({ navigation }) {
     switch (id) {
       case 95:
         generatedJS +=
-          'document.getElementById("send_button").addEventListener("click", function() {window.ReactNativeWebView.postMessage(document.getElementById("score_span").innerHTML);})';
+          'document.getElementById("send_button").addEventListener("click", function() {let resultTab = [];' +
+          'resultTab.push(getRadioValue("maux_de_tete"));' +
+          'resultTab.push(getRadioValue("troubles_digestifs"));' +
+          'resultTab.push(getRadioValue("fatigue"));' +
+          'resultTab.push(getRadioValue("vertige"));' +
+          'resultTab.push(getRadioValue("trouble"));' +
+          'resultTab.push(parseInt(document.getElementById("score_span").innerHTML));' +
+          "window.ReactNativeWebView.postMessage(JSON.stringify(resultTab));})";
         break;
       case 100:
         generatedJS +=
@@ -77,9 +84,10 @@ export default function SubScreen({ navigation }) {
                     utilities.findLanguageIndex(tab.pages_lang, language)
                   ].text
           }}
-          onMessage={event =>
-            storage.saveQuizScore(tab.id, event.nativeEvent.data)
-          }
+          onMessage={event => {
+            console.log(event.nativeEvent.data);
+            storage.saveQuizScore(tab.id, event.nativeEvent.data);
+          }}
           injectedJavaScript={generateJavaScript(tab.id)}
           javaScriptEnabled={tab.id == 95 || tab.id == 100}
           style={{

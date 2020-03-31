@@ -1,10 +1,9 @@
 import React from "react";
-import { AsyncStorage } from "react-native";
-// import { AsyncStorage } from "react-native";
+import { AsyncStorage, ToastAndroid } from "react-native";
 import * as FileSystem from "expo-file-system";
 // const filePath = FileSystem.documentDirectory + "data.txt";
 const filePath = FileSystem.documentDirectory;
-import { ToastAndroid } from "react-native";
+import jsonFhirConverter from "./jsonFhirConverter";
 export default class storage {
   static async checkStoragePages() {
     console.log("=====================================");
@@ -100,7 +99,7 @@ export default class storage {
       result = await FileSystem.readAsStringAsync(filePath + fileName);
       return JSON.parse(result);
     } catch (e) {
-      console.error(e);
+      console.log("no existing data");
       return [];
     }
   }
@@ -110,10 +109,9 @@ export default class storage {
     console.log("Saving " + fileName);
     console.log(score);
 
-    let scoreObject = {
-      score: score,
-      date: Date()
-    };
+    let scoreObject = jsonFhirConverter.createLakeLouiseQuestionnaireResponse(
+      score
+    );
     let currentScores = [];
     let currentScoresObject = [];
     currentScores = await this.getQuizScore(idQuizz);
@@ -121,7 +119,6 @@ export default class storage {
       currentScores = [];
     }
     if (currentScores) {
-      console.log("#########  " + currentScores);
       try {
         console.log(JSON.stringify(currentScores));
         for (let i = 0; i < currentScores.length; i++) {
@@ -135,11 +132,26 @@ export default class storage {
           JSON.stringify(currentScoresObject)
         );
         console.log("Score saved!");
+        ToastAndroid.show("Score saved!", ToastAndroid.SHORT);
       } catch (e) {
         console.log("in SaveQuizScore:");
         console.error(e);
       }
     }
+  }
+  static async modifyQuizSentProperty(idQuizz, datesModified) {
+    console.log("entered modifyQuizsentProp() with " + datesModified);
+    let fileName = this.getFileName(idQuizz); //get file name to save according to quizz
+    let currentScores = await this.getQuizScore(idQuizz);
+    currentScores.forEach(item => {
+      datesModified.forEach(date => {
+        console.log(item.authored + " --- " + date);
+        console.log("------------------");
+        if (item.authored == date) {
+          console.log("WE FOUND ONE DATE");
+        }
+      });
+    });
   }
   static async deleteScoreData(idQuizz) {
     let fileName = this.getFileName(idQuizz);
