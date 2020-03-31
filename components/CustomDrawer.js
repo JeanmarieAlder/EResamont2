@@ -102,11 +102,13 @@ export default function CustomDrawer({ navigation }) {
             <Text style={globalStyles.drawerTitle}>E-Res@mont</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={navigationClick("EResamont")}>
-            <Text style={globalStyles.drawwerTopMenuText}>Home</Text>
+            <Text style={globalStyles.drawwerTopMenuTextBold}>Home</Text>
             <View style={localStyles.topMenuDivider} />
           </TouchableOpacity>
           <TouchableOpacity onPress={navigationClick("MidataSettings")}>
-            <Text style={globalStyles.drawwerTopMenuText}>Midata Settings</Text>
+            <Text style={globalStyles.drawwerTopMenuTextBold}>
+              Midata Settings
+            </Text>
             <View style={localStyles.topMenuDivider} />
           </TouchableOpacity>
           <View style={globalStyles.drawerTopMenu}>
@@ -119,12 +121,6 @@ export default function CustomDrawer({ navigation }) {
             <TouchableOpacity onPress={checkUpdate} testID={"cd-button-update"}>
               <Text style={globalStyles.drawwerTopMenuText}>
                 Check for update
-              </Text>
-              <View style={localStyles.topMenuDivider} />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => confirmClearScoreClick(95)}>
-              <Text style={globalStyles.drawwerTopMenuText}>
-                Clear lake louise data
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>

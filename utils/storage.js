@@ -1,10 +1,8 @@
 import React from "react";
-import { AsyncStorage } from "react-native";
-// import { AsyncStorage } from "react-native";
+import { AsyncStorage, ToastAndroid } from "react-native";
 import * as FileSystem from "expo-file-system";
 // const filePath = FileSystem.documentDirectory + "data.txt";
 const filePath = FileSystem.documentDirectory;
-import { ToastAndroid } from "react-native";
 import jsonFhirConverter from "./jsonFhirConverter";
 export default class storage {
   static async checkStoragePages() {
@@ -121,7 +119,6 @@ export default class storage {
       currentScores = [];
     }
     if (currentScores) {
-      console.log("#########  " + currentScores);
       try {
         console.log(JSON.stringify(currentScores));
         for (let i = 0; i < currentScores.length; i++) {
@@ -135,6 +132,7 @@ export default class storage {
           JSON.stringify(currentScoresObject)
         );
         console.log("Score saved!");
+        ToastAndroid.show("Score saved!", ToastAndroid.SHORT);
       } catch (e) {
         console.log("in SaveQuizScore:");
         console.error(e);

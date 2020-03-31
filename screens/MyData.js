@@ -45,6 +45,30 @@ export default function MyData({ navigation }) {
     );
   };
 
+  let confirmClearScoreClick = async idQuizz => {
+    let result = await storage.getQuizScore(idQuizz);
+    if (result) {
+      Alert.alert(
+        "Confirm local score deletion",
+        "Current scores are: " + JSON.stringify(result),
+        [
+          {
+            text: "YES",
+            onPress: () => {
+              storage.deleteScoreData(idQuizz);
+              setLakeLouiseScores([]);
+            }
+          },
+          {
+            text: "NO",
+            style: "cancel"
+          }
+        ],
+        { cancelable: true }
+      );
+    }
+  };
+
   let sendToServer = async () => {
     if (authState) {
       try {
@@ -105,6 +129,11 @@ export default function MyData({ navigation }) {
             </View>
           )}
         </ScrollView>
+        <ButtonView
+          value={"Delete my data"}
+          onPress={() => confirmClearScoreClick(95)}
+          style={globalStyles.midataButton}
+        />
       </View>
     </View>
   );

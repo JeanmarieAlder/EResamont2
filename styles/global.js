@@ -69,6 +69,13 @@ export const globalStyles = StyleSheet.create({
     textAlign: "left",
     color: themeColorPrimary
   },
+  drawwerTopMenuTextBold: {
+    fontFamily: globalFont,
+    fontSize: 16,
+    textAlign: "left",
+    color: themeColorPrimary,
+    fontWeight: "bold"
+  },
   drawerButtons: {
     flex: 1,
     flexDirection: "column-reverse",
