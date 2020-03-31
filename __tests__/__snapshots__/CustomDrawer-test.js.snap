@@ -84,94 +84,92 @@ exports[`CustomDrawer renders correctly 1`] = `
         </Text>
       </View>
       <View
-        accessible={true}
-        focusable={true}
-        isTVSelectable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          style={
-            Object {
-              "color": "#232323",
-              "fontFamily": "sans-serif-medium",
-              "fontSize": 16,
-              "fontWeight": "bold",
-              "textAlign": "left",
-            }
-          }
-        >
-          Home
-        </Text>
-        <View
-          style={
-            Object {
-              "borderBottomColor": "black",
-              "borderBottomWidth": 1,
-              "marginBottom": 10,
-              "marginTop": 5,
-            }
-          }
-        />
-      </View>
-      <View
-        accessible={true}
-        focusable={true}
-        isTVSelectable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          style={
-            Object {
-              "color": "#232323",
-              "fontFamily": "sans-serif-medium",
-              "fontSize": 16,
-              "fontWeight": "bold",
-              "textAlign": "left",
-            }
-          }
-        >
-          Midata Settings
-        </Text>
-        <View
-          style={
-            Object {
-              "borderBottomColor": "black",
-              "borderBottomWidth": 1,
-              "marginBottom": 10,
-              "marginTop": 5,
-            }
-          }
-        />
-      </View>
-      <View
         style={
           Object {
             "marginTop": 25,
           }
         }
       >
+        <View
+          accessible={true}
+          focusable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#232323",
+                "fontFamily": "sans-serif-medium",
+                "fontSize": 16,
+                "textAlign": "left",
+              }
+            }
+          >
+            Home
+          </Text>
+          <View
+            style={
+              Object {
+                "borderBottomColor": "black",
+                "borderBottomWidth": 1,
+                "marginBottom": 10,
+                "marginTop": 5,
+              }
+            }
+          />
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#232323",
+                "fontFamily": "sans-serif-medium",
+                "fontSize": 16,
+                "textAlign": "left",
+              }
+            }
+          >
+            Midata Settings
+          </Text>
+          <View
+            style={
+              Object {
+                "borderBottomColor": "black",
+                "borderBottomWidth": 1,
+                "marginBottom": 10,
+                "marginTop": 5,
+              }
+            }
+          />
+        </View>
         <View
           accessible={true}
           focusable={true}
@@ -280,47 +278,7 @@ exports[`CustomDrawer renders correctly 1`] = `
               }
             }
           >
-            Clear oxygen data
-          </Text>
-          <View
-            style={
-              Object {
-                "borderBottomColor": "black",
-                "borderBottomWidth": 1,
-                "marginBottom": 10,
-                "marginTop": 5,
-              }
-            }
-          />
-        </View>
-        <View
-          accessible={true}
-          focusable={true}
-          isTVSelectable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
-        >
-          <Text
-            style={
-              Object {
-                "color": "#232323",
-                "fontFamily": "sans-serif-medium",
-                "fontSize": 16,
-                "textAlign": "left",
-              }
-            }
-          >
-            Check internet
+            Clear local storage
           </Text>
           <View
             style={

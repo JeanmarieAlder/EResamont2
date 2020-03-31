@@ -88,7 +88,13 @@ export default function CustomDrawer({ navigation }) {
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>
+
             <TouchableOpacity onPress={confirmClearDataClick}>
+              <Text style={globalStyles.drawwerTopMenuText}>
+                Clear local storage
+              </Text>
+              <View style={localStyles.topMenuDivider} />
+            </TouchableOpacity>
 
             <TouchableOpacity onPress={checkUpdate} testID={"cd-button-update"}>
               <Text style={globalStyles.drawwerTopMenuText}>
@@ -96,15 +102,10 @@ export default function CustomDrawer({ navigation }) {
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>
+
             <TouchableOpacity onPress={() => confirmClearScoreClick(100)}>
               <Text style={globalStyles.drawwerTopMenuText}>
                 Clear local storage
-              </Text>
-              <View style={localStyles.topMenuDivider} />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={checkUpdate} testID={"cd-button-update"}>
-              <Text style={globalStyles.drawwerTopMenuText}>
-                Check for update
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>
@@ -144,12 +145,3 @@ const localStyles = StyleSheet.create({
     marginBottom: 10
   }
 });
-
-// const checkInternet = async () => {
-//   let connectionInfo = await requestPage.checkConnection();
-//   if (connectionInfo && connectionInfo.isInternetReachable) {
-//     ToastAndroid.show("Test: Online mode", ToastAndroid.SHORT);
-//   } else {
-//     ToastAndroid.show("Test: Offline mode", ToastAndroid.SHORT);
-//   }
-// };
