@@ -16,6 +16,7 @@ import { LoadingContext } from "../shared/LoadingContext";
 import utilities from "../utils/utilities";
 import storage from "../utils/storage";
 import ButtonView from "../components/ButtonView";
+import { useAuth2 } from "../shared/LoginMidataContext";
 import _ from "lodash";
 export default function Home({ navigation }) {
   const [data, setData] = useState([]);
