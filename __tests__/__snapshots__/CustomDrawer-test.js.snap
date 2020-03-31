@@ -106,6 +106,7 @@ exports[`CustomDrawer renders correctly 1`] = `
               "color": "#232323",
               "fontFamily": "sans-serif-medium",
               "fontSize": 16,
+              "fontWeight": "bold",
               "textAlign": "left",
             }
           }
@@ -146,6 +147,7 @@ exports[`CustomDrawer renders correctly 1`] = `
               "color": "#232323",
               "fontFamily": "sans-serif-medium",
               "fontSize": 16,
+              "fontWeight": "bold",
               "textAlign": "left",
             }
           }
@@ -239,46 +241,6 @@ exports[`CustomDrawer renders correctly 1`] = `
             }
           >
             Check for update
-          </Text>
-          <View
-            style={
-              Object {
-                "borderBottomColor": "black",
-                "borderBottomWidth": 1,
-                "marginBottom": 10,
-                "marginTop": 5,
-              }
-            }
-          />
-        </View>
-        <View
-          accessible={true}
-          focusable={true}
-          isTVSelectable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
-        >
-          <Text
-            style={
-              Object {
-                "color": "#232323",
-                "fontFamily": "sans-serif-medium",
-                "fontSize": 16,
-                "textAlign": "left",
-              }
-            }
-          >
-            Clear lake louise data
           </Text>
           <View
             style={

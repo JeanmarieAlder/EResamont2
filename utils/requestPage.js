@@ -2,7 +2,6 @@ import { AsyncStorage } from "react-native";
 import NetInfo from "@react-native-community/netinfo";
 const eresamontURL = "http://vlheresamont2.hevs.ch/api/v1";
 
-
 export default class requestPage {
   static async checkConnection() {
     console.log("Checking online connection");

@@ -81,6 +81,7 @@ export default function CustomDrawer({ navigation }) {
               <Text style={globalStyles.drawwerTopMenuText}>Home</Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>
+
             <TouchableOpacity onPress={navigationClick("MidataSettings")}>
               <Text style={globalStyles.drawwerTopMenuText}>
                 Midata Settings
@@ -88,6 +89,14 @@ export default function CustomDrawer({ navigation }) {
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>
             <TouchableOpacity onPress={confirmClearDataClick}>
+
+            <TouchableOpacity onPress={checkUpdate} testID={"cd-button-update"}>
+              <Text style={globalStyles.drawwerTopMenuText}>
+                Check for update
+              </Text>
+              <View style={localStyles.topMenuDivider} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => confirmClearScoreClick(100)}>
               <Text style={globalStyles.drawwerTopMenuText}>
                 Clear local storage
               </Text>
