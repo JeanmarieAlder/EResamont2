@@ -63,31 +63,6 @@ export default function CustomDrawer({ navigation }) {
     );
   };
 
-  const confirmClearScoreClick = async idQuizz => {
-    let result = await storage.getQuizScore(idQuizz);
-    if (result) {
-      Alert.alert(
-        "Confirm local score deletion",
-        "Current scores are: " + JSON.stringify(result),
-        [
-          { text: "YES", onPress: () => storage.deleteScoreData(idQuizz) },
-          {
-            text: "NO",
-            style: "cancel"
-          }
-        ],
-        { cancelable: true }
-      );
-    }
-  };
-  const checkInternet = async () => {
-    let connectionInfo = await requestPage.checkConnection();
-    if (connectionInfo && connectionInfo.isInternetReachable) {
-      ToastAndroid.show("Test: Online mode", ToastAndroid.SHORT);
-    } else {
-      ToastAndroid.show("Test: Offline mode", ToastAndroid.SHORT);
-    }
-  };
   return (
     <ImageBackground
       source={require("../assets/images/mountain.jpg")}
@@ -101,23 +76,20 @@ export default function CustomDrawer({ navigation }) {
           >
             <Text style={globalStyles.drawerTitle}>E-Res@mont</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={navigationClick("EResamont")}>
-            <Text style={globalStyles.drawwerTopMenuTextBold}>Home</Text>
-            <View style={localStyles.topMenuDivider} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={navigationClick("MidataSettings")}>
-            <Text style={globalStyles.drawwerTopMenuTextBold}>
-              Midata Settings
-            </Text>
-            <View style={localStyles.topMenuDivider} />
-          </TouchableOpacity>
           <View style={globalStyles.drawerTopMenu}>
-            <TouchableOpacity onPress={confirmClearDataClick}>
+            <TouchableOpacity onPress={navigationClick("EResamont")}>
+              <Text style={globalStyles.drawwerTopMenuText}>Home</Text>
+              <View style={localStyles.topMenuDivider} />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={navigationClick("MidataSettings")}>
               <Text style={globalStyles.drawwerTopMenuText}>
-                Clear local storage
+                Midata Settings
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>
+            <TouchableOpacity onPress={confirmClearDataClick}>
+
             <TouchableOpacity onPress={checkUpdate} testID={"cd-button-update"}>
               <Text style={globalStyles.drawwerTopMenuText}>
                 Check for update
@@ -126,13 +98,13 @@ export default function CustomDrawer({ navigation }) {
             </TouchableOpacity>
             <TouchableOpacity onPress={() => confirmClearScoreClick(100)}>
               <Text style={globalStyles.drawwerTopMenuText}>
-                Clear oxygen data
+                Clear local storage
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => checkInternet()}>
+            <TouchableOpacity onPress={checkUpdate} testID={"cd-button-update"}>
               <Text style={globalStyles.drawwerTopMenuText}>
-                Check internet
+                Check for update
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>
@@ -172,3 +144,12 @@ const localStyles = StyleSheet.create({
     marginBottom: 10
   }
 });
+
+// const checkInternet = async () => {
+//   let connectionInfo = await requestPage.checkConnection();
+//   if (connectionInfo && connectionInfo.isInternetReachable) {
+//     ToastAndroid.show("Test: Online mode", ToastAndroid.SHORT);
+//   } else {
+//     ToastAndroid.show("Test: Offline mode", ToastAndroid.SHORT);
+//   }
+// };

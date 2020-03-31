@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
-import { AsyncStorage, ToastAndroid } from "react-native";
+import { ToastAndroid } from "react-native";
 import * as AppAuth from "expo-app-auth";
+import * as SecureStore from "expo-secure-store";
 import requestGetMidata from "../utils/requestGetMidata";
 
 export const Auth2Context = React.createContext();
 export const useAuth2 = () => useContext(Auth2Context);
 export const Auth2Provider = ({ children }) => {
-  const StorageKey = "@EResamont2:MidataOAuthKey";
+  const StorageKey = "EResamont2MidataOAuthKey";
   const config = {
     issuer: "https://test.midata.coop/fhir/metadata",
     clientId: "eresamont2-test",
@@ -45,7 +46,7 @@ export const Auth2Provider = ({ children }) => {
         token: accessToken,
         isClientIdProvided: true
       });
-      await AsyncStorage.removeItem(StorageKey);
+      await SecureStore.deleteItemAsync(StorageKey);
       console.log("sign out completed");
       ToastAndroid.show("Sign out completed", ToastAndroid.SHORT);
       setAuthState(null);
@@ -56,11 +57,14 @@ export const Auth2Provider = ({ children }) => {
   };
 
   const cacheAuthAsync = async authState => {
-    return await AsyncStorage.setItem(StorageKey, JSON.stringify(authState));
+    return await SecureStore.setItemAsync(
+      StorageKey,
+      JSON.stringify(authState)
+    );
   };
 
   const getCachedAuthAsync = async () => {
-    let value = await AsyncStorage.getItem(StorageKey);
+    let value = await SecureStore.getItemAsync(StorageKey);
     let authState = JSON.parse(value);
     console.log("getCachedAuthAsync", authState);
     if (authState) {

@@ -7,7 +7,8 @@ import {
   ScrollView,
   ActivityIndicator,
   Alert,
-  ToastAndroid
+  ToastAndroid,
+  TouchableOpacity
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import { LanguageContext } from "../shared/LanguageContext";
@@ -107,21 +108,29 @@ export default function MyData({ navigation }) {
         <ButtonView
           value={"Share my data"}
           onPress={() => sendToServer()}
-          style={{ ...globalStyles.midataButton, backgroundColor: "darkblue" }}
+          style={{
+            ...globalStyles.midataButton,
+            backgroundColor: "darkblue",
+            marginBottom: 10
+          }}
         />
-        <Text>Your results:</Text>
+        <Text style={{ fontWeight: "bold", fontSize: 25 }}>Your results:</Text>
+
         <ScrollView contentContainerStyle={localStyles.scrollView}>
           <Text style={localStyles.sectionTitle} key={"lake-louise-title"}>
             Lake louise:
           </Text>
           {lakeLouiseScores ? (
             lakeLouiseScores.map(item => (
-              <ButtonView
+              <TouchableOpacity
                 key={item.authored}
-                value={jsonFhirConverter.jsonFhirToStringSimplified(item)}
                 onPress={() => openScorePopup(item)}
-                style={globalStyles.button}
-              />
+              >
+                <Text style={globalStyles.drawwerTopMenuText}>
+                  {jsonFhirConverter.jsonFhirToStringSimplified(item)}
+                </Text>
+                <View style={localStyles.topMenuDivider} />
+              </TouchableOpacity>
             ))
           ) : (
             <View style={localStyles.loaderViewMain}>
@@ -154,6 +163,13 @@ const localStyles = StyleSheet.create({
   },
   scrollView: {
     flexGrow: 1,
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
+    marginTop: 10
+  },
+  topMenuDivider: {
+    borderBottomColor: "black",
+    borderBottomWidth: 1,
+    marginTop: 5,
+    marginBottom: 10
   }
 });
