@@ -102,13 +102,6 @@ export default function CustomDrawer({ navigation }) {
               </Text>
               <View style={localStyles.topMenuDivider} />
             </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => confirmClearScoreClick(100)}>
-              <Text style={globalStyles.drawwerTopMenuText}>
-                Clear local storage
-              </Text>
-              <View style={localStyles.topMenuDivider} />
-            </TouchableOpacity>
           </View>
         </View>
         <View style={globalStyles.drawerButtons}>
