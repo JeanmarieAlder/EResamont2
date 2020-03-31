@@ -6,7 +6,7 @@
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": ["ios", "android", "web"],
-    "version": "1.0.1",
+    "version": "2.0.2",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -21,12 +21,12 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "ch.hevs.eresamont2stacks",
-      "buildNumber": "1.0.1"
+      "bundleIdentifier": "ch.hevs.eresamont2",
+      "buildNumber": "2.0.2"
     },
     "android": {
-      "package": "ch.hevs.eresamont2stacks",
-      "versionCode": 2
+      "package": "ch.hevs.eresamont2",
+      "versionCode": 3
     }
   }
 }
