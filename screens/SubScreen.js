@@ -5,7 +5,8 @@ import {
   ScrollView,
   Text,
   Dimensions,
-  ImageBackground
+  ImageBackground,
+  Platform
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import { WebView } from "react-native-webview";
@@ -39,7 +40,9 @@ export default function SubScreen({ navigation }) {
     }
     return result;
   };
-
+  let forIOS = (Platform.OS = "ios"
+    ? '<meta name="viewport" content="width=device-width, initial-scale=1, max-scale=1">'
+    : "");
   let generateJavaScript = id => {
     let generatedJS =
       'var allRadioButtons = document.querySelectorAll(".form-check-input"); for (var i = 0; i < allRadioButtons.length; i++) {allRadioButtons[i].style.height = "65px"; allRadioButtons[i].style.width = "65px"};';
@@ -77,10 +80,12 @@ export default function SubScreen({ navigation }) {
               tab.pages_lang[
                 utilities.findLanguageIndex(tab.pages_lang, language)
               ].text === ""
-                ? tab.pages_lang[
+                ? forIOS +
+                  tab.pages_lang[
                     utilities.findLanguageIndex(tab.pages_lang, language)
                   ].plaintext
-                : tab.pages_lang[
+                : forIOS +
+                  tab.pages_lang[
                     utilities.findLanguageIndex(tab.pages_lang, language)
                   ].text
           }}
@@ -113,10 +118,12 @@ export default function SubScreen({ navigation }) {
                 tab.pages_lang[
                   utilities.findLanguageIndex(tab.pages_lang, language)
                 ].text === ""
-                  ? tab.pages_lang[
+                  ? forIOS +
+                    tab.pages_lang[
                       utilities.findLanguageIndex(tab.pages_lang, language)
                     ].plaintext.replace(/(\r\n|\n|\r)/gm, " ")
-                  : tab.pages_lang[
+                  : forIOS +
+                    tab.pages_lang[
                       utilities.findLanguageIndex(tab.pages_lang, language)
                     ].text.replace(/(\r\n|\n|\r)/gm, " ")
             }}

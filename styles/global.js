@@ -1,8 +1,9 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 // const themeColorPrimary = "#3f51b5";
 const themeColorPrimary = "#232323";
 const themeColorSecondary = "#ffffff";
-const globalFont = "sans-serif-medium";
+const globalFont =
+  Platform.OS === "ios" ? "EuphemiaUCAS-Bold" : "sans-serif-medium";
 
 const buttonTheme = {
   marginTop: 10,
