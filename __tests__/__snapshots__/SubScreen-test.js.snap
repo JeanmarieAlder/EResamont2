@@ -36,7 +36,7 @@ exports[`SubScreen - Render no child in English 1`] = `
       onShouldStartLoadWithRequest={[Function]}
       source={
         Object {
-          "html": "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> English page</p>",
+          "html": "<meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1, max-scale=1\\"><p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> English page</p>",
         }
       }
       style={
@@ -98,7 +98,7 @@ exports[`SubScreen - Render no child in Italian 1`] = `
       onShouldStartLoadWithRequest={[Function]}
       source={
         Object {
-          "html": "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> Italian page</p>",
+          "html": "<meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1, max-scale=1\\"><p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> Italian page</p>",
         }
       }
       style={
@@ -160,7 +160,7 @@ exports[`SubScreen - Render no child with plaintext 1`] = `
       onShouldStartLoadWithRequest={[Function]}
       source={
         Object {
-          "html": "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> French page</p>",
+          "html": "<meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1, max-scale=1\\"><p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> French page</p>",
         }
       }
       style={
@@ -222,7 +222,7 @@ exports[`SubScreen - Render no child with text 1`] = `
       onShouldStartLoadWithRequest={[Function]}
       source={
         Object {
-          "html": "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> French page</p>",
+          "html": "<meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1, max-scale=1\\"><p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> French page</p>",
         }
       }
       style={
@@ -325,7 +325,7 @@ exports[`SubScreen - Render with children and no text 1`] = `
             style={
               Object {
                 "color": "#ffffff",
-                "fontFamily": "sans-serif-medium",
+                "fontFamily": "EuphemiaUCAS-Bold",
                 "textAlign": "center",
                 "textAlignVertical": "center",
               }
@@ -364,7 +364,7 @@ exports[`SubScreen - Render with children and no text 1`] = `
             style={
               Object {
                 "color": "#ffffff",
-                "fontFamily": "sans-serif-medium",
+                "fontFamily": "EuphemiaUCAS-Bold",
                 "textAlign": "center",
                 "textAlignVertical": "center",
               }
@@ -403,7 +403,7 @@ exports[`SubScreen - Render with children and no text 1`] = `
             style={
               Object {
                 "color": "#ffffff",
-                "fontFamily": "sans-serif-medium",
+                "fontFamily": "EuphemiaUCAS-Bold",
                 "textAlign": "center",
                 "textAlignVertical": "center",
               }
@@ -442,7 +442,7 @@ exports[`SubScreen - Render with children and no text 1`] = `
             style={
               Object {
                 "color": "#ffffff",
-                "fontFamily": "sans-serif-medium",
+                "fontFamily": "EuphemiaUCAS-Bold",
                 "textAlign": "center",
                 "textAlignVertical": "center",
               }
@@ -519,7 +519,7 @@ exports[`SubScreen - Render with children and text 1`] = `
         onShouldStartLoadWithRequest={[Function]}
         source={
           Object {
-            "html": "<p>Text in French.  Also it's located in plaintext field.</p>",
+            "html": "<meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1, max-scale=1\\"><p>Text in French.  Also it's located in plaintext field.</p>",
           }
         }
         style={
@@ -581,7 +581,7 @@ exports[`SubScreen - Render with children and text 1`] = `
           style={
             Object {
               "color": "#ffffff",
-              "fontFamily": "sans-serif-medium",
+              "fontFamily": "EuphemiaUCAS-Bold",
               "textAlign": "center",
               "textAlignVertical": "center",
             }
@@ -620,7 +620,7 @@ exports[`SubScreen - Render with children and text 1`] = `
           style={
             Object {
               "color": "#ffffff",
-              "fontFamily": "sans-serif-medium",
+              "fontFamily": "EuphemiaUCAS-Bold",
               "textAlign": "center",
               "textAlignVertical": "center",
             }
@@ -659,7 +659,7 @@ exports[`SubScreen - Render with children and text 1`] = `
           style={
             Object {
               "color": "#ffffff",
-              "fontFamily": "sans-serif-medium",
+              "fontFamily": "EuphemiaUCAS-Bold",
               "textAlign": "center",
               "textAlignVertical": "center",
             }
@@ -698,7 +698,7 @@ exports[`SubScreen - Render with children and text 1`] = `
           style={
             Object {
               "color": "#ffffff",
-              "fontFamily": "sans-serif-medium",
+              "fontFamily": "EuphemiaUCAS-Bold",
               "textAlign": "center",
               "textAlignVertical": "center",
             }
@@ -748,7 +748,7 @@ exports[`SubScreen generates correct quiz javascript with id 95 1`] = `
       onShouldStartLoadWithRequest={[Function]}
       source={
         Object {
-          "html": "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> Itailan page</p>",
+          "html": "<meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1, max-scale=1\\"><p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> Itailan page</p>",
         }
       }
       style={
@@ -797,7 +797,7 @@ exports[`SubScreen generates correct quiz javascript with id 100 1`] = `
   >
     <RNCWebView
       cacheEnabled={true}
-      injectedJavaScript="var allRadioButtons = document.querySelectorAll(\\".form-check-input\\"); for (var i = 0; i < allRadioButtons.length; i++) {allRadioButtons[i].style.height = \\"65px\\"; allRadioButtons[i].style.width = \\"65px\\"};document.getElementById(\\"send_button\\").addEventListener(\\"click\\", function() {window.ReactNativeWebView.postMessage(document.getElementById(\\"scoreId\\").innerHTML);})"
+      injectedJavaScript="var allRadioButtons = document.querySelectorAll(\\".form-check-input\\"); for (var i = 0; i < allRadioButtons.length; i++) {allRadioButtons[i].style.height = \\"65px\\"; allRadioButtons[i].style.width = \\"65px\\"};document.getElementById(\\"send_button\\").addEventListener(\\"click\\", function() {let resultTab = [];resultTab.push(getRadioValue(\\"altitude\\"));resultTab.push(getRadioValue(\\"saturation\\"));resultTab.push(parseInt(document.getElementById(\\"scoreId\\").innerHTML));window.ReactNativeWebView.postMessage(JSON.stringify(resultTab));})"
       javaScriptEnabled={true}
       messagingEnabled={true}
       onContentProcessDidTerminate={[Function]}
@@ -810,7 +810,7 @@ exports[`SubScreen generates correct quiz javascript with id 100 1`] = `
       onShouldStartLoadWithRequest={[Function]}
       source={
         Object {
-          "html": "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> Itailan page</p>",
+          "html": "<meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1, max-scale=1\\"><p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> Itailan page</p>",
         }
       }
       style={
@@ -872,7 +872,7 @@ exports[`TODO: SubScreen - Render no child in German 1`] = `
       onShouldStartLoadWithRequest={[Function]}
       source={
         Object {
-          "html": "<p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> French page</p>",
+          "html": "<meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1, max-scale=1\\"><p><b>ALTIDOC - Téléconsultation et médecine de montagne</b> French page</p>",
         }
       }
       style={
