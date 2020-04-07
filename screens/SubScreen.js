@@ -60,7 +60,11 @@ export default function SubScreen({ navigation }) {
         break;
       case 100:
         generatedJS +=
-          'document.getElementById("send_button").addEventListener("click", function() {window.ReactNativeWebView.postMessage(document.getElementById("scoreId").innerHTML);})';
+          'document.getElementById("send_button").addEventListener("click", function() {let resultTab = [];' +
+          'resultTab.push(getRadioValue("altitude"));' +
+          'resultTab.push(getRadioValue("saturation"));' +
+          'resultTab.push(parseInt(document.getElementById("scoreId").innerHTML));' +
+          "window.ReactNativeWebView.postMessage(JSON.stringify(resultTab));})";
         break;
       default:
         //no javascript injection for nonquizz pages

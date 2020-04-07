@@ -99,5 +99,14 @@ export const globalStyles = StyleSheet.create({
     textAlignVertical: "center",
     textAlign: "center",
     fontFamily: globalFont
+  },
+  topMenuDivider: {
+    borderBottomColor: "black",
+    borderBottomWidth: 1,
+    marginTop: 5,
+    marginBottom: 10
+  },
+  mapContainer: {
+    flexGrow: 1
   }
 });

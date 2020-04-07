@@ -16,7 +16,6 @@ import { LoadingContext } from "../shared/LoadingContext";
 import utilities from "../utils/utilities";
 import storage from "../utils/storage";
 import ButtonView from "../components/ButtonView";
-import { useAuth2 } from "../shared/LoginMidataContext";
 import _ from "lodash";
 export default function Home({ navigation }) {
   const [data, setData] = useState([]);
@@ -95,6 +94,19 @@ export default function Home({ navigation }) {
       style={globalStyles.mountainBackgroundImage}
     >
       <View style={{ flex: 1 }}>
+        <View style={localStyles.containerTopButtons}>
+          <ButtonView
+            value={"Emergency call"}
+            onPress={() => navigation.push("EmergencyCalls")}
+            style={localStyles.topButton}
+          ></ButtonView>
+          <ButtonView
+            value={"GPS"}
+            onPress={() => navigation.push("Geolocation")}
+            style={localStyles.topButton}
+          ></ButtonView>
+        </View>
+
         <View style={localStyles.logo}>
           <Image
             source={require("../assets/images/logo_eresamont.png")}
@@ -151,5 +163,18 @@ const localStyles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center"
   },
-  loaderViewMain: { flex: 1, alignItems: "center", justifyContent: "center" }
+  loaderViewMain: { flex: 1, alignItems: "center", justifyContent: "center" },
+  containerTopButtons: {
+    flexDirection: "row",
+    borderColor: "red",
+    borderStyle: "solid"
+  },
+  topButton: {
+    borderRadius: 10,
+    backgroundColor: "grey",
+    width: "50%",
+    height: 30,
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });

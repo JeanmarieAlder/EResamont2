@@ -6,6 +6,8 @@ import Home from "../screens/Home";
 import SubScreen from "../screens/SubScreen";
 import { globalStyles } from "../styles/global";
 import utilities from "../utils/utilities";
+import EmergencyCalls from "../screens/EmergencyCalls";
+import Geolocation from "../screens/Geolocation";
 
 const screens = {
   Home: {
@@ -24,6 +26,24 @@ const screens = {
         headerTitle: () => (
           <Header title={navParams.pages_lang} navigation={navigation} />
         )
+      };
+    }
+  },
+  EmergencyCalls: {
+    screen: EmergencyCalls,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: () => (
+          <Header title="Emergency calls" navigation={navigation} />
+        )
+      };
+    }
+  },
+  Geolocation: {
+    screen: Geolocation,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: () => <Header title="GPS" navigation={navigation} />
       };
     }
   }

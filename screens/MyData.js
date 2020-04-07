@@ -22,6 +22,7 @@ export default function MyData({ navigation }) {
   const { language, setLanguage } = useContext(LanguageContext);
   const { authState, signInAsync } = useAuth2();
   const [lakeLouiseScores, setLakeLouiseScores] = useState(null);
+  const [oxygenScores, setOxygenScores] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -30,11 +31,14 @@ export default function MyData({ navigation }) {
   let fetchData = async () => {
     let lakeLouiseScore = await storage.getQuizScore(95);
     setLakeLouiseScores(lakeLouiseScore);
+
+    let oxygenScore = await storage.getQuizScore(100);
+    setOxygenScores(oxygenScore);
   };
 
-  let openScorePopup = scoreObject => {
+  let openScorePopup = (quizzName, scoreObject) => {
     Alert.alert(
-      "Lake louise score",
+      quizzName,
       JSON.stringify(scoreObject),
       [
         {
@@ -87,11 +91,23 @@ export default function MyData({ navigation }) {
               console.log(response);
             }
           });
-          ToastAndroid.show(
-            "Data sent to server successfully",
-            ToastAndroid.SHORT
-          );
         }
+        if (oxygenScores) {
+          oxygenScores.forEach(async item => {
+            if (!item.sentToServer) {
+              console.log(" send to server: " + JSON.stringify(item));
+              let response = await requestPostMidata(
+                "https://test.midata.coop/fhir/QuestionnaireResponse/",
+                authState,
+                signInAsync,
+                item
+              );
+              console.log("Server response: ");
+              console.log(response);
+            }
+          });
+        }
+        ToastAndroid.show("Sending data to server", ToastAndroid.SHORT);
       } catch (error) {
         ToastAndroid.show("Please log in and try again", ToastAndroid.LONG);
         signInAsync();
@@ -118,25 +134,53 @@ export default function MyData({ navigation }) {
 
         <ScrollView contentContainerStyle={localStyles.scrollView}>
           <Text style={localStyles.sectionTitle} key={"lake-louise-title"}>
-            Lake louise:
+            Lake Louise Quizz:
           </Text>
-          {lakeLouiseScores ? (
-            lakeLouiseScores.map(item => (
-              <TouchableOpacity
-                key={item.authored}
-                onPress={() => openScorePopup(item)}
-              >
-                <Text style={globalStyles.drawwerTopMenuText}>
-                  {jsonFhirConverter.jsonFhirToStringSimplified(item)}
-                </Text>
-                <View style={localStyles.topMenuDivider} />
-              </TouchableOpacity>
-            ))
-          ) : (
-            <View style={localStyles.loaderViewMain}>
-              <ActivityIndicator size="large" color="black" />
-            </View>
-          )}
+          <View style={localStyles.scoresContainer}>
+            {lakeLouiseScores ? (
+              lakeLouiseScores.map(item => (
+                <TouchableOpacity
+                  key={item.authored}
+                  onPress={() => openScorePopup("Lake Louise Quizz", item)}
+                >
+                  <Text style={globalStyles.drawwerTopMenuText}>
+                    {jsonFhirConverter.jsonFhirToStringSimplified(95, item)}
+                  </Text>
+                  <View style={localStyles.topMenuDivider} />
+                </TouchableOpacity>
+              ))
+            ) : (
+              <View style={localStyles.loaderViewMain}>
+                <ActivityIndicator size="large" color="black" />
+              </View>
+            )}
+          </View>
+
+          <View style={localStyles.bigMenuDivider} />
+          <Text style={localStyles.sectionTitle} key={"oxygen-title"}>
+            Oxygen Saturation Algorithm:
+          </Text>
+          <View style={localStyles.scoresContainer}>
+            {oxygenScores ? (
+              oxygenScores.map(item => (
+                <TouchableOpacity
+                  key={item.authored}
+                  onPress={() =>
+                    openScorePopup("Oxygen Saturation Algorithm", item)
+                  }
+                >
+                  <Text style={globalStyles.drawwerTopMenuText}>
+                    {jsonFhirConverter.jsonFhirToStringSimplified(100, item)}
+                  </Text>
+                  <View style={localStyles.topMenuDivider} />
+                </TouchableOpacity>
+              ))
+            ) : (
+              <View style={localStyles.loaderViewMain}>
+                <ActivityIndicator size="large" color="black" />
+              </View>
+            )}
+          </View>
         </ScrollView>
         <ButtonView
           value={"Delete my data"}
@@ -171,5 +215,12 @@ const localStyles = StyleSheet.create({
     borderBottomWidth: 1,
     marginTop: 5,
     marginBottom: 10
+  },
+  bigMenuDivider: {
+    borderBottomColor: "black",
+    borderBottomWidth: 10
+  },
+  scoresContainer: {
+    padding: 10
   }
 });

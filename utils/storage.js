@@ -109,9 +109,23 @@ export default class storage {
     console.log("Saving " + fileName);
     console.log(score);
 
-    let scoreObject = jsonFhirConverter.createLakeLouiseQuestionnaireResponse(
-      score
-    );
+    let scoreObject;
+    switch (idQuizz) {
+      case 95:
+        scoreObject = jsonFhirConverter.createLakeLouiseQuestionnaireResponse(
+          score
+        );
+        break;
+      case 100:
+        scoreObject = jsonFhirConverter.createOxygenQuestionnaireResponse(
+          score
+        );
+        break;
+      default:
+        scoreObject = [];
+        break;
+    }
+
     let currentScores = [];
     let currentScoresObject = [];
     currentScores = await this.getQuizScore(idQuizz);

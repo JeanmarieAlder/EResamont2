@@ -16,7 +16,9 @@ export default function Header({ title, navigation }) {
       title == "Home" ||
       title == "test title" ||
       title == "Midata Settings" ||
-      title == "My Data"
+      title == "My Data" ||
+      title == "Emergency calls" ||
+      title == "GPS"
     ) {
       return title;
     } else {
