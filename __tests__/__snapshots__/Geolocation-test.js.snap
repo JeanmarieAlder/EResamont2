@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Geolocation screen should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={false}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#232323",
+        "borderRadius": 10,
+        "height": 40,
+        "justifyContent": "center",
+        "marginTop": 10,
+        "opacity": 1,
+        "padding": 10,
+        "width": "100%",
+      }
+    }
+    testID="button-view-Get location"
+  >
+    <Text
+      style={
+        Object {
+          "color": "#ffffff",
+          "fontFamily": "EuphemiaUCAS-Bold",
+          "textAlign": "center",
+          "textAlignVertical": "center",
+        }
+      }
+    >
+      Get location
+    </Text>
+  </View>
+  <View>
+    <Text>
+      Allow this app to use your location by clicking on "Get location".
+    </Text>
+  </View>
+</View>
+`;

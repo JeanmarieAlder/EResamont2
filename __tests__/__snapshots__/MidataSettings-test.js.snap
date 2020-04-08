@@ -1,0 +1,330 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MidataSettings Renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "padding": 20,
+    }
+  }
+>
+  <Image
+    source={1}
+    style={
+      Object {
+        "alignSelf": "center",
+        "resizeMode": "contain",
+        "width": "100%",
+      }
+    }
+  />
+  <Text>
+    Midata is a citizen owned, non-profit and secure platform to share medical data for medical research. You decide the data you want to share, researchers will use them to create new treatments for everyone.
+  </Text>
+  <Text
+    style={
+      Object {
+        "alignSelf": "center",
+        "fontSize": 15,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    Sign in to use Midata
+  </Text>
+  <View
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <RCTScrollView
+      contentContainerStyle={
+        Object {
+          "alignItems": "center",
+          "flexGrow": 1,
+          "justifyContent": "flex-start",
+        }
+      }
+    >
+      <View>
+        <View
+          accessible={true}
+          focusable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "darkblue",
+              "borderRadius": 10,
+              "height": 40,
+              "justifyContent": "center",
+              "marginTop": 10,
+              "opacity": 1,
+              "padding": 10,
+              "width": "100%",
+            }
+          }
+          testID="button-view-Log in / Sign up"
+        >
+          <Text
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "EuphemiaUCAS-Bold",
+                "textAlign": "center",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Log in / Sign up
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "darkblue",
+              "borderRadius": 10,
+              "height": 40,
+              "justifyContent": "center",
+              "marginTop": 10,
+              "opacity": 1,
+              "padding": 10,
+              "width": "100%",
+            }
+          }
+          testID="button-view-My data"
+        >
+          <Text
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "EuphemiaUCAS-Bold",
+                "textAlign": "center",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            My data
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "darkblue",
+              "borderRadius": 10,
+              "height": 40,
+              "justifyContent": "center",
+              "marginTop": 10,
+              "opacity": 1,
+              "padding": 10,
+              "width": "100%",
+            }
+          }
+          testID="button-view-Clear local lake louise data (debug)"
+        >
+          <Text
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "EuphemiaUCAS-Bold",
+                "textAlign": "center",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Clear local lake louise data (debug)
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "darkblue",
+              "borderRadius": 10,
+              "height": 40,
+              "justifyContent": "center",
+              "marginTop": 10,
+              "opacity": 1,
+              "padding": 10,
+              "width": "100%",
+            }
+          }
+          testID="button-view-Clear local oxygen data (debug)"
+        >
+          <Text
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "EuphemiaUCAS-Bold",
+                "textAlign": "center",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Clear local oxygen data (debug)
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "darkblue",
+              "borderRadius": 10,
+              "height": 40,
+              "justifyContent": "center",
+              "marginTop": 10,
+              "opacity": 1,
+              "padding": 10,
+              "width": "100%",
+            }
+          }
+          testID="button-view-Login status (debug console)"
+        >
+          <Text
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "EuphemiaUCAS-Bold",
+                "textAlign": "center",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Login status (debug console)
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "darkblue",
+              "borderRadius": 10,
+              "height": 40,
+              "justifyContent": "center",
+              "marginTop": 10,
+              "opacity": 1,
+              "padding": 10,
+              "width": "100%",
+            }
+          }
+          testID="button-view-Get my posted data (debug)"
+        >
+          <Text
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "EuphemiaUCAS-Bold",
+                "textAlign": "center",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Get my posted data (debug)
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          focusable={true}
+          isTVSelectable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "grey",
+              "borderRadius": 10,
+              "height": 40,
+              "justifyContent": "center",
+              "marginTop": 10,
+              "opacity": 1,
+              "padding": 10,
+              "width": "100%",
+            }
+          }
+          testID="button-view-Sign out"
+        >
+          <Text
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "EuphemiaUCAS-Bold",
+                "textAlign": "center",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Sign out
+          </Text>
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+</View>
+`;

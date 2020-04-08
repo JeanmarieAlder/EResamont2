@@ -13,10 +13,10 @@ let navigateCalled = false;
 let language = 1;
 let loading = true;
 
-let setLanguage = newLanguage => {
+let setLanguage = (newLanguage) => {
   language = newLanguage;
 };
-let setLoading = newLoading => {
+let setLoading = (newLoading) => {
   loading = newLoading;
 };
 let navigation = {
@@ -29,7 +29,7 @@ let navigation = {
   navigate: () => {
     console.log("navigate called");
     navigateCalled = true;
-  }
+  },
 };
 
 ToastAndroid.show = jest.fn();
@@ -129,6 +129,20 @@ describe("CustomDrawer", () => {
     const element = getByTestId("button-view-Français");
     fireEvent.press(element);
     expect(language).toEqual(1);
+  });
+
+  it("changes language to german (not implemented yet)", () => {
+    alert = jest.fn();
+    const { getByTestId } = render(
+      <LoadingContext.Provider value={{ loading }}>
+        <LanguageContext.Provider value={{ language, setLanguage }}>
+          <CustomDrawer navigation={navigation} />
+        </LanguageContext.Provider>
+      </LoadingContext.Provider>
+    );
+    const element = getByTestId("button-view-Deutsch");
+    fireEvent.press(element);
+    expect(alert).toHaveBeenCalledTimes(1);
   });
 
   it("goes to home page after", () => {

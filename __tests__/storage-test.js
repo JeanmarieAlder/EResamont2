@@ -18,6 +18,7 @@ FileSystem.writeAsStringAsync = jest.fn();
 FileSystem.deleteAsync = jest.fn();
 
 console.error = jest.fn();
+jest.mock("../utils/jsonFhirConverter");
 
 describe("storage", () => {
   beforeEach(() => {
@@ -76,7 +77,7 @@ describe("storage", () => {
     it("should throw an exception if data is not an array", async () => {
       await storage.updateStoragePages({
         title: "test",
-        text: "test text"
+        text: "test text",
       });
       expect(console.error).toHaveBeenCalledTimes(1);
     });
@@ -112,39 +113,51 @@ describe("storage", () => {
   });
 
   describe("saveQuizScore", () => {
+    it("should save score (quiz 95)", async () => {
+      storage.getQuizScore = jest.fn(() => {
+        return [{ score: 1 }, { score: 2 }];
+      });
+      await storage.saveQuizScore(95);
+      expect(storage.getQuizScore).toHaveBeenCalledTimes(1);
+      expect(FileSystem.writeAsStringAsync).toHaveBeenCalledTimes(1);
+    });
+    it("should save an empty string in the defalut file (quiz 999)", async () => {
+      storage.getQuizScore = jest.fn(() => {
+        return [{ score: 1 }, { score: 2 }];
+      });
+      await storage.saveQuizScore(999);
+      expect(storage.getQuizScore).toHaveBeenCalledTimes(1);
+      expect(FileSystem.writeAsStringAsync).toHaveBeenCalledTimes(1);
+    });
     it("should save score (quiz 100)", async () => {
       storage.getQuizScore = jest.fn(() => {
         return [{ score: 1 }, { score: 2 }];
       });
-      //await storage.saveQuizScore(100);
-      //TODO: refractor after oxygen quizz done
-      //expect(storage.getQuizScore).toHaveBeenCalledTimes(1);
-      //expect(FileSystem.writeAsStringAsync).toHaveBeenCalledTimes(1);
+      await storage.saveQuizScore(100);
+      expect(storage.getQuizScore).toHaveBeenCalledTimes(1);
+      expect(FileSystem.writeAsStringAsync).toHaveBeenCalledTimes(1);
     });
     it("should handle empty string in currentScores (quiz 100)", async () => {
       storage.getQuizScore = jest.fn(() => {
         return "";
       });
-      //await storage.saveQuizScore(100);
-      //TODO: refractor after oxygen quizz done
-      //expect(storage.getQuizScore).toHaveBeenCalledTimes(1);
-      //expect(FileSystem.writeAsStringAsync).toHaveBeenCalledTimes(1);
+      await storage.saveQuizScore(100);
+      expect(storage.getQuizScore).toHaveBeenCalledTimes(1);
+      expect(FileSystem.writeAsStringAsync).toHaveBeenCalledTimes(1);
     });
     it("should throw exception if score data is invalid", async () => {
       FileSystem.writeAsStringAsync = jest.fn(() => {
         throw exception;
       });
-      //await storage.saveQuizScore(100);
-      //TODO: refractor after oxygen quizz done
-      //expect(console.error).toHaveBeenCalledTimes(1);
+      await storage.saveQuizScore(100);
+      expect(console.error).toHaveBeenCalledTimes(1);
     });
     it("should not execute if statement if currentscore is null", async () => {
       storage.getQuizScore = jest.fn(() => {
         return null;
       });
-      //await storage.saveQuizScore(100);
-      //TODO: refractor after oxygen quizz done
-      //expect(FileSystem.writeAsStringAsync).toHaveBeenCalledTimes(0);
+      await storage.saveQuizScore(100);
+      expect(FileSystem.writeAsStringAsync).toHaveBeenCalledTimes(0);
     });
   });
 

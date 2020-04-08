@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ToastAndroid } from "react-native";
 import { globalStyles } from "../styles/global";
 import { WebView } from "react-native-webview";
 
@@ -17,9 +17,7 @@ export default function Geolocation({ navigation }) {
   let getGeolocationAsync = async () => {
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== "granted") {
-      this.setState({
-        errorMessage: "Permission to access location was denied"
-      });
+      ToastAndroid.show("Permission denied", ToastAndroid.SHORT);
     }
 
     let location = await Location.getCurrentPositionAsync({});
@@ -42,7 +40,7 @@ export default function Geolocation({ navigation }) {
           <View style={globalStyles.mapContainer}>
             <WebView
               source={{
-                uri: `https://www.google.com/maps/place/${location.coords.latitude},%20${location.coords.longitude}`
+                uri: `https://www.google.com/maps/place/${location.coords.latitude},%20${location.coords.longitude}`,
               }}
             ></WebView>
           </View>
@@ -60,6 +58,6 @@ export default function Geolocation({ navigation }) {
 
 const localStyles = StyleSheet.create({
   topContainer: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
