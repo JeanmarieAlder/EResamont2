@@ -7,8 +7,7 @@ import {
   ToastAndroid,
   Alert,
   ScrollView,
-  ImageBackground,
-  StatusBar
+  ImageBackground
 } from "react-native";
 import { globalStyles, themeColorSecondary } from "../styles/global";
 import { LanguageContext } from "../shared/LanguageContext";
@@ -47,10 +46,6 @@ export default function MidataSettings({ navigation }) {
       source={require("../assets/images/mountain.jpg")}
       style={globalStyles.mountainBackgroundImage}
     >
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor={themeColorSecondary}
-      />
       <View style={globalStyles.container}>
         <Image
           source={require("../assets/images/logo_midata.png")}

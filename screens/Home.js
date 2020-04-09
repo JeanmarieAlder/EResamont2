@@ -7,8 +7,7 @@ import {
   Image,
   ActivityIndicator,
   ImageBackground,
-  ToastAndroid,
-  StatusBar
+  ToastAndroid
 } from "react-native";
 import { globalStyles, themeColorSecondary } from "../styles/global";
 import requestPage from "../utils/requestPage";
@@ -95,10 +94,6 @@ export default function Home({ navigation }) {
       source={require("../assets/images/mountain.jpg")}
       style={globalStyles.mountainBackgroundImage}
     >
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor={themeColorSecondary}
-      />
       <View style={{ flex: 1 }}>
         <View style={localStyles.logo}>
           <Image

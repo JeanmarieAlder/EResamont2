@@ -6,8 +6,7 @@ import {
   Text,
   Dimensions,
   ImageBackground,
-  Platform,
-  StatusBar
+  Platform
 } from "react-native";
 import { globalStyles, themeColorSecondary } from "../styles/global";
 import { WebView } from "react-native-webview";
@@ -79,10 +78,6 @@ export default function SubScreen({ navigation }) {
     //LEAF
     return (
       <View style={localStyles.leafView}>
-        <StatusBar
-          barStyle="dark-content"
-          backgroundColor={themeColorSecondary}
-        />
         <WebView
           textZoom={270}
           source={{
@@ -120,10 +115,6 @@ export default function SubScreen({ navigation }) {
         source={require("../assets/images/mountain.jpg")}
         style={globalStyles.mountainBackgroundImage}
       >
-        <StatusBar
-          barStyle="dark-content"
-          backgroundColor={themeColorSecondary}
-        />
         <View style={localStyles.sectionViewTop}>
           <WebView
             textZoom={270}
@@ -172,10 +163,6 @@ export default function SubScreen({ navigation }) {
         source={require("../assets/images/mountain.jpg")}
         style={globalStyles.mountainBackgroundImage}
       >
-        <StatusBar
-          barStyle="dark-content"
-          backgroundColor={themeColorSecondary}
-        />
         <View style={localStyles.sectionViewButtonsOnly}>
           <ScrollView
             contentContainerStyle={localStyles.sectionViewButtonsOnlyScrollView}

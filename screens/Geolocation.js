@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, ToastAndroid, StatusBar } from "react-native";
+import { View, Text, StyleSheet, ToastAndroid } from "react-native";
 import { globalStyles, themeColorSecondary } from "../styles/global";
 import { WebView } from "react-native-webview";
 
@@ -27,10 +27,6 @@ export default function Geolocation({ navigation }) {
 
   return (
     <View style={{ flex: 1 }}>
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor={themeColorSecondary}
-      />
       {!geoPermission && (
         <View style={{ marginTop: 20 }}>
           <Text style={{ textAlign: "center" }}>

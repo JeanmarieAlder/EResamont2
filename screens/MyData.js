@@ -9,8 +9,7 @@ import {
   Alert,
   ToastAndroid,
   TouchableOpacity,
-  ImageBackground,
-  StatusBar
+  ImageBackground
 } from "react-native";
 import { globalStyles, themeColorSecondary } from "../styles/global";
 import { LanguageContext } from "../shared/LanguageContext";
@@ -124,10 +123,6 @@ export default function MyData({ navigation }) {
       source={require("../assets/images/mountain.jpg")}
       style={globalStyles.mountainBackgroundImage}
     >
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor={themeColorSecondary}
-      />
       <View style={localStyles.midataContainer}>
         <View style={globalStyles.container}>
           <ButtonView
