@@ -1,16 +1,12 @@
 import React, { useContext } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import { globalStyles } from "../styles/global";
 import { LanguageContext } from "../shared/LanguageContext";
 import utilities from "../utils/utilities";
 
 export default function Header({ title, navigation }) {
-  const { language, setLanguage } = useContext(LanguageContext);
+  const { language } = useContext(LanguageContext);
 
-  const openMenu = () => {
-    navigation.openDrawer();
-  };
   let findTitle = title => {
     if (
       title == "Home" ||
@@ -28,24 +24,19 @@ export default function Header({ title, navigation }) {
 
   return (
     <View style={localStyles.header}>
-      <MaterialIcons
-        name="menu"
-        size={29}
-        onPress={openMenu}
-        style={globalStyles.headerIcon}
-        testID={"header-button-menu"}
-      />
-      <View>
-        <Text style={globalStyles.headerText}>{title && findTitle(title)}</Text>
-      </View>
+      <Text
+        style={{
+          ...globalStyles.headerText
+        }}
+        numberOfLines={2}
+      >
+        {title && findTitle(title)}
+      </Text>
     </View>
   );
 }
-
+let width = Dimensions.get("window").width * 0.55;
+const border = { borderColor: "black", borderStyle: "solid", borderWidth: 0.7 };
 const localStyles = StyleSheet.create({
-  header: {
-    flexDirection: "row"
-    // justifyContent: "flex-end",
-    // flex: 1
-  }
+  header: { height: "100%", width: width }
 });

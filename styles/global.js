@@ -1,8 +1,8 @@
 import { StyleSheet, Platform } from "react-native";
 // const themeColorPrimary = "#3f51b5";
-const themeColorPrimary = "#232323";
-const themeColorSecondary = "#ffffff";
-const globalFont =
+export const themeColorPrimary = "#232323";
+export const themeColorSecondary = "#ffffff";
+export const globalFont =
   Platform.OS === "ios" ? "EuphemiaUCAS-Bold" : "sans-serif-medium";
 
 const buttonTheme = {
@@ -19,9 +19,11 @@ export const globalStyles = StyleSheet.create({
     width: "100%",
     height: "100%"
   },
+  headerLeftStyle: { marginLeft: 12 },
+  headerRightStyle: { flexDirection: "row", marginRight: 12 },
   headerStyle: {
     backgroundColor: themeColorSecondary,
-    height: 75
+    height: 70
   },
   headerText: {
     fontWeight: "bold",
@@ -57,7 +59,7 @@ export const globalStyles = StyleSheet.create({
   drawerTop: {
     flex: 1,
     backgroundColor: "rgba(255,255,255, 0.7)",
-    padding: 5,
+    padding: 10,
     borderRadius: 5,
     borderColor: themeColorPrimary,
     borderStyle: "solid",
@@ -92,7 +94,12 @@ export const globalStyles = StyleSheet.create({
   },
   midataButton: {
     ...buttonTheme,
-    width: "100%"
+    width: "80%"
+  },
+  locationButton: {
+    ...buttonTheme,
+    width: "50%",
+    alignSelf: "center"
   },
   text: {
     color: themeColorSecondary,

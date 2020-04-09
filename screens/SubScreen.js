@@ -6,9 +6,10 @@ import {
   Text,
   Dimensions,
   ImageBackground,
-  Platform
+  Platform,
+  StatusBar
 } from "react-native";
-import { globalStyles } from "../styles/global";
+import { globalStyles, themeColorSecondary } from "../styles/global";
 import { WebView } from "react-native-webview";
 import { LanguageContext } from "../shared/LanguageContext";
 import utilities from "../utils/utilities";
@@ -40,9 +41,10 @@ export default function SubScreen({ navigation }) {
     }
     return result;
   };
-  let forIOS = (Platform.OS = "ios"
-    ? '<meta name="viewport" content="width=device-width, initial-scale=1, max-scale=1">'
-    : "");
+  let forIOS =
+    Platform.OS === "ios"
+      ? '<meta name="viewport" content="width=device-width, initial-scale=1, max-scale=1">'
+      : "";
   let generateJavaScript = id => {
     let generatedJS =
       'var allRadioButtons = document.querySelectorAll(".form-check-input"); for (var i = 0; i < allRadioButtons.length; i++) {allRadioButtons[i].style.height = "65px"; allRadioButtons[i].style.width = "65px"};';
@@ -77,6 +79,10 @@ export default function SubScreen({ navigation }) {
     //LEAF
     return (
       <View style={localStyles.leafView}>
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor={themeColorSecondary}
+        />
         <WebView
           textZoom={270}
           source={{
@@ -114,6 +120,10 @@ export default function SubScreen({ navigation }) {
         source={require("../assets/images/mountain.jpg")}
         style={globalStyles.mountainBackgroundImage}
       >
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor={themeColorSecondary}
+        />
         <View style={localStyles.sectionViewTop}>
           <WebView
             textZoom={270}
@@ -162,6 +172,10 @@ export default function SubScreen({ navigation }) {
         source={require("../assets/images/mountain.jpg")}
         style={globalStyles.mountainBackgroundImage}
       >
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor={themeColorSecondary}
+        />
         <View style={localStyles.sectionViewButtonsOnly}>
           <ScrollView
             contentContainerStyle={localStyles.sectionViewButtonsOnlyScrollView}

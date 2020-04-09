@@ -1,11 +1,12 @@
 import { createStackNavigator } from "react-navigation-stack";
 
-import React, { useContext } from "react";
+import React from "react";
 import Header from "../components/Header";
+import HeaderLeft from "../components/HeaderLeft";
+import HeaderRight from "../components/HeaderRight";
 import Home from "../screens/Home";
 import SubScreen from "../screens/SubScreen";
 import { globalStyles } from "../styles/global";
-import utilities from "../utils/utilities";
 import EmergencyCalls from "../screens/EmergencyCalls";
 import Geolocation from "../screens/Geolocation";
 
@@ -14,7 +15,15 @@ const screens = {
     screen: Home,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: () => <Header title="Home" navigation={navigation} />
+        headerTitle: () => (
+          <Header
+            title="Home"
+            navigation={navigation}
+            style={{ alignContent: "right" }}
+          />
+        ),
+        headerLeft: () => <HeaderLeft navigation={navigation} />,
+        headerRight: () => <HeaderRight navigation={navigation} />
       };
     }
   },
@@ -25,7 +34,9 @@ const screens = {
       return {
         headerTitle: () => (
           <Header title={navParams.pages_lang} navigation={navigation} />
-        )
+        ),
+        headerLeft: () => <HeaderLeft navigation={navigation} />,
+        headerRight: () => <HeaderRight navigation={navigation} />
       };
     }
   },

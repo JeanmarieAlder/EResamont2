@@ -29,7 +29,6 @@ utilities.findLanguageIndex = jest.fn(() => {
 jest.mock("../routes/Drawer", () => "AppNavigator");
 
 describe("Header", () => {
-
   const language = 1; //French
   const setLanguage = newLanguage => {
     this.language = newLanguage;
@@ -50,17 +49,6 @@ describe("Header", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it("opens menu when icon clicked", () => {
-    openDrawerCalled = false;
-    const { getByTestId } = render(
-      <LanguageContext.Provider value={{ language, setLanguage }}>
-        <Header title={"test title"} navigation={navigation} />
-      </LanguageContext.Provider>
-    );
-    const element = getByTestId("header-button-menu");
-    fireEvent.press(element);
-    expect(openDrawerCalled).toBeTruthy();
-  });
   it("finds title language if different from home or test title", () => {
     render(
       <LanguageContext.Provider value={{ language, setLanguage }}>

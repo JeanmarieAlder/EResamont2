@@ -7,15 +7,17 @@ import {
   Image,
   ActivityIndicator,
   ImageBackground,
-  ToastAndroid
+  ToastAndroid,
+  StatusBar
 } from "react-native";
-import { globalStyles } from "../styles/global";
+import { globalStyles, themeColorSecondary } from "../styles/global";
 import requestPage from "../utils/requestPage";
 import { LanguageContext } from "../shared/LanguageContext";
 import { LoadingContext } from "../shared/LoadingContext";
 import utilities from "../utils/utilities";
 import storage from "../utils/storage";
 import ButtonView from "../components/ButtonView";
+
 import _ from "lodash";
 export default function Home({ navigation }) {
   const [data, setData] = useState([]);
@@ -93,20 +95,11 @@ export default function Home({ navigation }) {
       source={require("../assets/images/mountain.jpg")}
       style={globalStyles.mountainBackgroundImage}
     >
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={themeColorSecondary}
+      />
       <View style={{ flex: 1 }}>
-        <View style={localStyles.containerTopButtons}>
-          <ButtonView
-            value={"Emergency call"}
-            onPress={() => navigation.push("EmergencyCalls")}
-            style={localStyles.topButton}
-          ></ButtonView>
-          <ButtonView
-            value={"GPS"}
-            onPress={() => navigation.push("Geolocation")}
-            style={localStyles.topButton}
-          ></ButtonView>
-        </View>
-
         <View style={localStyles.logo}>
           <Image
             source={require("../assets/images/logo_eresamont.png")}

@@ -9,47 +9,29 @@ exports[`Geolocation screen should render correctly 1`] = `
   }
 >
   <View
-    accessible={true}
-    focusable={false}
-    isTVSelectable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "alignItems": "center",
-        "backgroundColor": "#232323",
-        "borderRadius": 10,
-        "height": 40,
-        "justifyContent": "center",
-        "marginTop": 10,
-        "opacity": 1,
-        "padding": 10,
-        "width": "100%",
+        "marginTop": 20,
       }
     }
-    testID="button-view-Get location"
   >
     <Text
       style={
         Object {
-          "color": "#ffffff",
-          "fontFamily": "EuphemiaUCAS-Bold",
           "textAlign": "center",
-          "textAlignVertical": "center",
         }
       }
     >
-      Get location
+      Please turn on location permission
     </Text>
-  </View>
-  <View>
-    <Text>
-      Allow this app to use your location by clicking on "Get location".
+    <Text
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      (App info -&gt; Permission -&gt; Location)
     </Text>
   </View>
 </View>

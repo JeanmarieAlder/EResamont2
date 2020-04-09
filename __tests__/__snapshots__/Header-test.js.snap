@@ -4,25 +4,24 @@ exports[`Header renders correctly 1`] = `
 <View
   style={
     Object {
-      "flexDirection": "row",
+      "height": "100%",
+      "width": 412.50000000000006,
     }
   }
 >
-  <Text />
-  <View>
-    <Text
-      style={
-        Object {
-          "color": "#232323",
-          "fontFamily": "EuphemiaUCAS-Bold",
-          "fontSize": 17,
-          "fontWeight": "bold",
-          "marginLeft": 5,
-        }
+  <Text
+    numberOfLines={2}
+    style={
+      Object {
+        "color": "#232323",
+        "fontFamily": "EuphemiaUCAS-Bold",
+        "fontSize": 17,
+        "fontWeight": "bold",
+        "marginLeft": 5,
       }
-    >
-      test title
-    </Text>
-  </View>
+    }
+  >
+    test title
+  </Text>
 </View>
 `;

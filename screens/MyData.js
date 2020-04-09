@@ -8,9 +8,11 @@ import {
   ActivityIndicator,
   Alert,
   ToastAndroid,
-  TouchableOpacity
+  TouchableOpacity,
+  ImageBackground,
+  StatusBar
 } from "react-native";
-import { globalStyles } from "../styles/global";
+import { globalStyles, themeColorSecondary } from "../styles/global";
 import { LanguageContext } from "../shared/LanguageContext";
 import ButtonView from "../components/ButtonView";
 import { useAuth2 } from "../shared/LoginMidataContext";
@@ -25,13 +27,12 @@ export default function MyData({ navigation }) {
   const [oxygenScores, setOxygenScores] = useState(null);
 
   useEffect(() => {
-    fetchData();
+    fetchMyData();
   }, []);
 
-  let fetchData = async () => {
+  let fetchMyData = async () => {
     let lakeLouiseScore = await storage.getQuizScore(95);
     setLakeLouiseScores(lakeLouiseScore);
-
     let oxygenScore = await storage.getQuizScore(100);
     setOxygenScores(oxygenScore);
   };
@@ -61,7 +62,7 @@ export default function MyData({ navigation }) {
             text: "YES",
             onPress: () => {
               storage.deleteScoreData(idQuizz);
-              setLakeLouiseScores([]);
+              fetchMyData();
             }
           },
           {
@@ -119,76 +120,111 @@ export default function MyData({ navigation }) {
   };
 
   return (
-    <View style={localStyles.midataContainer}>
-      <View style={globalStyles.container}>
-        <ButtonView
-          value={"Share my data"}
-          onPress={() => sendToServer()}
-          style={{
-            ...globalStyles.midataButton,
-            backgroundColor: "darkblue",
-            marginBottom: 10
-          }}
-        />
-        <Text style={{ fontWeight: "bold", fontSize: 25 }}>Your results:</Text>
-
-        <ScrollView contentContainerStyle={localStyles.scrollView}>
-          <Text style={localStyles.sectionTitle} key={"lake-louise-title"}>
-            Lake Louise Quizz:
+    <ImageBackground
+      source={require("../assets/images/mountain.jpg")}
+      style={globalStyles.mountainBackgroundImage}
+    >
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={themeColorSecondary}
+      />
+      <View style={localStyles.midataContainer}>
+        <View style={globalStyles.container}>
+          <ButtonView
+            value={"Share my data"}
+            onPress={() => sendToServer()}
+            style={{
+              ...globalStyles.midataButton,
+              alignSelf: "center",
+              backgroundColor: "darkblue",
+              marginBottom: 10,
+              marginTop: 0
+            }}
+          />
+          <Text style={{ fontWeight: "bold", fontSize: 25 }}>
+            Your results:
           </Text>
-          <View style={localStyles.scoresContainer}>
-            {lakeLouiseScores ? (
-              lakeLouiseScores.map(item => (
-                <TouchableOpacity
-                  key={item.authored}
-                  onPress={() => openScorePopup("Lake Louise Quizz", item)}
-                >
-                  <Text style={globalStyles.drawwerTopMenuText}>
-                    {jsonFhirConverter.jsonFhirToStringSimplified(95, item)}
-                  </Text>
-                  <View style={localStyles.topMenuDivider} />
-                </TouchableOpacity>
-              ))
-            ) : (
-              <View style={localStyles.loaderViewMain}>
-                <ActivityIndicator size="large" color="black" />
-              </View>
-            )}
-          </View>
 
-          <View style={localStyles.bigMenuDivider} />
-          <Text style={localStyles.sectionTitle} key={"oxygen-title"}>
-            Oxygen Saturation Algorithm:
-          </Text>
-          <View style={localStyles.scoresContainer}>
-            {oxygenScores ? (
-              oxygenScores.map(item => (
-                <TouchableOpacity
-                  key={item.authored}
-                  onPress={() =>
-                    openScorePopup("Oxygen Saturation Algorithm", item)
-                  }
-                >
-                  <Text style={globalStyles.drawwerTopMenuText}>
-                    {jsonFhirConverter.jsonFhirToStringSimplified(100, item)}
-                  </Text>
-                  <View style={localStyles.topMenuDivider} />
-                </TouchableOpacity>
-              ))
-            ) : (
-              <View style={localStyles.loaderViewMain}>
-                <ActivityIndicator size="large" color="black" />
-              </View>
-            )}
+          <ScrollView contentContainerStyle={localStyles.scrollView}>
+            <Text style={localStyles.sectionTitle} key={"lake-louise-title"}>
+              Lake Louise Quizz:
+            </Text>
+            <View style={localStyles.scoresContainer}>
+              {lakeLouiseScores ? (
+                lakeLouiseScores.map(item => (
+                  <TouchableOpacity
+                    key={item.authored}
+                    onPress={() => openScorePopup("Lake Louise Quizz", item)}
+                  >
+                    <Text style={globalStyles.drawwerTopMenuText}>
+                      {jsonFhirConverter.jsonFhirToStringSimplified(95, item)}
+                    </Text>
+                    <View style={localStyles.topMenuDivider} />
+                  </TouchableOpacity>
+                ))
+              ) : (
+                <View style={localStyles.loaderViewMain}>
+                  <ActivityIndicator size="large" color="black" />
+                </View>
+              )}
+            </View>
+
+            <Text style={localStyles.sectionTitle} key={"oxygen-title"}>
+              Oxygen Saturation Algorithm:
+            </Text>
+            <View style={localStyles.scoresContainer}>
+              {oxygenScores ? (
+                oxygenScores.map(item => (
+                  <TouchableOpacity
+                    key={item.authored}
+                    onPress={() =>
+                      openScorePopup("Oxygen Saturation Algorithm", item)
+                    }
+                  >
+                    <Text style={globalStyles.drawwerTopMenuText}>
+                      {jsonFhirConverter.jsonFhirToStringSimplified(100, item)}
+                    </Text>
+                    <View style={localStyles.topMenuDivider} />
+                  </TouchableOpacity>
+                ))
+              ) : (
+                <View style={localStyles.loaderViewMain}>
+                  <ActivityIndicator size="large" color="black" />
+                </View>
+              )}
+            </View>
+          </ScrollView>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <ButtonView
+              value={"Delete Lake Louise data"}
+              onPress={() => confirmClearScoreClick(95)}
+              style={{
+                ...globalStyles.midataButton,
+                alignSelf: "center",
+                width: "40%",
+                marginTop: 0,
+                marginBottom: 5,
+                backgroundColor: "brown"
+              }}
+            />
+            <ButtonView
+              value={"Delete Oxygen Sat. data"}
+              onPress={() => confirmClearScoreClick(100)}
+              style={{
+                ...globalStyles.midataButton,
+                alignSelf: "center",
+                width: "40%",
+                marginTop: 0,
+                marginBottom: 5,
+                backgroundColor: "brown"
+              }}
+            />
           </View>
-        </ScrollView>
-        <ButtonView
-          value={"Delete my data"}
-          onPress={() => confirmClearScoreClick(95)}
-          style={globalStyles.midataButton}
-        />
+        </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 }
 
@@ -199,7 +235,8 @@ const localStyles = StyleSheet.create({
   },
   midataContainer: {
     padding: 5,
-    flex: 1
+    flex: 1,
+    backgroundColor: "rgba(255,255,255, 0.75)"
   },
   sectionTitle: {
     fontSize: 20,

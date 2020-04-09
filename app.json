@@ -21,11 +21,11 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "ch.hevs.eresamont2",
+      "bundleIdentifier": "ch.hevs.aislab.sapao",
       "buildNumber": "2.0.2"
     },
     "android": {
-      "package": "ch.hevs.eresamont2",
+      "package": "ch.hevs.aislab.sapao",
       "versionCode": 3
     }
   }
