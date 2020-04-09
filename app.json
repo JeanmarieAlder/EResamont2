@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "EResamont 2",
-    "description": "High altitude hiking and mountaineering guide about health risks and danger in the mountains.",
-    "slug": "EResamont2",
+    "description": "High altitude hiking and mountaineering guide ab out health risks and danger in the mountains.",
+    "slug": "EResamont2 ",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": ["ios", "android", "web"],
@@ -21,11 +21,11 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "ch.hevs.aislab.sapao",
+      "bundleIdentifier": "ch.hevs.aislab.sapao.eResamont",
       "buildNumber": "2.0.2"
     },
     "android": {
-      "package": "ch.hevs.aislab.sapao",
+      "package": "ch.hevs.aislab.sapao.eResamont",
       "versionCode": 3
     }
   }
