@@ -48,3 +48,13 @@ workflows:
           filters:
             branches:
               only: master
+  nightly-workflow:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+    jobs:
+      - publish_to_expo_prod:
+          context: expo_login
+          filters:
+            branches:
+              only: master
