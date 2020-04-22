@@ -1,65 +1,108 @@
----
-version: 2
-publish: &publish
-  working_directory: ~/eresamont2
-  docker:
-    - image: circleci/node:10.13.0
-  steps:
-    - checkout
-
-    - run:
-        name: Installing dependencies
-        command: npm install
-
-    - run:
-        name: Jest Tests
-        command: yarn run test --forceExit
-
-    - run:
-        name: Login into Expo
-        command: npx expo-cli login --non-interactive -u $EXPO_USERNAME -p $EXPO_PASSWORD
-
-    - run:
-        name: Publish to Expo
-        command: npx expo-cli publish --non-interactive --max-workers 1 --release-channel $EXPO_RELEASE_CHANNEL
-
-jobs:
-  publish_to_expo_dev:
-    environment:
+--- 
+jobs: 
+  publish_to_expo_dev: 
+    docker: 
+      - 
+        image: "circleci/node:10.13.0"
+    environment: 
       EXPO_RELEASE_CHANNEL: dev
-    <<: *publish
-
-  publish_to_expo_prod:
-    environment:
+    steps: 
+      - checkout
+      - 
+        run: 
+          command: "npm install"
+          name: "Installing dependencies"
+      - 
+        run: 
+          command: "yarn run test --forceExit"
+          name: "Jest Tests"
+      - 
+        run: 
+          command: "npx expo-cli login --non-interactive -u $EXPO_USERNAME -p $EXPO_PASSWORD"
+          name: "Login into Expo"
+      - 
+        run: 
+          command: "npx expo-cli publish --non-interactive --max-workers 1 --release-channel $EXPO_RELEASE_CHANNEL"
+          name: "Publish to Expo"
+    working_directory: ~/eresamont2
+  publish_to_expo_prod: 
+    docker: 
+      - 
+        image: "circleci/node:10.13.0"
+    environment: 
       EXPO_RELEASE_CHANNEL: default
-    <<: *publish
-
-workflows:
-  version: 2
-  my_app:
-    jobs:
-      - publish_to_expo_dev:
+    steps: 
+      - checkout
+      - 
+        run: 
+          command: "npm install"
+          name: "Installing dependencies"
+      - 
+        run: 
+          command: "yarn run test --forceExit"
+          name: "Jest Tests"
+      - 
+        run: 
+          command: "npx expo-cli login --non-interactive -u $EXPO_USERNAME -p $EXPO_PASSWORD"
+          name: "Login into Expo"
+      - 
+        run: 
+          command: "npx expo-cli publish --non-interactive --max-workers 1 --release-channel $EXPO_RELEASE_CHANNEL"
+          name: "Publish to Expo"
+    working_directory: ~/eresamont2
+publish: 
+  docker: 
+    - 
+      image: "circleci/node:10.13.0"
+  steps: 
+    - checkout
+    - 
+      run: 
+        command: "npm install"
+        name: "Installing dependencies"
+    - 
+      run: 
+        command: "yarn run test --forceExit"
+        name: "Jest Tests"
+    - 
+      run: 
+        command: "npx expo-cli login --non-interactive -u $EXPO_USERNAME -p $EXPO_PASSWORD"
+        name: "Login into Expo"
+    - 
+      run: 
+        command: "npx expo-cli publish --non-interactive --max-workers 1 --release-channel $EXPO_RELEASE_CHANNEL"
+        name: "Publish to Expo"
+  working_directory: ~/eresamont2
+version: 2
+workflows: 
+  my_app: 
+    jobs: 
+      - 
+        publish_to_expo_dev: 
           context: expo_login
-          filters:
-            branches:
+          filters: 
+            branches: 
               only: master
-      - publish_to_expo_prod:
+      - 
+        publish_to_expo_prod: 
           context: expo_login
-          filters:
-            branches:
+          filters: 
+            branches: 
               only: master
-              
-  nightly-workflow:
-    triggers:
-      - schedule:
-          cron: "10 10 * * *"
-          filters:
-            branches:
-              only:
+  nightly-workflow: 
+    jobs: 
+      - 
+        publish_to_expo_prod: 
+          context: expo_login
+          filters: 
+            branches: 
+              only: master
+    triggers: 
+      - 
+        schedule: 
+          cron: "21 10 * * *"
+          filters: 
+            branches: 
+              only: 
                 - master
-    jobs:
-      - publish_to_expo_prod:
-          context: expo_login
-          filters:
-            branches:
-              only: master
+  version: 2
