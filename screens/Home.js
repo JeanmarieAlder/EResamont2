@@ -42,11 +42,11 @@ export default function Home({ navigation }) {
       ToastAndroid.show("No local data, no connection", ToastAndroid.SHORT);
     } //No local data, connection ok => fetch online and save
     else if (dataExists === false && connectionOK === true) {
-      ToastAndroid.show("No local data, connection ok", ToastAndroid.SHORT);
+      ToastAndroid.show("Downloading..", ToastAndroid.SHORT);
       data = await fetchAndSaveData();
     } //Local data exists, connection ok => check online and update local data if possible, then load updated data
     else if (dataExists === true && connectionOK === true) {
-      ToastAndroid.show("Local data exists, connection ok", ToastAndroid.SHORT);
+      ToastAndroid.show("Checking for update..", ToastAndroid.SHORT);
       data = await fetchLocalStorageWithUpdateCheck();
     } //Local data exists, no connection => just load the local data
     else if (dataExists === true && connectionOK === false) {
@@ -57,7 +57,7 @@ export default function Home({ navigation }) {
     setLoading(false);
   };
   let fetchLocalStorageWithUpdateCheck = async () => {
-    let data = null;
+    let data = [];
     let dataNew = await requestPage.fetchUpdatedContent(null);
     if (dataNew.length === 0) {
       console.log("No new data");

@@ -31,7 +31,7 @@ export default class authMidata {
   }
 
   static async refreshAuthAsync({ refreshToken }) {
-    let authState = await AppAuth.refreshAsync(config, refreshToken);
+    let authState epo = await AppAuth.refreshAsync(config, refreshToken);
     console.log("refreshAuth", authState);
     await cacheAuthAsync(authState);
     return authState;

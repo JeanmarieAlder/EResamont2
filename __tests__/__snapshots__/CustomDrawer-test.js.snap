@@ -197,7 +197,7 @@ exports[`CustomDrawer renders correctly 1`] = `
               }
             }
           >
-            Clear local storage
+            Redownload data
           </Text>
           <View
             style={

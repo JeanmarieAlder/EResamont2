@@ -6,10 +6,10 @@
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": ["ios", "android", "web"],
-    "version": "2.0.2",
+    "version": "2.0.3",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "ch.hevs.aislab.sapao.eresamont",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -21,12 +21,12 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "ch.hevs.aislab.sapao.eResamont",
-      "buildNumber": "2.0.2"
+      "bundleIdentifier": "ch.hevs.aislab.sapao.eresamont",
+      "buildNumber": "2.0.3"
     },
     "android": {
-      "package": "ch.hevs.aislab.sapao.eResamont",
-      "versionCode": 3
+      "package": "ch.hevs.aislab.sapao.eresamont",
+      "versionCode": 4
     }
   }
 }
