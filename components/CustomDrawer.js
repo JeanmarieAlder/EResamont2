@@ -50,8 +50,8 @@ export default function CustomDrawer({ navigation }) {
   };
   const confirmClearDataClick = async () => {
     Alert.alert(
-      "Confirm local data deletion",
-      "Are you sure?",
+      "Confirm redownload",
+      "Delete local data and redownload?",
       [
         { text: "YES", onPress: () => clearData() },
         {
@@ -91,7 +91,7 @@ export default function CustomDrawer({ navigation }) {
 
             <TouchableOpacity onPress={confirmClearDataClick}>
               <Text style={globalStyles.drawwerTopMenuText}>
-                Clear local storage
+                Redownload data
               </Text>
               <View style={globalStyles.topMenuDivider} />
             </TouchableOpacity>

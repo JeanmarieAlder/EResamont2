@@ -107,7 +107,7 @@ describe("Home", () => {
       });
 
       expect(ToastAndroid.show).toHaveBeenCalledWith(
-        "No local data, connection ok",
+        "Downloading..",
         ToastAndroid.SHORT
       );
     });
@@ -128,7 +128,7 @@ describe("Home", () => {
       });
 
       expect(ToastAndroid.show).toHaveBeenCalledWith(
-        "Local data exists, connection ok",
+        "Checking for update..",
         ToastAndroid.SHORT
       );
     });
@@ -173,7 +173,7 @@ describe("Home", () => {
       });
 
       expect(ToastAndroid.show).toHaveBeenCalledWith(
-        "Local data exists, connection ok",
+        "Checking for update..",
         ToastAndroid.SHORT
       );
       expect(ToastAndroid.show).toHaveBeenCalledWith(
@@ -202,7 +202,7 @@ describe("Home", () => {
       });
 
       expect(ToastAndroid.show).toHaveBeenCalledWith(
-        "Local data exists, connection ok",
+        "Checking for update..",
         ToastAndroid.SHORT
       );
       expect(ToastAndroid.show).toHaveBeenCalledWith(
@@ -235,7 +235,7 @@ describe("Home", () => {
       });
 
       expect(ToastAndroid.show).toHaveBeenCalledWith(
-        "Local data exists, connection ok",
+        "Checking for update..",
         ToastAndroid.SHORT
       );
       expect(ToastAndroid.show).not.toHaveBeenCalledWith(

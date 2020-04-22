@@ -17,7 +17,7 @@ function DummyLogin() {
     getCachedAuthAsync,
     checkIfTokenExpired,
     refreshAuthAsync,
-    getLoggedUserName,
+    getLoggedUserName
   } = useAuth2();
 
   return (

@@ -15,14 +15,15 @@ export const Auth2Provider = ({ children }) => {
       authorizationEndpoint: "https://test.midata.coop/authservice",
       tokenEndpoint: "https://test.midata.coop/v1/token",
       revocationEndpoint: "https://test.midata.coop/v1/token"
-    }
+    },
+    redirectUrl: AppAuth.OAuthRedirect + ":/oauthredirect"
   };
 
   const [authState, setAuthState] = useState(null);
   const [userName, setUserName] = useState(null);
 
   useEffect(() => {
-    console.log("LoginmidataContext: useEffect()");
+    console.log("LoginMidataContext: useEffect()");
     (async () => {
       let cachedAuth = await getCachedAuthAsync();
       if (cachedAuth && !authState) {
