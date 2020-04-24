@@ -103,11 +103,11 @@ export default function Home({ navigation }) {
         </View>
         <View style={localStyles.buttonContainerMain}>
           <ScrollView contentContainerStyle={localStyles.scrollViewMain}>
-            <ButtonView
+            {/* <ButtonView
               value="Refresh (debug)"
               style={{ ...globalStyles.button, backgroundColor: "darkblue" }}
               onPress={() => setLoading(true)}
-            />
+            /> */}
             {data.length > 1 ? (
               data.map(item => (
                 <ButtonView
