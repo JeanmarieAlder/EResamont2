@@ -144,7 +144,7 @@ let translate = (name, language) => {
         return "Midata est une plateforme à but non lucratif, appartenant à tous et sécurisée pour la recherche médicale. Vous décidez des données que vous souhaitez partager. Ensuite, les chercheurs vont les utiliser pour mettre au point de nouveaux traitements pour tous.";
         break;
       case 2:
-        return "Midata è una piattaforma sicura, senza fini di lucro e di proprietà dei cittadini, per condividere dati medici per la ricerca medica. Decidi tu i dati che vuoi condividere, i ricercatori li useranno per creare nuovi trattamenti per tutti.";
+        return "Midata é una piattaforma a scopo non lucrativo, appartenente a tutti e sicura per la ricerca medicale! Voi decidete dei dati che volete condividere. Poi, i ricercatori li utilizzano per mettere a punto dei nuovi medicamenti per tutti.";
         break;
       case 3:
         return "Midata is a citizen owned, non-profit and secure platform to share medical data for medical research. You decide the data you want to share, researchers will use them to create new treatments for everyone.";
