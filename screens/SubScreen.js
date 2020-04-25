@@ -43,14 +43,15 @@ export default function SubScreen({ navigation }) {
   let forIOS =
     Platform.OS === "ios"
       ? '<meta name="viewport" content="width=device-width, initial-scale=1, max-scale=1">'
-      : "";
+      : ""; //enlarge web text view for ios
   let generateJavaScript = id => {
+    //enlarge radio buttons on android, and get input value from the 2 quizzes
     let generatedJS =
       Platform.OS === "ios"
         ? ""
         : 'var allRadioButtons = document.querySelectorAll(".form-check-input"); for (var i = 0; i < allRadioButtons.length; i++) {allRadioButtons[i].style.height = "65px"; allRadioButtons[i].style.width = "65px"};';
     switch (id) {
-      case 95:
+      case 95: //Lake louise quiz
         generatedJS +=
           'document.getElementById("send_button").addEventListener("click", function() {let resultTab = [];' +
           'resultTab.push(getRadioValue("maux_de_tete"));' +
@@ -61,7 +62,7 @@ export default function SubScreen({ navigation }) {
           'resultTab.push(parseInt(document.getElementById("score_span").innerHTML));' +
           "window.ReactNativeWebView.postMessage(JSON.stringify(resultTab));})";
         break;
-      case 100:
+      case 100: //Oxygen quiz
         generatedJS +=
           'document.getElementById("send_button").addEventListener("click", function() {let resultTab = [];' +
           'resultTab.push(getRadioValue("altitude"));' +

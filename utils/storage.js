@@ -201,7 +201,7 @@ export default class storage {
       return await parseInt(language);
     } catch (e) {
       console.error(e);
-      return 1; //french by default, can be changed if needed
+      return 1; //French by default
     }
   }
 
@@ -216,55 +216,3 @@ export default class storage {
     }
   }
 }
-
-// export default class storage {
-
-//   static async saveAllStoragePages(data) {
-//     try {
-//       await AsyncStorage.setItem("allPages", JSON.stringify(data));
-//       console.log("saving local data");
-//     } catch (e) {
-//       console.log(e);
-//     }
-//   }
-//   static async getAllStoragePages() {
-//     console.log("fetching local");
-//     try {
-//       const localPages = await AsyncStorage.getItem("allPages");
-//       if (localPages !== null) {
-//         console.log("returning local data");
-//         console.log(JSON.stringify(localPages));
-//         return await JSON.stringify(localPages);
-//       }
-//     } catch (e) {
-//       console.error(e);
-//     }
-//   }
-//   static async removeAllStoragePages() {
-//     try {
-//       await AsyncStorage.removeItem("allPages");
-//     } catch (e) {
-//       console.log(e);
-//     }
-//   }
-// }
-
-// static async saveAllStoragePages(data) {
-//   console.log("Saving data to local storage");
-//   try {
-//     await FileSystem.writeAsStringAsync(filePath, JSON.stringify(data));
-//     console.log("Local data saved");
-//   } catch (e) {
-//     console.log(e);
-//   }
-// }
-
-//   static async getAllStoragePages() {
-//   console.log("Fetching local data");
-//   try {
-//     let localPages = await FileSystem.readAsStringAsync(filePath);
-//     return await JSON.parse(localPages);
-//   } catch (e) {
-//     console.error(e);
-//   }
-// }

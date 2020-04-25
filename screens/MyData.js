@@ -201,26 +201,12 @@ export default function MyData({ navigation }) {
             <ButtonView
               value={"Delete Lake Louise data"}
               onPress={() => confirmClearScoreClick(95)}
-              style={{
-                ...globalStyles.midataButton,
-                alignSelf: "center",
-                width: "40%",
-                marginTop: 0,
-                marginBottom: 5,
-                backgroundColor: "brown"
-              }}
+              style={localStyles.deleteButton}
             />
             <ButtonView
               value={"Delete Oxygen Sat. data"}
               onPress={() => confirmClearScoreClick(100)}
-              style={{
-                ...globalStyles.midataButton,
-                alignSelf: "center",
-                width: "40%",
-                marginTop: 0,
-                marginBottom: 5,
-                backgroundColor: "brown"
-              }}
+              style={localStyles.deleteButton}
             />
           </View>
         </View>
@@ -247,6 +233,14 @@ const localStyles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: "flex-start",
     marginTop: 10
+  },
+  deleteButton: {
+    ...globalStyles.midataButton,
+    alignSelf: "center",
+    width: "40%",
+    marginTop: 0,
+    marginBottom: 5,
+    backgroundColor: "brown"
   },
   topMenuDivider: {
     borderBottomColor: "black",

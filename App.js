@@ -5,7 +5,7 @@ import Navigator from "./routes/Drawer";
 import storage from "./utils/storage";
 import { Auth2Provider } from "./shared/LoginMidataContext";
 export default function App() {
-  const [language, setLanguage] = useState(3);
+  const [language, setLanguage] = useState(1); //French default
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetchLanguage();
