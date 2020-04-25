@@ -56,7 +56,7 @@ exports[`MidataSettings Renders correctly 1`] = `
         }
       }
     >
-      Midata est une plateforme à but non lucratif, appartenant à tous et sécurisée pour la recherche médicale. Vous décidez des données que vous souhaitez partager. Ensuite, les chercheurs vont les utiliser pour mettre au point de nouveaux traitements pour tous.
+      Midata is a citizen owned, non-profit and secure platform to share medical data for medical research. You decide the data you want to share, researchers will use them to create new treatments for everyone.
     </Text>
     <Text
       style={
@@ -70,7 +70,7 @@ exports[`MidataSettings Renders correctly 1`] = `
         }
       }
     >
-      Veuillez vous connecter pour utiliser Midata
+      Please sign in to use Midata
     </Text>
     <View
       style={
@@ -113,7 +113,7 @@ exports[`MidataSettings Renders correctly 1`] = `
                 "width": "80%",
               }
             }
-            testID="button-view-Se connecter à Midata"
+            testID="button-view-Sign in to Midata"
           >
             <Text
               style={
@@ -125,7 +125,7 @@ exports[`MidataSettings Renders correctly 1`] = `
                 }
               }
             >
-              Se connecter à Midata
+              Sign in to Midata
             </Text>
           </View>
           <View
@@ -152,7 +152,7 @@ exports[`MidataSettings Renders correctly 1`] = `
                 "width": "80%",
               }
             }
-            testID="button-view-Mes données"
+            testID="button-view-My data"
           >
             <Text
               style={
@@ -164,7 +164,7 @@ exports[`MidataSettings Renders correctly 1`] = `
                 }
               }
             >
-              Mes données
+              My data
             </Text>
           </View>
           <View
@@ -191,7 +191,7 @@ exports[`MidataSettings Renders correctly 1`] = `
                 "width": "80%",
               }
             }
-            testID="button-view-Se déconnecter"
+            testID="button-view-Sign out"
           >
             <Text
               style={
@@ -203,7 +203,7 @@ exports[`MidataSettings Renders correctly 1`] = `
                 }
               }
             >
-              Se déconnecter
+              Sign out
             </Text>
           </View>
         </View>
