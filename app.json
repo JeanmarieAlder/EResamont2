@@ -6,7 +6,7 @@
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": ["ios", "android", "web"],
-    "version": "2.0.3",
+    "version": "2.0.4",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "ch.hevs.aislab.sapao.eresamont",
@@ -26,7 +26,12 @@
     },
     "android": {
       "package": "ch.hevs.aislab.sapao.eresamont",
-      "versionCode": 4
+      "versionCode": 4,
+      "splash": {
+        "mdpi": "./assets/images/splash.png",
+        "backgroundColor": "#ffffff",
+        "resizeMode": "contain"
+      }
     }
   }
 }
