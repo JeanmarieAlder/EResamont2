@@ -46,7 +46,9 @@ export default function SubScreen({ navigation }) {
       : "";
   let generateJavaScript = id => {
     let generatedJS =
-      'var allRadioButtons = document.querySelectorAll(".form-check-input"); for (var i = 0; i < allRadioButtons.length; i++) {allRadioButtons[i].style.height = "65px"; allRadioButtons[i].style.width = "65px"};';
+      Platform.OS === "ios"
+        ? ""
+        : 'var allRadioButtons = document.querySelectorAll(".form-check-input"); for (var i = 0; i < allRadioButtons.length; i++) {allRadioButtons[i].style.height = "65px"; allRadioButtons[i].style.width = "65px"};';
     switch (id) {
       case 95:
         generatedJS +=
