@@ -4,8 +4,7 @@ import Header from "../components/Header";
 import MidataSettings from "../screens/MidataSettings";
 import MyData from "../screens/MyData";
 import { globalStyles } from "../styles/global";
-import { View } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+
 import HeaderLeft from "../components/HeaderLeft";
 import HeaderRight from "../components/HeaderRight";
 const screens = {
@@ -13,9 +12,7 @@ const screens = {
     screen: MidataSettings,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: () => (
-          <Header title={"Midata Settings"} navigation={navigation} />
-        ),
+        headerTitle: () => <Header title={"Midata"} navigation={navigation} />,
         headerLeft: () => <HeaderLeft navigation={navigation} />,
         headerRight: () => <HeaderRight navigation={navigation} />
       };

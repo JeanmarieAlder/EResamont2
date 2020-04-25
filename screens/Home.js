@@ -9,7 +9,7 @@ import {
   ImageBackground,
   ToastAndroid
 } from "react-native";
-import { globalStyles, themeColorSecondary } from "../styles/global";
+import { globalStyles } from "../styles/global";
 import requestPage from "../utils/requestPage";
 import { LanguageContext } from "../shared/LanguageContext";
 import { LoadingContext } from "../shared/LoadingContext";
@@ -20,7 +20,7 @@ import ButtonView from "../components/ButtonView";
 import _ from "lodash";
 export default function Home({ navigation }) {
   const [data, setData] = useState([]);
-  const { language, setLanguage } = useContext(LanguageContext);
+  const { language } = useContext(LanguageContext);
   const { loading, setLoading } = useContext(LoadingContext);
 
   useEffect(() => {
@@ -103,11 +103,6 @@ export default function Home({ navigation }) {
         </View>
         <View style={localStyles.buttonContainerMain}>
           <ScrollView contentContainerStyle={localStyles.scrollViewMain}>
-            {/* <ButtonView
-              value="Refresh (debug)"
-              style={{ ...globalStyles.button, backgroundColor: "darkblue" }}
-              onPress={() => setLoading(true)}
-            /> */}
             {data.length > 1 ? (
               data.map(item => (
                 <ButtonView

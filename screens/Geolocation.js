@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, ToastAndroid } from "react-native";
-import { globalStyles, themeColorSecondary } from "../styles/global";
+import { globalStyles } from "../styles/global";
 import { WebView } from "react-native-webview";
 
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
-import ButtonView from "../components/ButtonView";
 
 export default function Geolocation({ navigation }) {
   let [location, setLocation] = useState(null);

@@ -1,4 +1,4 @@
-import React, { useState, Component, useContext, use } from "react";
+import React, { useState, useContext } from "react";
 import {
   StyleSheet,
   View,
@@ -8,15 +8,15 @@ import {
   ImageBackground,
   Platform
 } from "react-native";
-import { globalStyles, themeColorSecondary } from "../styles/global";
+import { globalStyles } from "../styles/global";
 import { WebView } from "react-native-webview";
 import { LanguageContext } from "../shared/LanguageContext";
 import utilities from "../utils/utilities";
 import storage from "../utils/storage";
 import ButtonView from "../components/ButtonView";
 export default function SubScreen({ navigation }) {
-  const [tab, setTab] = useState(navigation.state.params);
-  const { language, setLanguage } = useContext(LanguageContext);
+  const [tab] = useState(navigation.state.params);
+  const { language } = useContext(LanguageContext);
 
   let checkScreenType = tab => {
     let result = 0;

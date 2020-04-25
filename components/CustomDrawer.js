@@ -12,12 +12,11 @@ import { LoadingContext } from "../shared/LoadingContext";
 import ButtonView from "./ButtonView";
 import storage from "../utils/storage";
 import requestPage from "../utils/requestPage";
-import { Icon } from "react-native-elements";
 import { Alert, ToastAndroid } from "react-native";
 
 export default function CustomDrawer({ navigation }) {
   const { language, setLanguage } = useContext(LanguageContext);
-  const { loading, setLoading } = useContext(LoadingContext);
+  const { setLoading } = useContext(LoadingContext);
 
   const navigationClick = page => () => {
     navigation.toggleDrawer();
@@ -50,7 +49,7 @@ export default function CustomDrawer({ navigation }) {
   };
   const confirmClearDataClick = async () => {
     Alert.alert(
-      "Confirm redownload",
+      "Confirm refresh",
       "Delete local data and redownload?",
       [
         { text: "YES", onPress: () => clearData() },
@@ -62,7 +61,51 @@ export default function CustomDrawer({ navigation }) {
       { cancelable: true }
     );
   };
-
+  let translate = (name, language) => {
+    if (name === "Home") {
+      switch (language) {
+        case 1:
+          return "Accueil";
+          break;
+        case 2:
+          return "Home page";
+          break;
+        case 3:
+          return "Home";
+          break;
+        default:
+          return "Home";
+      }
+    } else if (name === "Refresh data") {
+      switch (language) {
+        case 1:
+          return "Rafraîchir les données";
+          break;
+        case 2:
+          return "Aggiornare dati";
+          break;
+        case 3:
+          return "Refresh data";
+          break;
+        default:
+          return "Refresh data";
+      }
+    } else if (name === "Check for update") {
+      switch (language) {
+        case 1:
+          return "Vérifier les mises à jour";
+          break;
+        case 2:
+          return "Verifica aggiornamenti";
+          break;
+        case 3:
+          return "Check for update";
+          break;
+        default:
+          return "Check for update";
+      }
+    }
+  };
   return (
     <ImageBackground
       source={require("../assets/images/mountain.jpg")}
@@ -78,27 +121,27 @@ export default function CustomDrawer({ navigation }) {
           </TouchableOpacity>
           <View style={globalStyles.drawerTopMenu}>
             <TouchableOpacity onPress={navigationClick("EResamont")}>
-              <Text style={globalStyles.drawwerTopMenuText}>Home</Text>
+              <Text style={globalStyles.drawwerTopMenuText}>
+                {translate("Home", language)}
+              </Text>
               <View style={globalStyles.topMenuDivider} />
             </TouchableOpacity>
 
             <TouchableOpacity onPress={navigationClick("MidataSettings")}>
-              <Text style={globalStyles.drawwerTopMenuText}>
-                Midata Settings
-              </Text>
+              <Text style={globalStyles.drawwerTopMenuText}>Midata</Text>
               <View style={globalStyles.topMenuDivider} />
             </TouchableOpacity>
 
             <TouchableOpacity onPress={confirmClearDataClick}>
               <Text style={globalStyles.drawwerTopMenuText}>
-                Redownload data
+                {translate("Refresh data", language)}
               </Text>
               <View style={globalStyles.topMenuDivider} />
             </TouchableOpacity>
 
             <TouchableOpacity onPress={checkUpdate} testID={"cd-button-update"}>
               <Text style={globalStyles.drawwerTopMenuText}>
-                Check for update
+                {translate("Check for update", language)}
               </Text>
               <View style={globalStyles.topMenuDivider} />
             </TouchableOpacity>

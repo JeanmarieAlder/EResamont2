@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   ImageBackground
 } from "react-native";
-import { globalStyles, themeColorSecondary } from "../styles/global";
+import { globalStyles } from "../styles/global";
 import { LanguageContext } from "../shared/LanguageContext";
 import ButtonView from "../components/ButtonView";
 import { useAuth2 } from "../shared/LoginMidataContext";
@@ -55,7 +55,7 @@ export default function MyData({ navigation }) {
     if (result) {
       Alert.alert(
         "Confirm local score deletion",
-        "Current scores are: " + JSON.stringify(result),
+        "Are you sure?",
         [
           {
             text: "YES",
@@ -89,6 +89,9 @@ export default function MyData({ navigation }) {
               );
               console.log("Server response: ");
               console.log(response);
+              if (response.status && response.status === "completed") {
+                ToastAndroid.show("Data sent successfully!", ToastAndroid.LONG);
+              }
             }
           });
         }
@@ -104,6 +107,9 @@ export default function MyData({ navigation }) {
               );
               console.log("Server response: ");
               console.log(response);
+              if (response.status && response.status === "completed") {
+                ToastAndroid.show("Data sent successfully!", ToastAndroid.LONG);
+              }
             }
           });
         }
