@@ -56,7 +56,7 @@ exports[`MidataSettings Renders correctly 1`] = `
         }
       }
     >
-      Midata is a citizen owned, non-profit and secure platform to share medical data for medical research. You decide the data you want to share, researchers will use them to create new treatments for everyone.
+      Midata est une plateforme à but non lucratif, appartenant à tous et sécurisée pour la recherche médicale. Vous décidez des données que vous souhaitez partager. Ensuite, les chercheurs vont les utiliser pour mettre au point de nouveaux traitements pour tous.
     </Text>
     <Text
       style={
@@ -70,7 +70,7 @@ exports[`MidataSettings Renders correctly 1`] = `
         }
       }
     >
-      Sign in to use Midata
+      Veuillez vous connecter pour utiliser Midata
     </Text>
     <View
       style={
@@ -113,7 +113,7 @@ exports[`MidataSettings Renders correctly 1`] = `
                 "width": "80%",
               }
             }
-            testID="button-view-Log in / Sign up"
+            testID="button-view-Se connecter à Midata"
           >
             <Text
               style={
@@ -125,7 +125,7 @@ exports[`MidataSettings Renders correctly 1`] = `
                 }
               }
             >
-              Log in / Sign up
+              Se connecter à Midata
             </Text>
           </View>
           <View
@@ -152,7 +152,7 @@ exports[`MidataSettings Renders correctly 1`] = `
                 "width": "80%",
               }
             }
-            testID="button-view-My data"
+            testID="button-view-Mes données"
           >
             <Text
               style={
@@ -164,85 +164,7 @@ exports[`MidataSettings Renders correctly 1`] = `
                 }
               }
             >
-              My data
-            </Text>
-          </View>
-          <View
-            accessible={true}
-            focusable={true}
-            isTVSelectable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "darkblue",
-                "borderRadius": 10,
-                "height": 40,
-                "justifyContent": "center",
-                "marginTop": 10,
-                "opacity": 1,
-                "padding": 10,
-                "width": "80%",
-              }
-            }
-            testID="button-view-Login status (debug console)"
-          >
-            <Text
-              style={
-                Object {
-                  "color": "#ffffff",
-                  "fontFamily": "EuphemiaUCAS-Bold",
-                  "textAlign": "center",
-                  "textAlignVertical": "center",
-                }
-              }
-            >
-              Login status (debug console)
-            </Text>
-          </View>
-          <View
-            accessible={true}
-            focusable={true}
-            isTVSelectable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "darkblue",
-                "borderRadius": 10,
-                "height": 40,
-                "justifyContent": "center",
-                "marginTop": 10,
-                "opacity": 1,
-                "padding": 10,
-                "width": "80%",
-              }
-            }
-            testID="button-view-Get my posted data (debug)"
-          >
-            <Text
-              style={
-                Object {
-                  "color": "#ffffff",
-                  "fontFamily": "EuphemiaUCAS-Bold",
-                  "textAlign": "center",
-                  "textAlignVertical": "center",
-                }
-              }
-            >
-              Get my posted data (debug)
+              Mes données
             </Text>
           </View>
           <View
@@ -269,7 +191,7 @@ exports[`MidataSettings Renders correctly 1`] = `
                 "width": "80%",
               }
             }
-            testID="button-view-Sign out"
+            testID="button-view-Se déconnecter"
           >
             <Text
               style={
@@ -281,7 +203,7 @@ exports[`MidataSettings Renders correctly 1`] = `
                 }
               }
             >
-              Sign out
+              Se déconnecter
             </Text>
           </View>
         </View>

@@ -8,14 +8,14 @@ import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { Auth2Context } from "../shared/LoginMidataContext";
 import { ToastAndroid } from "react-native";
 
-let language = 1;
+let language = 3;
 console.log = jest.fn();
 ToastAndroid.show = jest.fn();
 
 const fakeNavigation = {
-  push: (location) => {
+  push: location => {
     fakePush(location);
-  },
+  }
 };
 
 let fakePush = jest.fn();
@@ -30,7 +30,7 @@ const FakeAuth2ProviderOnline = ({ children }) => {
         },
         signOutAsync: () => {
           fakeSignOutAsync();
-        },
+        }
       }}
     >
       {children}
@@ -50,7 +50,7 @@ const FakeAuth2ProviderOffline = ({ children }) => {
         },
         signOutAsync: () => {
           fakeSignOutAsync();
-        },
+        }
       }}
     >
       {children}
@@ -88,7 +88,7 @@ describe("MidataSettings", () => {
           </LanguageContext.Provider>
         </FakeAuth2ProviderOnline>
       );
-      const element = getByTestId("button-view-Log in / Sign up");
+      const element = getByTestId("button-view-Sign in to Midata");
       await fireEvent.press(element);
       expect(ToastAndroid.show).toHaveBeenCalledTimes(1);
       expect(ToastAndroid.show).toHaveBeenCalledWith(
@@ -104,7 +104,7 @@ describe("MidataSettings", () => {
           </LanguageContext.Provider>
         </FakeAuth2ProviderOffline>
       );
-      const element = getByTestId("button-view-Log in / Sign up");
+      const element = getByTestId("button-view-Sign in to Midata");
       await fireEvent.press(element);
       expect(fakeSignInAsync).toHaveBeenCalledTimes(1);
     });

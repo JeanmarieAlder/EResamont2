@@ -117,7 +117,7 @@ exports[`CustomDrawer renders correctly 1`] = `
               }
             }
           >
-            Home
+            Accueil
           </Text>
           <View
             style={
@@ -157,7 +157,7 @@ exports[`CustomDrawer renders correctly 1`] = `
               }
             }
           >
-            Midata Settings
+            Midata
           </Text>
           <View
             style={
@@ -197,7 +197,7 @@ exports[`CustomDrawer renders correctly 1`] = `
               }
             }
           >
-            Redownload data
+            Rafraîchir les données
           </Text>
           <View
             style={
@@ -238,7 +238,7 @@ exports[`CustomDrawer renders correctly 1`] = `
               }
             }
           >
-            Check for update
+            Vérifier les mises à jour
           </Text>
           <View
             style={
