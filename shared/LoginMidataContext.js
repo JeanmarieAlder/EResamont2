@@ -16,7 +16,7 @@ export const Auth2Provider = ({ children }) => {
       tokenEndpoint: "https://test.midata.coop/v1/token",
       revocationEndpoint: "https://test.midata.coop/v1/token"
     },
-    redirectUrl: AppAuth.OAuthRedirect + ":/callback"
+    redirectUrl: AppAuth.OAuthRedirect + ":/oauthredirect"
   };
 
   const [authState, setAuthState] = useState(null);
